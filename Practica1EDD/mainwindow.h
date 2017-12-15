@@ -30,11 +30,13 @@ private:
     Ui::MainWindow *ui;
     /*Global*/
     int turno;
+    int id_pasajero;
     void setGraphicView();
     /*Global*/
 
     /*Clases*/
     Mantenimiento *estacion_mantenimiento;
+    Registro *estacion_registro;
     QGraphicsPixmapItem *imagen;
     QGraphicsScene *escenario;
     QString getEstado(bool estado);
@@ -45,12 +47,13 @@ private:
     Cola<Pasajero*> *cola_pasajeros;
     void setEstructuras();
     void clearEstructuras();
-    void setPasajeros(int cantidad, int base);
+    void setPasajeros(int cantidad);
     /*Estructuras*/
 
     /*print functions*/
     void conPrint(QString texto);
     void printInfoEstacion();
+    void printInfoRegistro();
     void printInfoAvion();
     /*print functions*/
 
@@ -68,13 +71,16 @@ private:
 
     /*Codigo grafica*/
     QString codigoAviones();
+    QString codigoRegistro();
     QString codigoPasajeros();
     QString codigoMantenimiento();
+    QString codigoPasajerosColaRegistro(Escritorio *actual);
     void recargarImagen();
     /*Codigo grafica*/
 
     /*Funciones Auxiliares*/
     QString datosEstacion(Estacion *actual);
+    QString datosEscritorio(Escritorio *actual);
     /*Funciones Auxiliares*/
 
 

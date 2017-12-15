@@ -79,7 +79,7 @@ struct ListaO
     Nodo<Escritorio*> *raiz;
     int cant;
     void insertar(Escritorio* item);
-    //Objeto get(int posicion);
+    Escritorio *get(int posicion);
     //Objeto removeTop();
     void clear();
     bool isEmpty();

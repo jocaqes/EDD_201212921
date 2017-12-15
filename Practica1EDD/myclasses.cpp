@@ -180,6 +180,9 @@ Escritorio::Escritorio(char nombre)
     cola_pasajeros=new Cola<Pasajero*>;
     pila_documentos=new Pila<int>;
     en_recepcion=nullptr;
+    cantidad_documentos=0;
+    turnos_restantes=0;
+    estado=false;
 
 }
 
@@ -200,7 +203,8 @@ void Escritorio::pasarTurno()
             estado=false;//reseteo el estado
             pasarPasajero();//si hay pasajero en cola, lo paso
         }
-     }
+     }else
+        pasarPasajero();
 
 }
 
@@ -241,7 +245,7 @@ void ListaO::insertar(Escritorio *item)
     if(isEmpty())
         raiz=nuevo;
     else{
-        if(raiz->item->nombre<nuevo->item->nombre){//el nuevo va antes de la raiz
+        if(nuevo->item->nombre>raiz->item->nombre){//el nuevo va antes de la raiz
             nuevo->siguiente=raiz;
             raiz->anterior=nuevo;
             raiz=nuevo;
@@ -249,6 +253,18 @@ void ListaO::insertar(Escritorio *item)
             insertar(raiz,raiz->siguiente,nuevo);
     }
     ++cant;
+}
+
+Escritorio *ListaO::get(int posicion)
+{
+    if(posicion>cant||posicion<0)
+        return 0;
+    Nodo<Escritorio*> *aux = raiz;
+    int i;
+    for(i=0;i<posicion;i++){
+        aux=aux->siguiente;
+    }
+    return aux->item;
 }
 
 void ListaO::clear()
@@ -273,7 +289,7 @@ void ListaO::insertar(Nodo<Escritorio *> *actual, Nodo<Escritorio *> *siguiente,
     if(siguiente==nullptr){//llegue al final de la lista
         actual->siguiente=nuevo;
         nuevo->anterior=actual;
-    }else if(siguiente->item->nombre<nuevo->item->nombre){//nuevo va antes de siguiente
+    }else if(nuevo->item->nombre>siguiente->item->nombre){//nuevo va antes de siguiente
         actual->siguiente=nuevo;
         nuevo->anterior=actual;
         nuevo->siguiente=siguiente;

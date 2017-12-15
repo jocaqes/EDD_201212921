@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    id_pasajero=1;
     srand(time(0));//seed para el random
     setEstructuras();//inicializo las estructuras
     setGraphicView();//arreglo lo necesario para mostrar la grafica
@@ -41,8 +42,11 @@ void MainWindow::on_boton_inicio_clicked()
     setAviones();//3. agrego los aviones
     int cant_estaciones = ui->text_estaciones->text().toInt();
     estacion_mantenimiento->setEstaciones(cant_estaciones);//4. agrego las estaciones de mantenimiento
-    debug();//5. temp imprimo informacion inicial
-    recargarImagen();//6. muestro la grafica
+    cant_estaciones=ui->text_excritorios->text().toInt();
+    estacion_registro->setEscritorios(cant_estaciones);//5. agrego los escritorios de registro
+    debug();//6. temp imprimo informacion inicial
+    recargarImagen();//7. muestro la grafica
+    ui->label_turno->setText(QString::number(turno));//8.agrego el turno por molestar
     //escenario->addItem(imagen);
     //ui->graphic_view->show();
 }
@@ -52,8 +56,10 @@ void MainWindow::on_boton_siguiente_clicked()
     ++turno;
     turnoAvion();
     estacion_mantenimiento->pasarTurno();
+    estacion_registro->pasarTurno(cola_pasajeros);
     debug();
     recargarImagen();
+    ui->label_turno->setText(QString::number(turno));
     //ui->graphic_view->show();
 }
 
@@ -68,7 +74,7 @@ void MainWindow::on_boton_siguiente_clicked()
 QString MainWindow::getEstado(bool estado)
 {
     if(estado)
-        return "Ocupado";
+        return "ocupado";
     return "libre";
 }
 
@@ -79,6 +85,7 @@ void MainWindow::setEstructuras()
 {
     cola_aviones=new ColaD<Avion*>();
     cola_pasajeros=new Cola<Pasajero*>();
+    estacion_registro=new Registro();
     estacion_mantenimiento=new Mantenimiento();
 }
 
@@ -86,14 +93,15 @@ void MainWindow::clearEstructuras()
 {
     cola_aviones->clear();
     cola_pasajeros->clear();
+    estacion_registro->clear();
     estacion_mantenimiento->clear();
 }
 
-void MainWindow::setPasajeros(int cantidad, int base)
+void MainWindow::setPasajeros(int cantidad)
 {
     int i;
-    for(i=base+1;i<cantidad+base;i++)
-        cola_pasajeros->enColar(new Pasajero(i));
+    for(i=0;i<cantidad;i++,id_pasajero++)
+        cola_pasajeros->enColar(new Pasajero(id_pasajero));
 
 }
 /*Estructuras*/
@@ -114,7 +122,7 @@ void MainWindow::printInfoAvion()
     else{
         QString mensaje = "Arribó avión:"+QString::number(cola_aviones->top()->nombre);
         conPrint(mensaje);
-        mensaje = "Avión desabordando"+QString::number(cola_aviones->top()->nombre);
+        mensaje = "Avión desabordando "+QString::number(cola_aviones->top()->nombre);
         conPrint(mensaje);
         mensaje = "debug turnos faltantes avion actual:"+QString::number(cola_aviones->top()->desabordaje);
     }
@@ -136,6 +144,33 @@ void MainWindow::printInfoEstacion()
     }
     conPrint("+++++++++++++++++++++++++");
 
+}
+
+void MainWindow::printInfoRegistro()
+{
+    Nodo<Escritorio*> *aux=estacion_registro->lista_escritorios->raiz;
+    Escritorio *actual;
+    conPrint("-------------Escritorios de Registro-------------");
+    QString mensaje="";
+    QString nombre_escritorio;
+    while(aux!=nullptr){
+        actual = aux->item;
+        nombre_escritorio=actual->nombre;
+        mensaje="Escritorio "+nombre_escritorio+":"+getEstado(actual->estado);
+        conPrint(mensaje);
+        mensaje="\tPasajero atendido:";
+        if(actual->en_recepcion!=nullptr)
+            mensaje+="Pasajero "+QString::number(actual->en_recepcion->id);
+        else
+            mensaje+="ninguno";
+        conPrint(mensaje);
+        mensaje="\tTurnos restantes:"+QString::number(actual->turnos_restantes);
+        conPrint(mensaje);
+        mensaje="\tCantidad de documentos:"+QString::number(actual->cantidad_documentos);
+        conPrint(mensaje);
+        aux=aux->siguiente;
+    }
+    conPrint("-----------------------------------------------------");
 }
 
 /*print functions*/
@@ -161,7 +196,7 @@ void MainWindow::turnoAvion()
         return;
     cola_aviones->top()->desabordaje--;
     if(cola_aviones->top()->desabordaje==0){
-        setPasajeros(cola_aviones->top()->pasajeros,cola_pasajeros->cant);
+        setPasajeros(cola_aviones->top()->pasajeros);
         estacion_mantenimiento->encolarAvion(cola_aviones->desEncolar());
 
     }
@@ -175,8 +210,9 @@ void MainWindow::turnoAvion()
 void MainWindow::debug()
 {
     conPrint("******Turno "+QString::number(turno)+"******");
-    printInfoAvion();//nuevo
-    printInfoEstacion();//nuevo
+    printInfoAvion();
+    printInfoRegistro();//nuevo
+    printInfoEstacion();
     conPrint("******Fin Turno "+QString::number(turno)+"******");
 
 }
@@ -204,6 +240,44 @@ QString MainWindow::codigoAviones()
     }
     codigo+= "color=black;\n"
             "}\n";
+    return codigo;
+}
+
+QString MainWindow::codigoRegistro()
+{
+    QString codigo="subgraph cluster_registro{\n"
+                   "titulo_registro[label=\"Escritorios\nde Registro\";fillcolor=\"blue:cyan\";shape=box;fontcolor=white;style=filled;height=.5;width=1.5;fixedsize=true];\n";
+    Nodo<Escritorio*> *aux_escritorio=estacion_registro->lista_escritorios->raiz;
+    QString nombre;
+    QString nombre_anterior;
+    /*if(aux_escritorio!=nullptr){
+        nombre=estacion_registro->lista_escritorios->raiz->item->nombre;
+        nombre_anterior=estacion_registro->lista_escritorios->get(estacion_registro->lista_escritorios->cant-1)->nombre;
+        codigo+="titulo_registro->Rescritorio"+nombre+"[color=transparent;dir=none];\n";
+        codigo+="titulo_registro->Rescritorio"+nombre_anterior+"[color=transparent;dir=none];\n";
+    }*/
+    codigo+= "{rank=same;\n";
+    while(aux_escritorio!=nullptr){
+        Escritorio *actual=aux_escritorio->item;
+        nombre=actual->nombre;
+        codigo+="Rescritorio"+nombre+
+                "[label=\"Escritorio\n"+nombre+datosEscritorio(actual)+"\";shape=box;];\n";//Creo nodo actual
+        if(aux_escritorio->anterior!=nullptr){//si su anterior existe
+            nombre_anterior=aux_escritorio->anterior->item->nombre;
+            codigo+="Rescritorio"+nombre_anterior+"->"+"Rescritorio"+nombre+"[color=blue];\n";//anterior apunta a actual
+            codigo+="Rescritorio"+nombre+"->"+"Rescritorio"+nombre_anterior+"[color=blue];\n";//actual apunta a anterior
+        }
+        //codigo+=codigoPasajerosColaRegistro(actual);
+        aux_escritorio=aux_escritorio->siguiente;
+    }
+
+    codigo+="}\n";//para cerrar el rank=same
+    aux_escritorio=estacion_registro->lista_escritorios->raiz;//nuevo
+    while(aux_escritorio!=nullptr){
+        codigo+=codigoPasajerosColaRegistro(aux_escritorio->item);
+        aux_escritorio=aux_escritorio->siguiente;
+    }
+    codigo+="}";//para cerrar cluster
     return codigo;
 }
 
@@ -276,9 +350,32 @@ QString MainWindow::codigoMantenimiento()
         }
         aux_avion=aux_avion->siguiente;
     }
-    codigo+="}\n"
-            "color=black;\n"
+    codigo+="color=black;\n"
             "}\n";
+    return codigo;
+}
+
+QString MainWindow::codigoPasajerosColaRegistro(Escritorio *actual)
+{
+    QString codigo="";
+    Nodo<Pasajero*> *aux=actual->cola_pasajeros->raiz;
+    QString nombre_escritorio=actual->nombre;
+    if(aux!=nullptr){
+        codigo="Rescritorio"+nombre_escritorio+"->"+"Rpasajero"+QString::number(aux->item->id)+"[color=transparent;dir=none];\n";//nombre escritorio;
+    }
+    while(aux!=nullptr){
+        Pasajero *actual=aux->item;
+        QString id=QString::number(actual->id);
+        codigo+="Rpasajero"+id+
+                "[label=\"Pasajero "+id+"\"];\n";//Creo nodo actual
+        if(aux->siguiente!=nullptr){//si su siguiente existe
+            QString id_siguiente=QString::number(aux->siguiente->item->id);
+            codigo+="Rpasajero"+id_siguiente+
+                    "[label=\"Pasajero "+id_siguiente+"\"];\n";//Creo nodo siguiente
+            codigo+="Rpasajero"+id+"->"+"Rpasajero"+id_siguiente+";\n";//actual apunta a siguiente
+        }
+        aux=aux->siguiente;
+    }
     return codigo;
 }
 
@@ -290,6 +387,7 @@ void MainWindow::recargarImagen()
                    +codigoAviones()
             +codigoPasajeros()
             +codigoMantenimiento()
+            +codigoRegistro()
             +"}";
     guardar(codigo);//cuidado
     crearImagen();//cuidado
@@ -315,6 +413,20 @@ QString MainWindow::datosEstacion(Estacion *actual)
         datos_estacion+="Estado:libre\n";
     datos_estacion+="Turnos restantes:"+QString::number(actual->turnos_restantes);
     return datos_estacion;
+}
+
+QString MainWindow::datosEscritorio(Escritorio *actual)
+{
+    QString datos_escritorio;
+    datos_escritorio="\nAtendiendo:";
+    if(actual->en_recepcion!=nullptr)
+        datos_escritorio+="Cliente "+QString::number(actual->en_recepcion->id)+"\n";
+    else
+        datos_escritorio+="ninguno\n";
+    datos_escritorio+="Estado:"+getEstado(actual->estado)+"\n";
+    datos_escritorio+="Documentos:"+QString::number(actual->cantidad_documentos)+"\n";
+    datos_escritorio+="Turnos restantes:"+QString::number(actual->turnos_restantes);
+    return datos_escritorio;
 }
 
 /*Funciones Auxiliares*/
