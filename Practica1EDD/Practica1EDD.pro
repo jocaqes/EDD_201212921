@@ -26,13 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    myclasses.cpp
+    myclasses.cpp \
+    archivo.cpp
 
 HEADERS += \
         mainwindow.h \
     mystructs.h \
     mystructs_def.h \
-    myclasses.h
+    myclasses.h \
+    archivo.h
 
 FORMS += \
         mainwindow.ui

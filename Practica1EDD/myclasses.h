@@ -32,17 +32,72 @@ struct Estacion
 
 struct Mantenimiento
 {
-    Mantenimiento(int no_estaciones);
+    Mantenimiento();
     Lista<Estacion*> *lista_estacion;
     Cola<Avion*> *aviones_en_espera;
     void encolarAvion(Avion *nuevo);
     void pasarTurno();
-private:
+    void clear();
     void setEstaciones(int no_estaciones);
+private:
     void turnosEstaciones();
     void movilizarAvion();
 };
 
+struct Pasajero
+{
+    Pasajero(int nombre);
+    int id;
+    int maletas;
+    int registro;
+    int documentos;
 
+};
+
+struct Escritorio
+{
+    Escritorio(char nombre);
+    char nombre;
+    Cola<Pasajero*> *cola_pasajeros;
+    Pila<int> *pila_documentos;
+    Pasajero *en_recepcion;
+    int cantidad_documentos;
+    int turnos_restantes;
+    bool estado;
+    void clearAll();
+    void pasarTurno();
+private:
+    void pasarPasajero();
+    void agregarDocumentos(int cantidad);
+
+};
+
+
+struct ListaO
+{
+    ListaO();
+    Nodo<Escritorio*> *raiz;
+    int cant;
+    void insertar(Escritorio* item);
+    //Objeto get(int posicion);
+    //Objeto removeTop();
+    void clear();
+    bool isEmpty();
+    //void eliminar(int posicion);
+private:
+    void insertar(Nodo<Escritorio*> *actual,Nodo<Escritorio*> *siguiente,Nodo<Escritorio*> *nuevo);
+};
+
+struct Registro
+{
+    Registro();
+    ListaO *lista_escritorios;
+    void pasarTurno(Cola<Pasajero*> *pasajeros_desabordando);
+    void setEscritorios(int cantidad);
+    void clear();
+private:
+    void moverColaPasajeros(Cola<Pasajero*> *pasajeros_desabordando);
+    void pasarTurnoEscritorios();
+};
 
 #endif // MYCLASSES_H

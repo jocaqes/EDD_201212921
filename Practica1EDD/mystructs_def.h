@@ -17,11 +17,6 @@ Nodo<Objeto>::Nodo(Objeto item)
     this->item=item;
 }
 
-template<class Objeto>
-void Nodo<Objeto>::setKey(char llave)
-{
-    this->llave=llave;
-}
 /*Nodo*/
 
 
@@ -113,6 +108,16 @@ void Cola<Objeto>::enColar(Objeto item)
 }
 
 template<class Objeto>
+void Cola<Objeto>::clear(){
+    while(!isEmpty()){
+        Nodo<Objeto> *aux = raiz;
+        raiz=raiz->siguiente;
+        delete aux;
+        --cant;
+    }
+}
+
+template<class Objeto>
 Objeto Cola<Objeto>::desEncolar()
 {
     if(isEmpty())
@@ -166,6 +171,16 @@ void ColaD<Objeto>::enColar(Objeto item)
 }
 
 template<class Objeto>
+void ColaD<Objeto>::clear(){
+    while(!isEmpty()){
+        Nodo<Objeto> *aux = raiz;
+        raiz=raiz->siguiente;
+        delete aux;
+        --cant;
+    }
+}
+
+template<class Objeto>
 Objeto ColaD<Objeto>::desEncolar()
 {
     if(isEmpty())
@@ -211,6 +226,16 @@ void Lista<Objeto>::insertar(Objeto item)
         fin=fin->siguiente;
     }
     ++cant;
+}
+
+template<class Objeto>
+void Lista<Objeto>::clear(){
+    while(!isEmpty()){
+        Nodo<Objeto> *aux = raiz;
+        raiz=raiz->siguiente;
+        delete aux;
+        --cant;
+    }
 }
 
 template<class Objeto>
@@ -315,6 +340,28 @@ Objeto ListaDC<Objeto>::get(int posicion)
 }
 
 template<class Objeto>
+Objeto ListaDC<Objeto>::removeTop(){
+    if(isEmpty())
+        return 0;
+    Nodo<Objeto> *aux=raiz;
+    if(raiz->anterior!=raiz){
+        raiz->anterior->siguiente=raiz->siguiente;
+        raiz->siguiente->anterior=raiz->anterior;
+        raiz=aux->siguiente;
+        Objeto item=aux->item;
+        --cant;
+        delete aux;
+        return item;
+    }else{
+        Objeto item=raiz->item;
+        delete raiz;
+        raiz=nullptr;
+        --cant;
+        return item;
+    }
+}
+
+template<class Objeto>
 bool ListaDC<Objeto>::isEmpty()
 {
     return raiz==nullptr;
@@ -329,61 +376,4 @@ void ListaDC<Objeto>::eliminar(int posicion)
 /*Lista doblemente enlazada circular*/
 
 
-/*Lista doblemente enlazada ordenada*/
-template<class Objeto>
-SLista<Objeto>::SLista()
-{
-    raiz=nullptr;
-    cant=0;
-}
 
-template<class Objeto>
-void SLista<Objeto>::insertar(Objeto item)
-{
-    Nodo<Objeto> *nuevo = new Nodo(item);
-    if(isEmpty())
-        raiz=nuevo;
-    else{
-        if(nuevo->llave<raiz->llave){//si va antes de la raiz
-            nuevo->siguiente=raiz;
-            raiz=nuevo;
-        }else//si va despues
-            insertar(raiz,raiz->siguiente,nuevo);
-    }
-    ++cant;
-}
-
-template<class Objeto>
-void SLista<Objeto>::insertar(Nodo<Objeto> *actual, Nodo<Objeto> *siguiente, Nodo<Objeto> *nuevo)
-{
-    if(siguiente==nullptr){
-        actual->siguiente=nuevo;
-    }
-    else if(nuevo->llave<siguiente->llave){//va antes de siguiente
-        nuevo->siguiente=siguiente;
-        actual->siguiente=nuevo;
-    }else//va despues de siguiente
-        insertar(siguiente,siguiente->siguiente,nuevo);
-
-}
-
-template<class Objeto>
-Objeto SLista<Objeto>::get(int posicion)
-{
-    if(posicion>cant||posicion<0)
-        return 0;
-    Nodo<Objeto> *aux = raiz;
-    int i;
-    for(i=0;i<posicion;i++){
-        aux=aux->siguiente;
-    }
-    return aux->item;
-}
-
-template<class Objeto>
-bool SLista<Objeto>::isEmpty()
-{
-    return *raiz==nullptr;
-}
-
-/*Lista doblemente enlazada ordenada*/

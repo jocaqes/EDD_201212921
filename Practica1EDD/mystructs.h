@@ -12,8 +12,6 @@ struct Nodo
     Nodo<Objeto>* anterior;
     Nodo<Objeto>* siguiente;
     Objeto item;
-    char llave;//solo se usa para ordenar los escritorios
-    void setKey(char llave);
 };
 /*Nodo*/
 
@@ -42,6 +40,7 @@ struct Cola
     int cant;
     bool isEmpty();
     void enColar(Objeto item);
+    void clear();
     Objeto desEncolar();
     bool isFull();
 };
@@ -58,6 +57,7 @@ struct ColaD
     int cant;
     bool isEmpty();
     void enColar(Objeto item);
+    void clear();
     Objeto desEncolar();
     Objeto top();
 
@@ -74,6 +74,7 @@ struct Lista
     Nodo<Objeto> *fin;
     int cant;
     void insertar(Objeto item);
+    void clear();
     Objeto get(int posicion);
     bool isEmpty();
     void eliminar(int posicion);
@@ -89,25 +90,13 @@ struct ListaDC
     int cant;
     void insertar(Objeto item);
     Objeto get(int posicion);
+    Objeto removeTop();
     bool isEmpty();
     void eliminar(int posicion);
 };
 /*Lista doblemente enlazada circular*/
 
-/*Lista doblemente enlazada ordenada*/
-template<class Objeto>
-struct SLista//S de sorted
-{
-    SLista();
-    Nodo<Objeto> *raiz;
-    int cant;
-    void insertar(Objeto item);
-    void insertar(Nodo<Objeto> *actual, Nodo<Objeto> *siguiente, Nodo<Objeto> *nuevo);
-    Objeto get(int posicion);
-    bool isEmpty();
-    //void eliminar(int posicion);
-};
-/*Lista doblemente enlazada ordenada*/
+
 
 #include "mystructs_def.h"
 #endif // MYSTRUCTS_H
