@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     srand(time(0));//seed para el random
     setEstructuras();//inicializo las estructuras
     setGraphicView();//arreglo lo necesario para mostrar la grafica
+    setTextMask();
     //turno=1;
     //debug();
 
@@ -35,18 +36,26 @@ void MainWindow::setGraphicView()
 /*Private Slots*/
 void MainWindow::on_boton_inicio_clicked()
 {
-    //setEstructuras();//inicio las estructuras
+    if(!checkMask()){
+        QMessageBox msgBox;
+        msgBox.setText("Algun valor Ingresado no es Valido,\nrevise que no tenga letras\no valores vacios");
+        msgBox.exec();
+        return;
+    }
     turno=1;//0. Reseteo el conteo de turnos
+    id_pasajero=1;//0. Reseteo el nombre de los pasajeros
+    id_maleta=1;//0. Reseteo el nombre de las maletas
     clearEstructuras();//1. limpio las estructuras
     ui->textedit_consola->setPlainText("");//2. limpio consola
     setAviones();//3. agrego los aviones
     int cant_estaciones = ui->text_estaciones->text().toInt();
     estacion_mantenimiento->setEstaciones(cant_estaciones);//4. agrego las estaciones de mantenimiento
-    cant_estaciones=ui->text_excritorios->text().toInt();
+    cant_estaciones=ui->text_escritorios->text().toInt();
     estacion_registro->setEscritorios(cant_estaciones);//5. agrego los escritorios de registro
     debug();//6. temp imprimo informacion inicial
     recargarImagen();//7. muestro la grafica
     ui->label_turno->setText(QString::number(turno));//8.agrego el turno por molestar
+    ui->boton_siguiente->setEnabled(true);//9.habilito el boton siguiente
     //escenario->addItem(imagen);
     //ui->graphic_view->show();
 }
@@ -56,10 +65,11 @@ void MainWindow::on_boton_siguiente_clicked()
     ++turno;
     turnoAvion();
     estacion_mantenimiento->pasarTurno();
-    estacion_registro->pasarTurno(cola_pasajeros);
+    estacion_registro->pasarTurno(cola_pasajeros,lista_maletas);
     debug();
     recargarImagen();
     ui->label_turno->setText(QString::number(turno));
+    finSimulacion();//nuevo
     //ui->graphic_view->show();
 }
 
@@ -84,24 +94,37 @@ QString MainWindow::getEstado(bool estado)
 void MainWindow::setEstructuras()
 {
     cola_aviones=new ColaD<Avion*>();
-    cola_pasajeros=new Cola<Pasajero*>();
+    lista_maletas=new ListaDC<int>();//nuevo
     estacion_registro=new Registro();
+    cola_pasajeros=new Cola<Pasajero*>();
     estacion_mantenimiento=new Mantenimiento();
+
 }
 
 void MainWindow::clearEstructuras()
 {
     cola_aviones->clear();
+    lista_maletas->clear();
     cola_pasajeros->clear();
     estacion_registro->clear();
     estacion_mantenimiento->clear();
 }
 
+void MainWindow::setMaletas(int cantidad)
+{
+    int i;
+    for(i=0;i<cantidad;i++,id_maleta++)
+        lista_maletas->insertar(id_maleta);
+
+}
+
 void MainWindow::setPasajeros(int cantidad)
 {
     int i;
-    for(i=0;i<cantidad;i++,id_pasajero++)
+    for(i=0;i<cantidad;i++,id_pasajero++){
         cola_pasajeros->enColar(new Pasajero(id_pasajero));
+        setMaletas(cola_pasajeros->fin->item->maletas);
+    }
 
 }
 /*Estructuras*/
@@ -173,6 +196,17 @@ void MainWindow::printInfoRegistro()
     conPrint("-----------------------------------------------------");
 }
 
+void MainWindow::printInfoMaletas()
+{
+    QString mensaje;
+    mensaje="Cantidad de maletas actualmente en el sistema:"+QString::number(lista_maletas->cant);
+    conPrint(mensaje);
+    int turnos_restantes=ui->text_turnos->text().toInt()-turno;
+    mensaje="Turnos Restantes:"+QString::number(turnos_restantes);
+    conPrint(mensaje);
+
+}
+
 /*print functions*/
 
 /*Start*/
@@ -213,6 +247,7 @@ void MainWindow::debug()
     printInfoAvion();
     printInfoRegistro();//nuevo
     printInfoEstacion();
+    printInfoMaletas();
     conPrint("******Fin Turno "+QString::number(turno)+"******");
 
 }
@@ -240,6 +275,29 @@ QString MainWindow::codigoAviones()
     }
     codigo+= "color=black;\n"
             "}\n";
+    return codigo;
+}
+
+QString MainWindow::codigoMaletas()
+{
+    QString codigo="subgraph cluster_maletas{\n"
+                   "equipaje[label=\"Equipaje\";fillcolor=\"blue:cyan\";shape=box;fontcolor=white;style=filled;height=.5;width=1.5;fixedsize=true]\n";
+
+    Nodo<int> *aux=lista_maletas->raiz;
+    if(aux!=nullptr){
+        do{//unico caso en el que se me ocurrio que seria util el do
+            int actual=aux->item;
+            QString n_maleta=QString::number(actual);
+            codigo+="maleta"+n_maleta+
+                    "[label=\"Maleta "+n_maleta+"\";shape=box];\n";//Creo nodo actual
+            codigo+="maleta"+n_maleta+"->"+"maleta"+QString::number(aux->siguiente->item)+";\n";//actual apunta a siguiente
+            codigo+="maleta"+QString::number(aux->siguiente->item)+"->"+"maleta"+n_maleta+";\n";//siguiente apunta a actual
+            aux=aux->siguiente;
+        }while(aux!=lista_maletas->raiz);
+    }
+    codigo+= "color=black;\n"
+            "}\n"
+             "llegada_aviones->equipaje[color=transparent;dir=none]\n";
     return codigo;
 }
 
@@ -361,7 +419,7 @@ QString MainWindow::codigoPasajerosColaRegistro(Escritorio *actual)
     Nodo<Pasajero*> *aux=actual->cola_pasajeros->raiz;
     QString nombre_escritorio=actual->nombre;
     if(aux!=nullptr){
-        codigo="Rescritorio"+nombre_escritorio+"->"+"Rpasajero"+QString::number(aux->item->id)+"[color=transparent;dir=none];\n";//nombre escritorio;
+        codigo="Rescritorio"+nombre_escritorio+"->"+"Rpasajero"+QString::number(aux->item->id)+"\n";//nombre escritorio;
     }
     while(aux!=nullptr){
         Pasajero *actual=aux->item;
@@ -388,6 +446,7 @@ void MainWindow::recargarImagen()
             +codigoPasajeros()
             +codigoMantenimiento()
             +codigoRegistro()
+            +codigoMaletas()//nuevo
             +"}";
     guardar(codigo);//cuidado
     crearImagen();//cuidado
@@ -427,6 +486,32 @@ QString MainWindow::datosEscritorio(Escritorio *actual)
     datos_escritorio+="Documentos:"+QString::number(actual->cantidad_documentos)+"\n";
     datos_escritorio+="Turnos restantes:"+QString::number(actual->turnos_restantes);
     return datos_escritorio;
+}
+
+void MainWindow::setTextMask()
+{
+    ui->text_aviones->setInputMask("D0000");
+    ui->text_estaciones->setInputMask("D0000");
+    ui->text_escritorios->setInputMask("D0000");
+    ui->text_turnos->setInputMask("D0000");
+}
+
+bool MainWindow::checkMask()
+{
+    if(ui->text_aviones->hasAcceptableInput()&&ui->text_turnos->hasAcceptableInput()&&ui->text_estaciones->hasAcceptableInput()&&ui->text_escritorios->hasAcceptableInput())
+        return true;
+    return false;
+}
+
+void MainWindow::finSimulacion()
+{
+    if(turno==ui->text_turnos->text().toInt()){
+        QMessageBox msgBox;
+        msgBox.setText("La simulación ha finalizado");
+        msgBox.exec();
+        ui->boton_siguiente->setEnabled(false);
+    }
+
 }
 
 /*Funciones Auxiliares*/

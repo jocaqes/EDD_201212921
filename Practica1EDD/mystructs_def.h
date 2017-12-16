@@ -310,20 +310,29 @@ void ListaDC<Objeto>::insertar(Objeto item)
 {
     Nodo<Objeto> *nuevo = new Nodo<Objeto>(item);
     if(isEmpty()){
-        raiz=nuevo;
+        raiz=fin=nuevo;//cuidado
         raiz->siguiente=raiz;
         raiz->anterior=raiz;
     }else{
-        Nodo<Objeto> *aux=raiz;
-        while(aux->siguiente!=raiz){
-            aux=aux->siguiente;
-        }
-        aux->siguiente=nuevo;
-        nuevo->anterior=aux;
-        nuevo->siguiente=raiz;
+        fin->siguiente=nuevo;
+        nuevo->anterior=fin;
         raiz->anterior=nuevo;
+        nuevo->siguiente=raiz;
+        fin=nuevo;
     }
     ++cant;
+}
+
+template<class Objeto>
+void ListaDC<Objeto>::clear(){
+    while(!isEmpty()){
+        Nodo<Objeto> *aux = raiz;
+        if(cant==1) raiz=fin=nullptr;
+        else raiz=raiz->siguiente;
+        delete aux;
+        --cant;
+    }
+
 }
 
 template<class Objeto>

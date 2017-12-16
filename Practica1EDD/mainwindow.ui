@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Simulacion</string>
+   <string>Airport Simulator</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -178,7 +178,7 @@ color:white;</string>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="text_excritorios">
+       <widget class="QLineEdit" name="text_escritorios">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -287,6 +287,9 @@ color:white;</string>
       </item>
       <item row="7" column="0" colspan="2">
        <widget class="QPushButton" name="boton_siguiente">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>Siguiente</string>
         </property>

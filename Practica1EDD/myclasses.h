@@ -65,10 +65,11 @@ struct Escritorio
     int turnos_restantes;
     bool estado;
     void clearAll();
-    void pasarTurno();
+    void pasarTurno(ListaDC<int> *maletas);
 private:
     void pasarPasajero();
     void agregarDocumentos(int cantidad);
+    void recogerMaletas(int cantidad,ListaDC<int> *maletas);
 
 };
 
@@ -92,12 +93,12 @@ struct Registro
 {
     Registro();
     ListaO *lista_escritorios;
-    void pasarTurno(Cola<Pasajero*> *pasajeros_desabordando);
+    void pasarTurno(Cola<Pasajero*> *pasajeros_desabordando,ListaDC<int> *maletas);//maletas nuevas
     void setEscritorios(int cantidad);
     void clear();
 private:
     void moverColaPasajeros(Cola<Pasajero*> *pasajeros_desabordando);
-    void pasarTurnoEscritorios();
+    void pasarTurnoEscritorios(ListaDC<int> *maletas);//nuevo
 };
 
 #endif // MYCLASSES_H

@@ -87,8 +87,11 @@ struct ListaDC
 {
     ListaDC();
     Nodo<Objeto> *raiz;
+    Nodo<Objeto> *fin;
     int cant;
     void insertar(Objeto item);
+    void clear();
+
     Objeto get(int posicion);
     Objeto removeTop();
     bool isEmpty();

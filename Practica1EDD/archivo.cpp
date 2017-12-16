@@ -11,7 +11,8 @@ void guardar(QString texto)
 void crearImagen()
 {
 
-    QString comando = graphviz_path+" -Tpng "+direccion_dot+" -o "+direccion_img;
+    //QString comando = graphviz_path+" -Tpng "+direccion_dot+" -o "+direccion_img;
+    QString comando = "dot -Tpng "+direccion_dot+" -o "+direccion_img;
     comando = comando.replace("/","\\");
     QByteArray ba;
     ba=comando.toLatin1();

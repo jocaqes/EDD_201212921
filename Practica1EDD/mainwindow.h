@@ -2,12 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-//#include "mystructs.h"
 #include "myclasses.h"
-//#include <QString>
 #include "archivo.h"
 #include <qgraphicsscene.h>
 #include <QGraphicsPixmapItem>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +29,7 @@ private:
     Ui::MainWindow *ui;
     /*Global*/
     int turno;
+    int id_maleta;
     int id_pasajero;
     void setGraphicView();
     /*Global*/
@@ -45,15 +45,19 @@ private:
     /*Estructuras*/
     ColaD<Avion*> *cola_aviones;
     Cola<Pasajero*> *cola_pasajeros;
+    ListaDC<int> *lista_maletas;
     void setEstructuras();
     void clearEstructuras();
+    void setMaletas(int cantidad);
     void setPasajeros(int cantidad);
+
     /*Estructuras*/
 
     /*print functions*/
     void conPrint(QString texto);
     void printInfoEstacion();
     void printInfoRegistro();
+    void printInfoMaletas();
     void printInfoAvion();
     /*print functions*/
 
@@ -71,6 +75,7 @@ private:
 
     /*Codigo grafica*/
     QString codigoAviones();
+    QString codigoMaletas();
     QString codigoRegistro();
     QString codigoPasajeros();
     QString codigoMantenimiento();
@@ -79,8 +84,12 @@ private:
     /*Codigo grafica*/
 
     /*Funciones Auxiliares*/
-    QString datosEstacion(Estacion *actual);
     QString datosEscritorio(Escritorio *actual);
+    QString datosEstacion(Estacion *actual);
+    void finSimulacion();
+    void setTextMask();
+    bool checkMask();
+
     /*Funciones Auxiliares*/
 
 

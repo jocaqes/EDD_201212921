@@ -193,12 +193,14 @@ void Escritorio::clearAll()
 }
 
 
-void Escritorio::pasarTurno()
+void Escritorio::pasarTurno(ListaDC<int> *maletas)
 {    if(estado==true){
         --turnos_restantes;
         if(turnos_restantes==0){
+            int cant_maletas=en_recepcion->maletas;//nuevo
             en_recepcion=nullptr;//saco al que esta en recepcion
             /*aqui iria por sus maletas*/
+            recogerMaletas(cant_maletas,maletas);//nuevo
             pila_documentos->clear();//limpio la pila de documentos
             estado=false;//reseteo el estado
             pasarPasajero();//si hay pasajero en cola, lo paso
@@ -227,6 +229,13 @@ void Escritorio::agregarDocumentos(int cantidad)
     for(i=0;i<cantidad;i++){
         pila_documentos->push(i+1);
     }
+}
+
+void Escritorio::recogerMaletas(int cantidad, ListaDC<int> *maletas)//nuevo
+{
+    int i;
+    for(i=0;i<cantidad;i++)
+        maletas->removeTop();
 }
 
 /*Struct Estcritorio*/
@@ -310,9 +319,9 @@ Registro::Registro()
     lista_escritorios=new ListaO();
 }
 
-void Registro::pasarTurno(Cola<Pasajero *> *pasajeros_desabordando)
+void Registro::pasarTurno(Cola<Pasajero *> *pasajeros_desabordando, ListaDC<int> *maletas)
 {
-    pasarTurnoEscritorios();
+    pasarTurnoEscritorios(maletas);
     moverColaPasajeros(pasajeros_desabordando);
 }
 
@@ -347,11 +356,11 @@ void Registro::moverColaPasajeros(Cola<Pasajero*> *pasajeros_desabordando)
     }
 }
 
-void Registro::pasarTurnoEscritorios()
+void Registro::pasarTurnoEscritorios(ListaDC<int> *maletas)
 {
     Nodo<Escritorio*> *aux=lista_escritorios->raiz;
     while(aux!=nullptr){//si hay escritorios disponibles
-        aux->item->pasarTurno();
+        aux->item->pasarTurno(maletas);
         aux=aux->siguiente;
     }
 }
