@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WSproyecto1.Nodos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Nodos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50364/NavalWarsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" />
+  <xs:complexType name="Nodo">
+    <xs:sequence>
+      <xs:element name="der" nillable="true" type="tns:Nodo" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" name="item" nillable="true" type="q1:Persona" />
+      <xs:element name="izq" nillable="true" type="tns:Nodo" />
+      <xs:element name="key" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Nodo" nillable="true" type="tns:Nodo" />
+</xs:schema>

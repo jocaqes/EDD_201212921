@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7E944B06-4FB2-4990-B2D6-14A4CDABA552}</ProjectGuid>
+    <ProjectGuid>{0182123B-172C-4A4F-922A-A25E147453E5}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WSproyecto1</RootNamespace>
-    <AssemblyName>WSproyecto1</AssemblyName>
+    <RootNamespace>WelcomeWCFService</RootNamespace>
+    <AssemblyName>WelcomeWCFService</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,7 +31,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IncludeIisSettings>false</IncludeIisSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -62,21 +61,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NavalWarsService.svc" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="NavalTest.svc" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arbol\ArbolBinario.cs" />
-    <Compile Include="INavalWarsService.cs" />
-    <Compile Include="NavalWarsService.svc.cs">
-      <DependentUpon>NavalWarsService.svc</DependentUpon>
+    <Compile Include="INavalTest.cs" />
+    <Compile Include="NavalTest.svc.cs">
+      <DependentUpon>NavalTest.svc</DependentUpon>
     </Compile>
-    <Compile Include="Nodos\Nodo.cs" />
-    <Compile Include="Objetos\Persona.cs" />
-    <Compile Include="Reporte\CargaMasiva.cs" />
-    <Compile Include="Reporte\Grafica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,9 +98,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50364</DevelopmentServerPort>
+          <DevelopmentServerPort>51709</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50364/</IISUrl>
+          <IISUrl>http://localhost:51709/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
