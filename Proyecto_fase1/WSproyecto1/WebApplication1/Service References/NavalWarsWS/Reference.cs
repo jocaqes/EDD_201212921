@@ -505,10 +505,16 @@ namespace WebApplication1.NavalWarsWS {
         System.Threading.Tasks.Task<bool> agregarJuegoAsync(WebApplication1.NavalWarsWS.Juego nuevo, string usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/graficarArbolBinario", ReplyAction="http://tempuri.org/INavalWarsService/graficarArbolBinarioResponse")]
-        bool graficarArbolBinario(string ruta);
+        bool graficarArbolBinario(string ruta_destino);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/graficarArbolBinario", ReplyAction="http://tempuri.org/INavalWarsService/graficarArbolBinarioResponse")]
-        System.Threading.Tasks.Task<bool> graficarArbolBinarioAsync(string ruta);
+        System.Threading.Tasks.Task<bool> graficarArbolBinarioAsync(string ruta_destino);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/debug", ReplyAction="http://tempuri.org/INavalWarsService/debugResponse")]
+        string debug();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/debug", ReplyAction="http://tempuri.org/INavalWarsService/debugResponse")]
+        System.Threading.Tasks.Task<string> debugAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/cargaUsuarios", ReplyAction="http://tempuri.org/INavalWarsService/cargaUsuariosResponse")]
         bool cargaUsuarios(string direccion);
@@ -606,12 +612,20 @@ namespace WebApplication1.NavalWarsWS {
             return base.Channel.agregarJuegoAsync(nuevo, usuario);
         }
         
-        public bool graficarArbolBinario(string ruta) {
-            return base.Channel.graficarArbolBinario(ruta);
+        public bool graficarArbolBinario(string ruta_destino) {
+            return base.Channel.graficarArbolBinario(ruta_destino);
         }
         
-        public System.Threading.Tasks.Task<bool> graficarArbolBinarioAsync(string ruta) {
-            return base.Channel.graficarArbolBinarioAsync(ruta);
+        public System.Threading.Tasks.Task<bool> graficarArbolBinarioAsync(string ruta_destino) {
+            return base.Channel.graficarArbolBinarioAsync(ruta_destino);
+        }
+        
+        public string debug() {
+            return base.Channel.debug();
+        }
+        
+        public System.Threading.Tasks.Task<string> debugAsync() {
+            return base.Channel.debugAsync();
         }
         
         public bool cargaUsuarios(string direccion) {

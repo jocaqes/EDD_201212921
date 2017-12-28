@@ -36,7 +36,7 @@ namespace WebApplication1
             string direccion = @pseudo_direccion;
         }
 
-        #region Debug
+        #region Carga Masiva
         /* protected void boton_graficar_Click(object sender, EventArgs e)
          {
              if (Application["arbol_usuarios"] != null)
@@ -44,11 +44,12 @@ namespace WebApplication1
          }*/
         protected void boton_graficar_Click(object sender, EventArgs e)
         {
-            if (servicio.graficarArbolBinario(Server.MapPath(@"Imagenes\")))
+            if (servicio.graficarArbolBinario(Server.MapPath("Imagenes")))
             {
                 label_msj_carga.Text = "Arbol Graficado";
                 Page.ClientScript.RegisterStartupScript(
                 GetType(), "OpenWindow", "window.open('Reports.aspx','_newtab');", true);
+                //label_msj_carga.Text = Server.MapPath("Imagenes");
             }
             else
                 label_msj_carga.Text = "Error al graficar el arbol";

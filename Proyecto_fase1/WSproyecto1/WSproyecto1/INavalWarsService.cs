@@ -43,7 +43,10 @@ namespace WSproyecto1
 
         #region Grafica
         [OperationContract]
-        bool graficarArbolBinario(string ruta);
+        bool graficarArbolBinario(string ruta_destino="");
+
+        [OperationContract]
+        string debug();
         #endregion
 
         #region CargaMasiva

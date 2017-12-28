@@ -52,11 +52,15 @@ namespace WSproyecto1
         #endregion
 
         #region Grafica
-        public bool graficarArbolBinario(string ruta)
+        public bool graficarArbolBinario(string ruta_destino="")
         {
-            return new Grafica().graficarArbolBinario(arbol_binario,ruta);
+            return new Grafica().graficarArbolBinario(arbol_binario,ruta_destino);
         }
 
+        public string debug()
+        {
+            return AppDomain.CurrentDomain.BaseDirectory;
+        }
 
 
         #endregion
@@ -90,6 +94,7 @@ namespace WSproyecto1
             }
             return  arbol_binario.modificar(aux.Item, usuario);
         }
+
 
 
         #endregion

@@ -112,7 +112,7 @@
   <xs:element name="graficarArbolBinario">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ruta" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ruta_destino" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -120,6 +120,18 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="graficarArbolBinarioResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="debug">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="debugResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="debugResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

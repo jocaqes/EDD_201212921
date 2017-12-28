@@ -57,6 +57,12 @@
   <wsdl:message name="INavalWarsService_graficarArbolBinario_OutputMessage">
     <wsdl:part name="parameters" element="tns:graficarArbolBinarioResponse" />
   </wsdl:message>
+  <wsdl:message name="INavalWarsService_debug_InputMessage">
+    <wsdl:part name="parameters" element="tns:debug" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_debug_OutputMessage">
+    <wsdl:part name="parameters" element="tns:debugResponse" />
+  </wsdl:message>
   <wsdl:message name="INavalWarsService_cargaUsuarios_InputMessage">
     <wsdl:part name="parameters" element="tns:cargaUsuarios" />
   </wsdl:message>
@@ -101,6 +107,10 @@
     <wsdl:operation name="graficarArbolBinario">
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/graficarArbolBinario" message="tns:INavalWarsService_graficarArbolBinario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/graficarArbolBinarioResponse" message="tns:INavalWarsService_graficarArbolBinario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="debug">
+      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/debug" message="tns:INavalWarsService_debug_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/debugResponse" message="tns:INavalWarsService_debug_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="cargaUsuarios">
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/cargaUsuarios" message="tns:INavalWarsService_cargaUsuarios_InputMessage" />
@@ -178,6 +188,15 @@
     </wsdl:operation>
     <wsdl:operation name="graficarArbolBinario">
       <soap:operation soapAction="http://tempuri.org/INavalWarsService/graficarArbolBinario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="debug">
+      <soap:operation soapAction="http://tempuri.org/INavalWarsService/debug" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

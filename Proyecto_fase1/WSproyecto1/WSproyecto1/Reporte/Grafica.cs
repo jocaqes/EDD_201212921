@@ -12,7 +12,8 @@ namespace WSproyecto1.Reporte
         private string path;
         public Grafica()
         {
-            path = @"C:\Users\Luis Quinonez\Documents\ProgramasJoseTemporal\Imagenes\";//path para guardar las cosas
+            //path = @"C:\Users\Luis Quinonez\Documents\ProgramasJoseTemporal\Imagenes\";//path para guardar las cosas
+            path = string.Format(@"{0}Imagen\", AppDomain.CurrentDomain.BaseDirectory);
         }
 
 
@@ -30,6 +31,11 @@ namespace WSproyecto1.Reporte
             {
                 return false;
             }
+        }
+
+        private void copiarImagen(string source, string destiny)
+        {
+            File.Copy(source, destiny,true);
         }
 
         #region Arbol binario
@@ -85,7 +91,7 @@ namespace WSproyecto1.Reporte
 
         }
 
-        public bool graficarArbolBinario(ArbolBinario mi_arbol,string ruta)
+        public bool graficarArbolBinario(ArbolBinario mi_arbol, string ruta_destino="")
         {
             string nombre_dot = "arbolBin.dot";//nombre del dot
             string nombre_png = "arbolBin.png";//nombre de la grafica
@@ -93,11 +99,18 @@ namespace WSproyecto1.Reporte
             string ruta_png = Path.Combine(path, nombre_png);
 
             //if (guardar(codigoArbol(mi_arbol), Path.Combine(ruta, nombre_dot)))//1.guardamos el codigo
-            if (guardar(codigoArbol(mi_arbol), ruta_dot))//1.guardamos el codigo
+            if (guardar(codigoArbol(mi_arbol), nombre_dot))//1.guardamos el codigo
             {
                 string comando = "dot " + "-Tpng \"" + ruta_dot + "\" -o \"" + ruta_png + "\"";
                 if (llamarCMD(comando))
+                {
+                    if (!string.IsNullOrEmpty(ruta_destino))
+                    {
+                        string destino_final = Path.Combine(ruta_destino, nombre_png);
+                        copiarImagen(ruta_png, destino_final);
+                    }
                     return true;
+                }
             }
             return false;
 
