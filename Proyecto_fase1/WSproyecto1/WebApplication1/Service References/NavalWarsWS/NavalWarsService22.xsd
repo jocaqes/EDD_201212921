@@ -16,11 +16,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ListaDOfJuego209EgP0h" nillable="true" type="tns:ListaDOfJuego209EgP0h" />
-  <xs:complexType name="ArbolBinario">
-    <xs:sequence>
-      <xs:element name="count" type="xs:int" />
-      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WSproyecto1.Nodos" name="raiz" nillable="true" type="q3:Nodo" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArbolBinario" nillable="true" type="tns:ArbolBinario" />
 </xs:schema>

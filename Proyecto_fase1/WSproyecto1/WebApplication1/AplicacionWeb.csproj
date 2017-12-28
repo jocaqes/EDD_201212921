@@ -104,9 +104,6 @@
     <Content Include="Usuario.aspx" />
     <Content Include="Web.config" />
     <None Include="Service References\NavalWarsWS\NavalWarsService.wsdl" />
-    <Content Include="Service References\NavalWarsWS\WebApplication1.NavalWarsWS.ArbolBinario.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administrador.aspx.cs">

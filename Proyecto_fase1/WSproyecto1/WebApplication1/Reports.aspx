@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <img alt="Porque no carga mi imagen" src="C:\Users\Luis Quinonez\Documents\ProgramasJoseTemporal\Imagenes\arbolBin.png" />
+        <img alt="Porque no carga mi imagen" src="Imagenes/arbolBin.png" />
     </div>
     </form>
 </body>

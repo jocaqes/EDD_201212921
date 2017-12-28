@@ -9,7 +9,7 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             verificarUsuario();
-            servicio = new NavalWarsServiceClient();
+            servicio = (NavalWarsServiceClient)Session["servicio"];
 
         }
 
@@ -44,34 +44,47 @@ namespace WebApplication1
          }*/
         protected void boton_graficar_Click(object sender, EventArgs e)
         {
-            if (Session["arbol_usuarios"] != null)
+            if (servicio.graficarArbolBinario(Server.MapPath(@"Imagenes\")))
             {
-                servicio.graficarArbolBinario((ArbolBinario)Session["arbol_usuarios"]);
+                label_msj_carga.Text = "Arbol Graficado";
                 Page.ClientScript.RegisterStartupScript(
                 GetType(), "OpenWindow", "window.open('Reports.aspx','_newtab');", true);
-
             }
+            else
+                label_msj_carga.Text = "Error al graficar el arbol";
+                /*Page.ClientScript.RegisterStartupScript(
+                GetType(), "OpenWindow", "window.open('Reports.aspx','_newtab');", true);*/
         }
 
 
 
         protected void boton_carga_masiva_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(text_carga_masiva.Text)&& Session["arbol_usuarios"] != null)
+            if (!string.IsNullOrEmpty(text_carga_masiva.Text))
             {
-                ArbolBinario aux = (ArbolBinario)Session["arbol_usuarios"];
-                Session["arbol_usuarios"] = servicio.cargaUsuarios(@text_carga_masiva.Text, aux);
+
+                //label_msj_carga.Text = servicio.cargaUsuarios(@text_carga_masiva.Text);
+                if (servicio.cargaUsuarios(@text_carga_masiva.Text))
+                    label_msj_carga.Text = "Carga realizada con exito";
+                else
+                    label_msj_carga.Text = "Error al cargar los datos";
 
             }
+            else
+                text_carga_masiva.Text = "No puede dejar la direccion vacia";
         }
 
         protected void boton_carga_juegos_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(text_carga_juegos.Text) && Session["arbol_usuarios"] != null)
+            if (!string.IsNullOrEmpty(text_carga_juegos.Text))
             {
-                ArbolBinario aux = (ArbolBinario)Session["arbol_usuarios"];
-                Session["arbol_usuarios"]=servicio.cargaJuegos(@text_carga_juegos.Text, aux);
+                if (servicio.cargaJuegos(@text_carga_juegos.Text))
+                    text_carga_masiva.Text = "Carga realizada con exito";
+                else
+                    text_carga_masiva.Text = "Error al cargar los datos";
             }
+            else
+                text_carga_masiva.Text = "No puede dejar la direccion vacia";
         }
 
         #endregion
@@ -83,17 +96,11 @@ namespace WebApplication1
                 label_msj_insertar.Text="No pueden haber campos vacios";
             else
             {
-                if (Session["arbol_usuarios"] != null)
-                {
-                    ArbolBinario arbol = (ArbolBinario)Session["arbol_usuarios"];
-                    Persona nueva = servicio.newPersona(text_passuser.Text, text_mailuser.Text);
-                    arbol = servicio.insertar(text_nickuser.Text, nueva, arbol);
-                    Session["arbol_usuarios"] = arbol;
-                    label_msj_insertar.Text = "Usuario ingresado con exito";
-                }else
-                {
-                    label_msj_insertar.Text = "Error al insertar el usuario, intente de nuevo";
-                }
+                Persona nueva = servicio.newPersona(text_passuser.Text, text_mailuser.Text);
+                if (servicio.insertar(text_nickuser.Text, nueva))
+                    label_msj_insertar.Text = "Usuario agregado";
+                else
+                    label_msj_insertar.Text = "Usuario repetido";
             }
         }
 
@@ -102,23 +109,21 @@ namespace WebApplication1
         {
             if (!string.IsNullOrEmpty(text_busqueda.Text))
             {
-                if (Session["arbol_usuarios"] != null)
-                {
-                    ArbolBinario arbol = (ArbolBinario)Session["arbol_usuarios"];
-                    Nodo nueva = servicio.buscar(text_busqueda.Text, arbol);//nodo contiene el nick, persona contiene el resto
-                    if (nueva != null)
-                    {
-                        text_pass_busqueda.Text = nueva.item.password;
-                        text_mail_busqueda.Text = nueva.item.mail;
-                        Session["usuario_encontrado"] = nueva.key;
-                        label_msj_busqueda.Text = "Usuario encontrado";
-                    }
-                    else
-                    {
-                        label_msj_busqueda.Text = "No existe ese usuario";
-                    }
 
-                }
+               Nodo nueva = servicio.buscar(text_busqueda.Text);//nodo contiene el nick, persona contiene el resto
+               if (nueva != null)
+               {
+                   text_pass_busqueda.Text = nueva.item.password;
+                   text_mail_busqueda.Text = nueva.item.mail;
+                   Session["usuario_encontrado"] = nueva.key;
+                   label_msj_busqueda.Text = "Usuario encontrado";
+               }
+               else
+               {
+                   label_msj_busqueda.Text = "No existe ese usuario";
+               }
+
+                
             }
         }
 
@@ -126,18 +131,16 @@ namespace WebApplication1
         {
             if (Session["usuario_encontrado"]!=null)
             {
-                if (Session["arbol_usuarios"] != null)
+                Persona nueva = servicio.newPersona(text_pass_busqueda.Text,text_mail_busqueda.Text);//nodo contiene el nick, persona contiene el resto
+                if (servicio.modificar(Session["usuario_encontrado"].ToString(), nueva))
                 {
-                    ArbolBinario arbol = (ArbolBinario)Session["arbol_usuarios"];
-                    Persona nueva = servicio.newPersona(text_pass_busqueda.Text,text_mail_busqueda.Text);//nodo contiene el nick, persona contiene el resto
-                    arbol=servicio.modificar(Session["usuario_encontrado"].ToString(), nueva, arbol);
-                    Session["arbol_usuarios"] = arbol;
                     label_msj_busqueda.Text = "Usuario modificado";
                     text_mail_busqueda.Text = "";
                     text_busqueda.Text = "";
                     text_pass_busqueda.Text = "";
                     Session["usuario_encontrado"] = null;
                 }
+                
             }
         }
 
@@ -145,17 +148,18 @@ namespace WebApplication1
         {
             if (Session["usuario_encontrado"] != null)
             {
-                if (Session["arbol_usuarios"] != null)
+                if (servicio.eliminar(Session["usuario_encontrado"].ToString()))
                 {
-                    ArbolBinario arbol = (ArbolBinario)Session["arbol_usuarios"];
-                    arbol = servicio.eliminar(Session["usuario_encontrado"].ToString(),arbol);
-                    Session["arbol_usuarios"] = arbol;
                     label_msj_busqueda.Text = "Usuario eliminado";
                     text_mail_busqueda.Text = "";
                     text_busqueda.Text = "";
                     text_pass_busqueda.Text = "";
                     Session["usuario_encontrado"] = null;
+                }else
+                {
+                    label_msj_busqueda.Text = "El usuario no existe";
                 }
+                
             }
 
         }
@@ -178,25 +182,25 @@ namespace WebApplication1
         {
             if (checkValsJuego())
             {
-                if (Session["arbol_usuarios"] != null)
+                int gano;
+                if (check_victoria.Checked) {
+                   gano = 1;
+                }else
                 {
-                    int gano;
-                    if (check_victoria.Checked) {
-                        gano = 1;
-                    }else
-                    {
-                        gano = 0;
-                    }
-
-                    Juego juego = servicio.newJuego(text_jugador_principal.Text, text_oponente.Text,
-                        int.Parse(text_desplegadas.Text), int.Parse(text_sobrevivientes.Text),
-                        int.Parse(text_destruidos.Text), gano);
-                    ArbolBinario arbol = (ArbolBinario)Session["arbol_usuarios"];
-                    Session["arbol_usuarios"] = servicio.agregarJuego(juego, text_jugador_principal.Text, arbol);
-                    label_msj_juego.Text = "Juego agregado";
+                   gano = 0;
                 }
 
-            }else
+                Juego juego = servicio.newJuego(text_jugador_principal.Text, text_oponente.Text,
+                int.Parse(text_desplegadas.Text), int.Parse(text_sobrevivientes.Text),
+                int.Parse(text_destruidos.Text), gano);
+                if( servicio.agregarJuego(juego, text_jugador_principal.Text))
+                    label_msj_juego.Text = "Juego agregado";
+                else
+                    label_msj_juego.Text = "Error al agregar el juego";
+
+
+            }
+            else
             {
                 label_msj_juego.Text = "No puede dejar espacios en blanco";
             }

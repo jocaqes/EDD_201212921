@@ -371,65 +371,6 @@ namespace WebApplication1.NavalWarsWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ArbolBinario", Namespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol")]
-    [System.SerializableAttribute()]
-    public partial class ArbolBinario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int countField;
-        
-        private WebApplication1.NavalWarsWS.Nodo raizField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int count {
-            get {
-                return this.countField;
-            }
-            set {
-                if ((this.countField.Equals(value) != true)) {
-                    this.countField = value;
-                    this.RaisePropertyChanged("count");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public WebApplication1.NavalWarsWS.Nodo raiz {
-            get {
-                return this.raizField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.raizField, value) != true)) {
-                    this.raizField = value;
-                    this.RaisePropertyChanged("raiz");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Nodo", Namespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Nodos")]
     [System.SerializableAttribute()]
     public partial class Nodo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -527,41 +468,29 @@ namespace WebApplication1.NavalWarsWS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newPersona", ReplyAction="http://tempuri.org/INavalWarsService/newPersonaResponse")]
         System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Persona> newPersonaAsync(string password, string mail);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newArbolBinario", ReplyAction="http://tempuri.org/INavalWarsService/newArbolBinarioResponse")]
-        WebApplication1.NavalWarsWS.ArbolBinario newArbolBinario();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newArbolBinario", ReplyAction="http://tempuri.org/INavalWarsService/newArbolBinarioResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> newArbolBinarioAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/isEmpty", ReplyAction="http://tempuri.org/INavalWarsService/isEmptyResponse")]
-        bool isEmpty(WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/isEmpty", ReplyAction="http://tempuri.org/INavalWarsService/isEmptyResponse")]
-        System.Threading.Tasks.Task<bool> isEmptyAsync(WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/insertar", ReplyAction="http://tempuri.org/INavalWarsService/insertarResponse")]
+        bool insertar(string nick, WebApplication1.NavalWarsWS.Persona persona);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/insertar", ReplyAction="http://tempuri.org/INavalWarsService/insertarResponse")]
-        WebApplication1.NavalWarsWS.ArbolBinario insertar(string nick, WebApplication1.NavalWarsWS.Persona persona, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/insertar", ReplyAction="http://tempuri.org/INavalWarsService/insertarResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> insertarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
+        System.Threading.Tasks.Task<bool> insertarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/buscar", ReplyAction="http://tempuri.org/INavalWarsService/buscarResponse")]
-        WebApplication1.NavalWarsWS.Nodo buscar(string nick, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
+        WebApplication1.NavalWarsWS.Nodo buscar(string nick);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/buscar", ReplyAction="http://tempuri.org/INavalWarsService/buscarResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Nodo> buscarAsync(string nick, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
+        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Nodo> buscarAsync(string nick);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/eliminar", ReplyAction="http://tempuri.org/INavalWarsService/eliminarResponse")]
-        WebApplication1.NavalWarsWS.ArbolBinario eliminar(string nick, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
+        bool eliminar(string nick);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/eliminar", ReplyAction="http://tempuri.org/INavalWarsService/eliminarResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> eliminarAsync(string nick, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
+        System.Threading.Tasks.Task<bool> eliminarAsync(string nick);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/modificar", ReplyAction="http://tempuri.org/INavalWarsService/modificarResponse")]
-        WebApplication1.NavalWarsWS.ArbolBinario modificar(string nick, WebApplication1.NavalWarsWS.Persona persona, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
+        bool modificar(string nick, WebApplication1.NavalWarsWS.Persona persona);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/modificar", ReplyAction="http://tempuri.org/INavalWarsService/modificarResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> modificarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
+        System.Threading.Tasks.Task<bool> modificarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newJuego", ReplyAction="http://tempuri.org/INavalWarsService/newJuegoResponse")]
         WebApplication1.NavalWarsWS.Juego newJuego(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano);
@@ -570,28 +499,28 @@ namespace WebApplication1.NavalWarsWS {
         System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Juego> newJuegoAsync(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/agregarJuego", ReplyAction="http://tempuri.org/INavalWarsService/agregarJuegoResponse")]
-        WebApplication1.NavalWarsWS.ArbolBinario agregarJuego(WebApplication1.NavalWarsWS.Juego nuevo, string usuario, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios);
+        bool agregarJuego(WebApplication1.NavalWarsWS.Juego nuevo, string usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/agregarJuego", ReplyAction="http://tempuri.org/INavalWarsService/agregarJuegoResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> agregarJuegoAsync(WebApplication1.NavalWarsWS.Juego nuevo, string usuario, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios);
+        System.Threading.Tasks.Task<bool> agregarJuegoAsync(WebApplication1.NavalWarsWS.Juego nuevo, string usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/graficarArbolBinario", ReplyAction="http://tempuri.org/INavalWarsService/graficarArbolBinarioResponse")]
-        bool graficarArbolBinario(WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
+        bool graficarArbolBinario(string ruta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/graficarArbolBinario", ReplyAction="http://tempuri.org/INavalWarsService/graficarArbolBinarioResponse")]
-        System.Threading.Tasks.Task<bool> graficarArbolBinarioAsync(WebApplication1.NavalWarsWS.ArbolBinario arbol_binario);
+        System.Threading.Tasks.Task<bool> graficarArbolBinarioAsync(string ruta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/cargaUsuarios", ReplyAction="http://tempuri.org/INavalWarsService/cargaUsuariosResponse")]
-        WebApplication1.NavalWarsWS.ArbolBinario cargaUsuarios(string direccion, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios);
+        bool cargaUsuarios(string direccion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/cargaUsuarios", ReplyAction="http://tempuri.org/INavalWarsService/cargaUsuariosResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> cargaUsuariosAsync(string direccion, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios);
+        System.Threading.Tasks.Task<bool> cargaUsuariosAsync(string direccion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/cargaJuegos", ReplyAction="http://tempuri.org/INavalWarsService/cargaJuegosResponse")]
-        WebApplication1.NavalWarsWS.ArbolBinario cargaJuegos(string direccion, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios);
+        bool cargaJuegos(string direccion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/cargaJuegos", ReplyAction="http://tempuri.org/INavalWarsService/cargaJuegosResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> cargaJuegosAsync(string direccion, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios);
+        System.Threading.Tasks.Task<bool> cargaJuegosAsync(string direccion);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -629,52 +558,36 @@ namespace WebApplication1.NavalWarsWS {
             return base.Channel.newPersonaAsync(password, mail);
         }
         
-        public WebApplication1.NavalWarsWS.ArbolBinario newArbolBinario() {
-            return base.Channel.newArbolBinario();
+        public bool insertar(string nick, WebApplication1.NavalWarsWS.Persona persona) {
+            return base.Channel.insertar(nick, persona);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> newArbolBinarioAsync() {
-            return base.Channel.newArbolBinarioAsync();
+        public System.Threading.Tasks.Task<bool> insertarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona) {
+            return base.Channel.insertarAsync(nick, persona);
         }
         
-        public bool isEmpty(WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.isEmpty(arbol_binario);
+        public WebApplication1.NavalWarsWS.Nodo buscar(string nick) {
+            return base.Channel.buscar(nick);
         }
         
-        public System.Threading.Tasks.Task<bool> isEmptyAsync(WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.isEmptyAsync(arbol_binario);
+        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Nodo> buscarAsync(string nick) {
+            return base.Channel.buscarAsync(nick);
         }
         
-        public WebApplication1.NavalWarsWS.ArbolBinario insertar(string nick, WebApplication1.NavalWarsWS.Persona persona, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.insertar(nick, persona, arbol_binario);
+        public bool eliminar(string nick) {
+            return base.Channel.eliminar(nick);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> insertarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.insertarAsync(nick, persona, arbol_binario);
+        public System.Threading.Tasks.Task<bool> eliminarAsync(string nick) {
+            return base.Channel.eliminarAsync(nick);
         }
         
-        public WebApplication1.NavalWarsWS.Nodo buscar(string nick, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.buscar(nick, arbol_binario);
+        public bool modificar(string nick, WebApplication1.NavalWarsWS.Persona persona) {
+            return base.Channel.modificar(nick, persona);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Nodo> buscarAsync(string nick, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.buscarAsync(nick, arbol_binario);
-        }
-        
-        public WebApplication1.NavalWarsWS.ArbolBinario eliminar(string nick, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.eliminar(nick, arbol_binario);
-        }
-        
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> eliminarAsync(string nick, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.eliminarAsync(nick, arbol_binario);
-        }
-        
-        public WebApplication1.NavalWarsWS.ArbolBinario modificar(string nick, WebApplication1.NavalWarsWS.Persona persona, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.modificar(nick, persona, arbol_binario);
-        }
-        
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> modificarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona, WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.modificarAsync(nick, persona, arbol_binario);
+        public System.Threading.Tasks.Task<bool> modificarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona) {
+            return base.Channel.modificarAsync(nick, persona);
         }
         
         public WebApplication1.NavalWarsWS.Juego newJuego(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano) {
@@ -685,36 +598,36 @@ namespace WebApplication1.NavalWarsWS {
             return base.Channel.newJuegoAsync(usuario, oponente, unidades_desplegadas, sobrevivientes, destruidos, gano);
         }
         
-        public WebApplication1.NavalWarsWS.ArbolBinario agregarJuego(WebApplication1.NavalWarsWS.Juego nuevo, string usuario, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios) {
-            return base.Channel.agregarJuego(nuevo, usuario, arbol_usuarios);
+        public bool agregarJuego(WebApplication1.NavalWarsWS.Juego nuevo, string usuario) {
+            return base.Channel.agregarJuego(nuevo, usuario);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> agregarJuegoAsync(WebApplication1.NavalWarsWS.Juego nuevo, string usuario, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios) {
-            return base.Channel.agregarJuegoAsync(nuevo, usuario, arbol_usuarios);
+        public System.Threading.Tasks.Task<bool> agregarJuegoAsync(WebApplication1.NavalWarsWS.Juego nuevo, string usuario) {
+            return base.Channel.agregarJuegoAsync(nuevo, usuario);
         }
         
-        public bool graficarArbolBinario(WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.graficarArbolBinario(arbol_binario);
+        public bool graficarArbolBinario(string ruta) {
+            return base.Channel.graficarArbolBinario(ruta);
         }
         
-        public System.Threading.Tasks.Task<bool> graficarArbolBinarioAsync(WebApplication1.NavalWarsWS.ArbolBinario arbol_binario) {
-            return base.Channel.graficarArbolBinarioAsync(arbol_binario);
+        public System.Threading.Tasks.Task<bool> graficarArbolBinarioAsync(string ruta) {
+            return base.Channel.graficarArbolBinarioAsync(ruta);
         }
         
-        public WebApplication1.NavalWarsWS.ArbolBinario cargaUsuarios(string direccion, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios) {
-            return base.Channel.cargaUsuarios(direccion, arbol_usuarios);
+        public bool cargaUsuarios(string direccion) {
+            return base.Channel.cargaUsuarios(direccion);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> cargaUsuariosAsync(string direccion, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios) {
-            return base.Channel.cargaUsuariosAsync(direccion, arbol_usuarios);
+        public System.Threading.Tasks.Task<bool> cargaUsuariosAsync(string direccion) {
+            return base.Channel.cargaUsuariosAsync(direccion);
         }
         
-        public WebApplication1.NavalWarsWS.ArbolBinario cargaJuegos(string direccion, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios) {
-            return base.Channel.cargaJuegos(direccion, arbol_usuarios);
+        public bool cargaJuegos(string direccion) {
+            return base.Channel.cargaJuegos(direccion);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.ArbolBinario> cargaJuegosAsync(string direccion, WebApplication1.NavalWarsWS.ArbolBinario arbol_usuarios) {
-            return base.Channel.cargaJuegosAsync(direccion, arbol_usuarios);
+        public System.Threading.Tasks.Task<bool> cargaJuegosAsync(string direccion) {
+            return base.Channel.cargaJuegosAsync(direccion);
         }
     }
 }

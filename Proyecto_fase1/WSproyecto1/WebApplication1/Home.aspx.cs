@@ -13,6 +13,7 @@ namespace WebApplication1
         {
             urlRequest();
             servicio = new NavalWarsServiceClient();
+            Session["servicio"] = servicio;
             
         }
 
@@ -22,7 +23,7 @@ namespace WebApplication1
                 if (verificarAdmin())
                 {
                     Session["Usuario"] = admin;
-                    setVariablesSesion();//agrego el arbol de usuarios
+                    //setVariablesSesion();//agrego el arbol de usuarios
                     Response.Redirect("Administrador.aspx");
                 }
                 else
@@ -66,11 +67,11 @@ namespace WebApplication1
             }
         }
 
-        private void setVariablesSesion()
+        /*private void setVariablesSesion()
         {
             if(Session["arbol_usuarios"]==null)
                 Session["arbol_usuarios"] = servicio.newArbolBinario();//Tengo un arbol de usuarios
-        }
+        }*/
 
         private bool verificarCampos()
         {

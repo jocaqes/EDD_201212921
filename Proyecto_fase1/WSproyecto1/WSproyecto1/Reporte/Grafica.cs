@@ -41,7 +41,7 @@ namespace WSproyecto1.Reporte
             salida += "}";
             return salida;
         }
-        private string codigoNodos(Nodo padre)//funcion para generar codigo de nodos de arboles de max dos hijos
+        private string codigoNodos(Nodo padre, int cont=0)//funcion para generar codigo de nodos de arboles de max dos hijos
         {
             if (padre == null)
                 return "";
@@ -54,7 +54,7 @@ namespace WSproyecto1.Reporte
                 + "Estado:\t"+actual.getConectado().ToString()+"\";shape=box]\n";
             Node<Juego> partidas = actual.mis_partidas.raiz;
             Juego juego_actual;
-            int cont = 0;
+            //int cont = 0;
             if (partidas != null)
             {
                 codigo += nombre + "->juego" + cont + ";\n";
@@ -79,19 +79,23 @@ namespace WSproyecto1.Reporte
             if (padre.der != null)
                 codigo += nombre + ":se->" + padre.der.key + "\n";//la se es para que el hijo quede a la der del padre, sin importar si padre tine un solo hijo
 
-            codigo += codigoNodos(padre.izq);
-            codigo += codigoNodos(padre.der);
+            codigo += codigoNodos(padre.izq,cont);
+            codigo += codigoNodos(padre.der,cont);
             return codigo;
 
         }
 
-        public bool graficarArbolBinario(ArbolBinario mi_arbol)
+        public bool graficarArbolBinario(ArbolBinario mi_arbol,string ruta)
         {
             string nombre_dot = "arbolBin.dot";//nombre del dot
             string nombre_png = "arbolBin.png";//nombre de la grafica
-            if (guardar(codigoArbol(mi_arbol), path + nombre_dot))//1.guardamos el codigo
+            string ruta_dot = Path.Combine(path, nombre_dot);
+            string ruta_png = Path.Combine(path, nombre_png);
+
+            //if (guardar(codigoArbol(mi_arbol), Path.Combine(ruta, nombre_dot)))//1.guardamos el codigo
+            if (guardar(codigoArbol(mi_arbol), ruta_dot))//1.guardamos el codigo
             {
-                string comando = "dot " + "-Tpng \"" + Path.Combine(path, nombre_dot) + "\" -o \"" + Path.Combine(path, nombre_png) + "\"";
+                string comando = "dot " + "-Tpng \"" + ruta_dot + "\" -o \"" + ruta_png + "\"";
                 if (llamarCMD(comando))
                     return true;
             }

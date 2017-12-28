@@ -10,40 +10,38 @@ namespace WSproyecto1
     // NOTE: In order to launch WCF Test Client for testing this service, please select NavalWarsService.svc or NavalWarsService.svc.cs at the Solution Explorer and start debugging.
     public class NavalWarsService : INavalWarsService
     {
+        public static ArbolBinario arbol_binario = new ArbolBinario();
 
         #region Arbol Binario
-        public Nodo buscar(string nick, ArbolBinario arbol_binario)
+        public Nodo buscar(string nick)
         {
             return arbol_binario.buscar(nick);
         }
 
-        public ArbolBinario eliminar(string nick, ArbolBinario arbol_binario)
+        public bool eliminar(string nick)
         {
-            arbol_binario.eliminar(nick);
-            return arbol_binario;
+            return arbol_binario.eliminar(nick);
         }
 
-        public ArbolBinario insertar(string nick, Persona persona, ArbolBinario arbol_binario)
+        public bool insertar(string nick, Persona persona)
         {
-            arbol_binario.insertar(persona, nick);
-            return arbol_binario;
+            return arbol_binario.insertar(persona, nick);
         }
 
-        public bool isEmpty(ArbolBinario arbol_binario)
+       /* public bool isEmpty(ArbolBinario arbol_binario)
         {
             return arbol_binario.isEmpty();
-        }
+        }*/
 
-        public ArbolBinario modificar(string nick, Persona persona, ArbolBinario arbol_binario)
+        public bool modificar(string nick, Persona persona)
         {
-            arbol_binario.modificar(persona, nick);
-            return arbol_binario;
+            return arbol_binario.modificar(persona, nick);
         }
 
-        public ArbolBinario newArbolBinario()
+      /*  public ArbolBinario newArbolBinario()
         {
             return new ArbolBinario();
-        }
+        }*/
         #endregion
 
         #region Objetos
@@ -54,9 +52,9 @@ namespace WSproyecto1
         #endregion
 
         #region Grafica
-        public bool graficarArbolBinario(ArbolBinario arbol_binario)
+        public bool graficarArbolBinario(string ruta)
         {
-            return new Grafica().graficarArbolBinario(arbol_binario);
+            return new Grafica().graficarArbolBinario(arbol_binario,ruta);
         }
 
 
@@ -65,14 +63,14 @@ namespace WSproyecto1
 
 
         #region CargaMasiva
-        public ArbolBinario cargaUsuarios(string direccion, ArbolBinario arbol_usuarios)
+        public bool cargaUsuarios(string direccion )
         {
-            return new CargaMasiva().cargaUsuarios(direccion,arbol_usuarios);
+            return new CargaMasiva().cargaUsuarios(direccion,arbol_binario);
         }
 
-        public ArbolBinario cargaJuegos(string direccion, ArbolBinario arbol_usuarios)
+        public bool cargaJuegos(string direccion)
         {
-            return new CargaMasiva().cargarJuegos(direccion, arbol_usuarios);
+            return new CargaMasiva().cargarJuegos(direccion, arbol_binario);
         }
 
         #endregion
@@ -83,15 +81,14 @@ namespace WSproyecto1
             return new Juego(usuario, oponente, unidades_desplegadas, sobrevivientes, destruidos, gano);
         }
 
-        public ArbolBinario agregarJuego(Juego nuevo, string usuario, ArbolBinario arbol_usuarios)
+        public bool agregarJuego(Juego nuevo, string usuario)
         {
-            Nodo aux = arbol_usuarios.buscar(usuario);
+            Nodo aux = arbol_binario.buscar(usuario);
             if (aux != null)
             {
                 aux.Item.mis_partidas.insertar(nuevo);
             }
-            arbol_usuarios.modificar(aux.Item, usuario);
-            return arbol_usuarios;
+            return  arbol_binario.modificar(aux.Item, usuario);
         }
 
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:50364/NavalWarsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" />
-  <xs:import schemaLocation="http://localhost:50364/NavalWarsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" />
   <xs:import schemaLocation="http://localhost:50364/NavalWarsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Nodos" />
   <xs:element name="newPersona">
     <xs:complexType>
@@ -18,45 +17,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="newArbolBinario">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="newArbolBinarioResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="newArbolBinarioResult" nillable="true" type="q2:ArbolBinario" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="isEmpty">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_binario" nillable="true" type="q3:ArbolBinario" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="isEmptyResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="isEmptyResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="insertar">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="nick" nillable="true" type="xs:string" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" minOccurs="0" name="persona" nillable="true" type="q4:Persona" />
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_binario" nillable="true" type="q5:ArbolBinario" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" minOccurs="0" name="persona" nillable="true" type="q2:Persona" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="insertarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="insertarResult" nillable="true" type="q6:ArbolBinario" />
+        <xs:element minOccurs="0" name="insertarResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -64,14 +36,13 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="nick" nillable="true" type="xs:string" />
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_binario" nillable="true" type="q7:ArbolBinario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="buscarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WSproyecto1.Nodos" minOccurs="0" name="buscarResult" nillable="true" type="q8:Nodo" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WSproyecto1.Nodos" minOccurs="0" name="buscarResult" nillable="true" type="q3:Nodo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -79,14 +50,13 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="nick" nillable="true" type="xs:string" />
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_binario" nillable="true" type="q9:ArbolBinario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="eliminarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="eliminarResult" nillable="true" type="q10:ArbolBinario" />
+        <xs:element minOccurs="0" name="eliminarResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -94,15 +64,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="nick" nillable="true" type="xs:string" />
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" minOccurs="0" name="persona" nillable="true" type="q11:Persona" />
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_binario" nillable="true" type="q12:ArbolBinario" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" minOccurs="0" name="persona" nillable="true" type="q4:Persona" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="modificarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="modificarResult" nillable="true" type="q13:ArbolBinario" />
+        <xs:element minOccurs="0" name="modificarResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -121,30 +90,29 @@
   <xs:element name="newJuegoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" minOccurs="0" name="newJuegoResult" nillable="true" type="q14:Juego" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" minOccurs="0" name="newJuegoResult" nillable="true" type="q5:Juego" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="agregarJuego">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" minOccurs="0" name="nuevo" nillable="true" type="q15:Juego" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" minOccurs="0" name="nuevo" nillable="true" type="q6:Juego" />
         <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_usuarios" nillable="true" type="q16:ArbolBinario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="agregarJuegoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="agregarJuegoResult" nillable="true" type="q17:ArbolBinario" />
+        <xs:element minOccurs="0" name="agregarJuegoResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="graficarArbolBinario">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_binario" nillable="true" type="q18:ArbolBinario" />
+        <xs:element minOccurs="0" name="ruta" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -159,14 +127,13 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="direccion" nillable="true" type="xs:string" />
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_usuarios" nillable="true" type="q19:ArbolBinario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="cargaUsuariosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="cargaUsuariosResult" nillable="true" type="q20:ArbolBinario" />
+        <xs:element minOccurs="0" name="cargaUsuariosResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -174,14 +141,13 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="direccion" nillable="true" type="xs:string" />
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_usuarios" nillable="true" type="q21:ArbolBinario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="cargaJuegosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="cargaJuegosResult" nillable="true" type="q22:ArbolBinario" />
+        <xs:element minOccurs="0" name="cargaJuegosResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

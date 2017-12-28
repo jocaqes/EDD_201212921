@@ -7,35 +7,41 @@ namespace WSproyecto1.Reporte
     {
         public CargaMasiva() { }
 
-        public ArbolBinario cargaUsuarios(string direccion, ArbolBinario arbol_usuarios)//codigo basico para leer un archivo
+        public bool cargaUsuarios(string direccion, ArbolBinario arbol_usuarios)//codigo basico para leer un archivo
         {
+            bool todo_bien;
             System.IO.StreamReader archivo = new System.IO.StreamReader(direccion);
             string entrada = "";
             string[] split;
             Objetos.Persona actual;
             try
             {
-                if (entrada != null)
+                if (archivo.Peek()>-1)
                     entrada = archivo.ReadLine();//me como la primera linea porque por lo visto es una cabezera
-                while (entrada != null)
+                while (archivo.Peek()>-1)
                 {
                     entrada = archivo.ReadLine();
-                    split = entrada.Split(',');
-                    actual = new Objetos.Persona(split[1], split[2]);
-                    actual.setConectado(split[3]);
-                    arbol_usuarios.insertar(actual, split[0]);
+                    if (!string.IsNullOrEmpty(entrada))
+                    {
+                        split = entrada.Split(',');
+                        actual = new Objetos.Persona(split[1], split[2]);
+                        actual.setConectado(split[3]);
+                        arbol_usuarios.insertar(actual, split[0]);
+                    }
                 }
+                todo_bien = true;
             }
             catch (Exception e)
             {
-                //e.ToString();
+                todo_bien = false;
             }
             archivo.Close();
-            return arbol_usuarios;
+            return todo_bien;
         }
 
-        public ArbolBinario cargarJuegos(string direccion, ArbolBinario arbol_usuarios)
+        public bool cargarJuegos(string direccion, ArbolBinario arbol_usuarios)
         {
+            bool todo_bien;
             System.IO.StreamReader archivo = new System.IO.StreamReader(direccion);
             string entrada = "";
             string[] split;
@@ -58,17 +64,18 @@ namespace WSproyecto1.Reporte
                         }
                     }
                 }
+                todo_bien = true;
             }
             catch (Exception e)
             {
-                //e.ToString();
+                todo_bien = false;
             }
             finally
             {
                 archivo.Close();
             }
 
-            return arbol_usuarios;
+            return todo_bien;
         }
 
 

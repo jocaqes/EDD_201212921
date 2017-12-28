@@ -15,18 +15,6 @@
   <wsdl:message name="INavalWarsService_newPersona_OutputMessage">
     <wsdl:part name="parameters" element="tns:newPersonaResponse" />
   </wsdl:message>
-  <wsdl:message name="INavalWarsService_newArbolBinario_InputMessage">
-    <wsdl:part name="parameters" element="tns:newArbolBinario" />
-  </wsdl:message>
-  <wsdl:message name="INavalWarsService_newArbolBinario_OutputMessage">
-    <wsdl:part name="parameters" element="tns:newArbolBinarioResponse" />
-  </wsdl:message>
-  <wsdl:message name="INavalWarsService_isEmpty_InputMessage">
-    <wsdl:part name="parameters" element="tns:isEmpty" />
-  </wsdl:message>
-  <wsdl:message name="INavalWarsService_isEmpty_OutputMessage">
-    <wsdl:part name="parameters" element="tns:isEmptyResponse" />
-  </wsdl:message>
   <wsdl:message name="INavalWarsService_insertar_InputMessage">
     <wsdl:part name="parameters" element="tns:insertar" />
   </wsdl:message>
@@ -86,14 +74,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/newPersona" message="tns:INavalWarsService_newPersona_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/newPersonaResponse" message="tns:INavalWarsService_newPersona_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="newArbolBinario">
-      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/newArbolBinario" message="tns:INavalWarsService_newArbolBinario_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/newArbolBinarioResponse" message="tns:INavalWarsService_newArbolBinario_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="isEmpty">
-      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/isEmpty" message="tns:INavalWarsService_isEmpty_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/isEmptyResponse" message="tns:INavalWarsService_isEmpty_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="insertar">
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/insertar" message="tns:INavalWarsService_insertar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/insertarResponse" message="tns:INavalWarsService_insertar_OutputMessage" />
@@ -135,24 +115,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="newPersona">
       <soap:operation soapAction="http://tempuri.org/INavalWarsService/newPersona" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="newArbolBinario">
-      <soap:operation soapAction="http://tempuri.org/INavalWarsService/newArbolBinario" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="isEmpty">
-      <soap:operation soapAction="http://tempuri.org/INavalWarsService/isEmpty" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
