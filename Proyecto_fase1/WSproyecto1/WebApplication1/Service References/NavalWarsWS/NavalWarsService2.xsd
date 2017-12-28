@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WSproyecto1.Nodos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Nodos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:50364/NavalWarsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" />
+  <xs:complexType name="NodeOfJuego209EgP0h">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="NodeOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Nodos" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Juego" Namespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="anterior" nillable="true" type="tns:NodeOfJuego209EgP0h" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" name="item" nillable="true" type="q1:Juego" />
+      <xs:element name="siguiente" nillable="true" type="tns:NodeOfJuego209EgP0h" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NodeOfJuego209EgP0h" nillable="true" type="tns:NodeOfJuego209EgP0h" />
   <xs:complexType name="Nodo">
     <xs:sequence>
       <xs:element name="der" nillable="true" type="tns:Nodo" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" name="item" nillable="true" type="q1:Persona" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" name="item" nillable="true" type="q2:Persona" />
       <xs:element name="izq" nillable="true" type="tns:Nodo" />
       <xs:element name="key" nillable="true" type="xs:string" />
     </xs:sequence>

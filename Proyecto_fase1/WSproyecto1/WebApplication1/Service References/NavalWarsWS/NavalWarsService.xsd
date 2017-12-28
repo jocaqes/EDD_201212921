@@ -106,10 +106,45 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="newJuego">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="oponente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="unidades_desplegadas" type="xs:int" />
+        <xs:element minOccurs="0" name="sobrevivientes" type="xs:int" />
+        <xs:element minOccurs="0" name="destruidos" type="xs:int" />
+        <xs:element minOccurs="0" name="gano" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="newJuegoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" minOccurs="0" name="newJuegoResult" nillable="true" type="q14:Juego" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarJuego">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" minOccurs="0" name="nuevo" nillable="true" type="q15:Juego" />
+        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_usuarios" nillable="true" type="q16:ArbolBinario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarJuegoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="agregarJuegoResult" nillable="true" type="q17:ArbolBinario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="graficarArbolBinario">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_binario" nillable="true" type="q14:ArbolBinario" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_binario" nillable="true" type="q18:ArbolBinario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -124,14 +159,29 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="direccion" nillable="true" type="xs:string" />
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_usuarios" nillable="true" type="q15:ArbolBinario" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_usuarios" nillable="true" type="q19:ArbolBinario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="cargaUsuariosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="cargaUsuariosResult" nillable="true" type="q16:ArbolBinario" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="cargaUsuariosResult" nillable="true" type="q20:ArbolBinario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cargaJuegos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="direccion" nillable="true" type="xs:string" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="arbol_usuarios" nillable="true" type="q21:ArbolBinario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cargaJuegosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" minOccurs="0" name="cargaJuegosResult" nillable="true" type="q22:ArbolBinario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

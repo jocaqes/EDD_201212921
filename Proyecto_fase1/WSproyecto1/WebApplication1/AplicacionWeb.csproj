@@ -77,6 +77,9 @@
     <Content Include="Service References\NavalWarsWS\WebApplication1.NavalWarsWS.Persona.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\NavalWarsWS\WebApplication1.NavalWarsWS.Juego.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -97,6 +100,7 @@
     </None>
     <Content Include="Administrador.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="Usuario.aspx" />
     <Content Include="Web.config" />
     <None Include="Service References\NavalWarsWS\NavalWarsService.wsdl" />
     <Content Include="Service References\NavalWarsWS\WebApplication1.NavalWarsWS.ArbolBinario.datasource">
@@ -123,6 +127,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.aspx.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario.aspx.designer.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

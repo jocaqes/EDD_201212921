@@ -234,5 +234,29 @@ namespace WSproyecto1.Arbol
             return true;
         }
         #endregion
+
+        #region Espejo
+        public ArbolBinario espejo()
+        {
+            ArbolBinario arbol_espejo = new ArbolBinario();
+            arbol_espejo.raiz = reflejar(this.raiz);
+            return arbol_espejo;
+        }
+        private Nodo reflejar(Nodo raiz)
+        {
+            if (raiz == null)
+                return null;
+            else
+            {
+                Nodo nuevo = new Nodo();
+                nuevo.Item = raiz.Item;
+                nuevo.key = raiz.key;
+                nuevo.izq = reflejar(raiz.der);
+                nuevo.der = reflejar(raiz.izq);
+                return nuevo;
+            }
+        }
+
+        #endregion
     }
 }

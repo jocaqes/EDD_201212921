@@ -33,6 +33,14 @@ namespace WSproyecto1
         ArbolBinario modificar(string nick, Persona persona, ArbolBinario arbol_binario);
         #endregion
 
+        #region Juego
+        [OperationContract]
+        Juego newJuego(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano);
+
+        [OperationContract]
+        ArbolBinario agregarJuego(Juego nuevo, string usuario,ArbolBinario arbol_usuarios);//este es una prueba para algo jejeje
+        #endregion
+
         #region Grafica
         [OperationContract]
         bool graficarArbolBinario(ArbolBinario arbol_binario);
@@ -41,6 +49,9 @@ namespace WSproyecto1
         #region CargaMasiva
         [OperationContract]
         ArbolBinario cargaUsuarios(string direccion, ArbolBinario arbol_usuarios);
+
+        [OperationContract]
+        ArbolBinario cargaJuegos(string direccion, ArbolBinario arbol_usuarios);
         #endregion
 
 

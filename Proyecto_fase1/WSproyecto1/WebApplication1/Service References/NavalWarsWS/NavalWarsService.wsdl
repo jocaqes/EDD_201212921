@@ -51,6 +51,18 @@
   <wsdl:message name="INavalWarsService_modificar_OutputMessage">
     <wsdl:part name="parameters" element="tns:modificarResponse" />
   </wsdl:message>
+  <wsdl:message name="INavalWarsService_newJuego_InputMessage">
+    <wsdl:part name="parameters" element="tns:newJuego" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_newJuego_OutputMessage">
+    <wsdl:part name="parameters" element="tns:newJuegoResponse" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_agregarJuego_InputMessage">
+    <wsdl:part name="parameters" element="tns:agregarJuego" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_agregarJuego_OutputMessage">
+    <wsdl:part name="parameters" element="tns:agregarJuegoResponse" />
+  </wsdl:message>
   <wsdl:message name="INavalWarsService_graficarArbolBinario_InputMessage">
     <wsdl:part name="parameters" element="tns:graficarArbolBinario" />
   </wsdl:message>
@@ -62,6 +74,12 @@
   </wsdl:message>
   <wsdl:message name="INavalWarsService_cargaUsuarios_OutputMessage">
     <wsdl:part name="parameters" element="tns:cargaUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_cargaJuegos_InputMessage">
+    <wsdl:part name="parameters" element="tns:cargaJuegos" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_cargaJuegos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cargaJuegosResponse" />
   </wsdl:message>
   <wsdl:portType name="INavalWarsService">
     <wsdl:operation name="newPersona">
@@ -92,6 +110,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/modificar" message="tns:INavalWarsService_modificar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/modificarResponse" message="tns:INavalWarsService_modificar_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="newJuego">
+      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/newJuego" message="tns:INavalWarsService_newJuego_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/newJuegoResponse" message="tns:INavalWarsService_newJuego_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarJuego">
+      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/agregarJuego" message="tns:INavalWarsService_agregarJuego_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/agregarJuegoResponse" message="tns:INavalWarsService_agregarJuego_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="graficarArbolBinario">
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/graficarArbolBinario" message="tns:INavalWarsService_graficarArbolBinario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/graficarArbolBinarioResponse" message="tns:INavalWarsService_graficarArbolBinario_OutputMessage" />
@@ -99,6 +125,10 @@
     <wsdl:operation name="cargaUsuarios">
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/cargaUsuarios" message="tns:INavalWarsService_cargaUsuarios_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/cargaUsuariosResponse" message="tns:INavalWarsService_cargaUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cargaJuegos">
+      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/cargaJuegos" message="tns:INavalWarsService_cargaJuegos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/cargaJuegosResponse" message="tns:INavalWarsService_cargaJuegos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_INavalWarsService" type="tns:INavalWarsService">
@@ -166,6 +196,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="newJuego">
+      <soap:operation soapAction="http://tempuri.org/INavalWarsService/newJuego" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarJuego">
+      <soap:operation soapAction="http://tempuri.org/INavalWarsService/agregarJuego" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="graficarArbolBinario">
       <soap:operation soapAction="http://tempuri.org/INavalWarsService/graficarArbolBinario" style="document" />
       <wsdl:input>
@@ -177,6 +225,15 @@
     </wsdl:operation>
     <wsdl:operation name="cargaUsuarios">
       <soap:operation soapAction="http://tempuri.org/INavalWarsService/cargaUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargaJuegos">
+      <soap:operation soapAction="http://tempuri.org/INavalWarsService/cargaJuegos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

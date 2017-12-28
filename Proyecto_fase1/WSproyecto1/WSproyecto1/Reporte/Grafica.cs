@@ -52,6 +52,28 @@ namespace WSproyecto1.Reporte
                 + "Password:\t" + actual.Password + "\n"
                 + "Mail:\t" + actual.Mail +"\n"
                 + "Estado:\t"+actual.getConectado().ToString()+"\";shape=box]\n";
+            Node<Juego> partidas = actual.mis_partidas.raiz;
+            Juego juego_actual;
+            int cont = 0;
+            if (partidas != null)
+            {
+                codigo += nombre + "->juego" + cont + ";\n";
+            }
+            while (partidas != null)//codigo para las partidas del jugador
+            {
+                juego_actual = partidas.Item;
+                codigo += "juego" + cont + "[label=\"Partida" + cont + "\nOponente:" + juego_actual.Oponente
+                    + "\nDesplegados:" + juego_actual.Unidades_desplegadas + "\nSobrevivientes:"
+                    + juego_actual.Sobrevivientes + "\nCaidos:" + juego_actual.Destruidos + "\nGane:"
+                    + juego_actual.Gano.ToString() + "\";shape=box];\n";
+                if (partidas.anterior != null)
+                {
+                    codigo += "juego" + cont + "->juego" + (cont - 1)+";\n";
+                    codigo += "juego" + (cont - 1) + "->juego" + cont+";\n";
+                }
+                cont++;
+                partidas = partidas.siguiente;
+            }
             if (padre.izq != null)
                 codigo += nombre + ":sw->" + padre.izq.key + "\n";//la sw es para que el hijo quede a la izq del padre, sin importar si padre tine un solo hijo
             if (padre.der != null)

@@ -22,6 +22,8 @@
         <br />
         <asp:Button ID="boton_aceptar" runat="server" Text="Aceptar" OnClick="boton_aceptar_Click" />
 
+        <asp:Label ID="label_mensaje" runat="server" Text=""></asp:Label>
+
     </div>
     </form>
 </body>

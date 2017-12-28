@@ -67,8 +67,34 @@ namespace WSproyecto1
         #region CargaMasiva
         public ArbolBinario cargaUsuarios(string direccion, ArbolBinario arbol_usuarios)
         {
-            return new Reporte.CargaMasiva().cargaUsuarios(direccion,arbol_usuarios);
+            return new CargaMasiva().cargaUsuarios(direccion,arbol_usuarios);
         }
+
+        public ArbolBinario cargaJuegos(string direccion, ArbolBinario arbol_usuarios)
+        {
+            return new CargaMasiva().cargarJuegos(direccion, arbol_usuarios);
+        }
+
+        #endregion
+
+        #region Juego
+        public Juego newJuego(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano)
+        {
+            return new Juego(usuario, oponente, unidades_desplegadas, sobrevivientes, destruidos, gano);
+        }
+
+        public ArbolBinario agregarJuego(Juego nuevo, string usuario, ArbolBinario arbol_usuarios)
+        {
+            Nodo aux = arbol_usuarios.buscar(usuario);
+            if (aux != null)
+            {
+                aux.Item.mis_partidas.insertar(nuevo);
+            }
+            arbol_usuarios.modificar(aux.Item, usuario);
+            return arbol_usuarios;
+        }
+
+
         #endregion
     }
 }

@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Objetos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50364/NavalWarsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" />
   <xs:complexType name="Persona">
     <xs:sequence>
       <xs:element name="conectado" type="xs:boolean" />
       <xs:element name="mail" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WSproyecto1.Arbol" name="mis_partidas" nillable="true" type="q1:ListaDOfJuego209EgP0h" />
       <xs:element name="password" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Persona" nillable="true" type="tns:Persona" />
+  <xs:complexType name="Juego">
+    <xs:sequence>
+      <xs:element name="destruidos" type="xs:int" />
+      <xs:element name="gano" type="xs:boolean" />
+      <xs:element name="oponente" nillable="true" type="xs:string" />
+      <xs:element name="sobrevivientes" type="xs:int" />
+      <xs:element name="unidades_desplegadas" type="xs:int" />
+      <xs:element name="usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Juego" nillable="true" type="tns:Juego" />
 </xs:schema>

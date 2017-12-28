@@ -1,4 +1,5 @@
 ﻿using System;
+using WebApplication1.NavalWarsWS;
 
 namespace WebApplication1
 {
@@ -6,26 +7,50 @@ namespace WebApplication1
     {
         private string admin = "admin";
         private string pass = "admin";
-        NavalWarsWS.NavalWarsServiceClient servicio;
+        NavalWarsServiceClient servicio;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            errorLogin();
-            servicio = new NavalWarsWS.NavalWarsServiceClient();
+            urlRequest();
+            servicio = new NavalWarsServiceClient();
             
         }
 
         protected void boton_aceptar_Click(object sender, EventArgs e)
         {
-            if (verificarAdmin())
-            {
-                Session["Usuario"] = admin;
-                setVariablesSesion();//agrego el arbol de usuarios
-                Response.Redirect("Administrador.aspx");
-            }
-            else
-            {
-                Session["Usuario"] = null;
+            if (verificarCampos()) {
+                if (verificarAdmin())
+                {
+                    Session["Usuario"] = admin;
+                    setVariablesSesion();//agrego el arbol de usuarios
+                    Response.Redirect("Administrador.aspx");
+                }
+                else
+                {
+                    if (Session["arbol_usuarios"] != null)//si existe un arbol de usuarios(aun si esta vacio)
+                    {
+                        ArbolBinario arbol_aux = (ArbolBinario)Session["arbol_usuarios"];
+                        Nodo nodo_usuario = servicio.buscar(text_nick.Text, arbol_aux);
+                        if (nodo_usuario != null)//si encontre al usuario
+                        {
+                            if (nodo_usuario.item.password.Equals(text_pass.Text))//el usuario y password son correctos
+                            {
+                                Session["Usuario"] = nodo_usuario;
+                                Response.Redirect("Usuario.aspx");
+                            }else//el password es incorrecto
+                            {
+                                label_mensaje.Text = "El password es incorrecto";
+                            }
+                        }else//el usuario no existe, pero obviamente no le voy a decir eso
+                        {
+                            label_mensaje.Text = "El usuario es incorrecto";
+                        }
+                    }else//no hay arbol
+                    {
+                        label_mensaje.Text = "El password o usuario son incorrectos";
+                    }
+                    //Session["Usuario"] = null;
+                }
             }
             
         }
@@ -38,20 +63,41 @@ namespace WebApplication1
                 return false;
         }
 
-        private void errorLogin()
+        private void urlRequest()
         {
-            if (!string.IsNullOrEmpty(Request.QueryString["err"]))
+            if (!string.IsNullOrEmpty(Request.QueryString["msj"]))
             {
-                if (Request.QueryString["err"].ToString() == "mty")
+                switch (Request.QueryString["msj"].ToString())
+                {
+                    case "mty":
+                        Response.Write("<script>alert('" + "Nickname o password estan vacios" + "')</script>");
+                        break;
+                    case "close":
+                        Response.Redirect("Home.aspx");
+                        break;
+                }
+
+
+               /* if (Request.QueryString["msj"].ToString() == "mty")
                     Response.Write("<script>alert('" + "Nickname o password estan vacios" + "')</script>");
+                else if (Request.QueryString["msj"].ToString())*/
                 Session.Abandon();
             }
         }
 
         private void setVariablesSesion()
         {
-            if(Application["arbol_usuarios"]==null)
-                Application["arbol_usuarios"] = servicio.newArbolBinario();//Tengo un arbol de usuarios
+            if(Session["arbol_usuarios"]==null)
+                Session["arbol_usuarios"] = servicio.newArbolBinario();//Tengo un arbol de usuarios
         }
+
+        private bool verificarCampos()
+        {
+            if (string.IsNullOrEmpty(text_nick.Text) || string.IsNullOrEmpty(text_pass.Text))
+                return false;
+            return true;
+        }
+
+
     }
 }

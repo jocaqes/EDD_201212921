@@ -6,7 +6,7 @@
         private string password;
         private string mail;
         private bool conectado;
-        //ListaD<Partidas> mis_partidas;
+        public Arbol.ListaD<Juego> mis_partidas;
         /*No tiene su nick porque esa sera su llave, y ya se guarda en su nodo*/
 
 
@@ -15,7 +15,7 @@
             this.password = password;
             this.mail = mail;
             conectado = false;
-            //mis_partidas=new ListaD<Partidas>();
+            mis_partidas=new Arbol.ListaD<Juego>();
         }
 
         #region Setters y Getters
