@@ -20,6 +20,14 @@ namespace WSproyecto1.Arbol
             return raiz == null;
         }
 
+        #region Clean
+        public void clean()
+        {
+            raiz = null;
+            count =0;
+        }
+        #endregion
+
         #region Insercion
         public bool insertar(Persona item, string key)
         {
@@ -257,6 +265,69 @@ namespace WSproyecto1.Arbol
             }
         }
 
+        #endregion
+
+        #region Datos
+        public int altura()
+        {
+            return altura(raiz);
+        }
+        private int altura(Nodo raiz)
+        {
+            if (raiz == null)
+            {
+                return 0;
+            }else if (raiz.izq == null && raiz.der == null)
+            {
+                return 1;
+            }
+            else
+            {
+                int left = 1 + altura(raiz.izq);
+                int der = 1 + altura(raiz.der);
+                if (left > der)
+                    return left;
+                else
+                    return der;
+            }
+        }
+
+
+        public int hojas()
+        {
+            return hojas(raiz);
+        }
+        private int hojas(Nodo raiz)
+        {
+            if (raiz == null)
+            {
+                return 0;
+            }else if (raiz.izq == null && raiz.der == null)
+            {
+                return 1;
+            }else
+            {
+                return hojas(raiz.izq) + hojas(raiz.der);
+            }
+        }
+
+        public int ramas()
+        {
+            return ramas(raiz);
+        }
+        private int ramas(Nodo raiz)
+        {
+            if (raiz == null)
+            {
+                return 0;
+            }else if (raiz.izq == null && raiz.der == null)
+            {
+                return 0;
+            }else
+            {
+                return 1 + ramas(raiz.izq) + ramas(raiz.der);
+            }
+        }
         #endregion
     }
 }

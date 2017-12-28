@@ -47,6 +47,7 @@ namespace WebApplication1
             if (servicio.graficarArbolBinario(Server.MapPath("Imagenes")))
             {
                 label_msj_carga.Text = "Arbol Graficado";
+                servicio.graficarArbolBinarioEspejo(Server.MapPath("Imagenes"));
                 Page.ClientScript.RegisterStartupScript(
                 GetType(), "OpenWindow", "window.open('Reports.aspx','_newtab');", true);
                 //label_msj_carga.Text = Server.MapPath("Imagenes");

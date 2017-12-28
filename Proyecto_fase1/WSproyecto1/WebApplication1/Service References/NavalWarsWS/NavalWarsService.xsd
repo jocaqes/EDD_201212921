@@ -75,6 +75,52 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="cleanBinario">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cleanBinarioResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="alturaBinario">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="alturaBinarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="alturaBinarioResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hojasBinario">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hojasBinarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hojasBinarioResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ramasBinario">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ramasBinarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ramasBinarioResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="newJuego">
     <xs:complexType>
       <xs:sequence>
@@ -120,6 +166,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="graficarArbolBinarioResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="graficarArbolBinarioEspejo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ruta_destino" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="graficarArbolBinarioEspejoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="graficarArbolBinarioEspejoResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

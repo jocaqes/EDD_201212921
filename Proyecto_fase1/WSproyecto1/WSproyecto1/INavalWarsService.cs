@@ -31,6 +31,18 @@ namespace WSproyecto1
 
         [OperationContract]
         bool modificar(string nick, Persona persona);
+
+        [OperationContract]
+        void cleanBinario();
+
+        [OperationContract]
+        int alturaBinario();
+
+        [OperationContract]
+        int hojasBinario();
+
+        [OperationContract]
+        int ramasBinario();
         #endregion
 
         #region Juego
@@ -44,6 +56,9 @@ namespace WSproyecto1
         #region Grafica
         [OperationContract]
         bool graficarArbolBinario(string ruta_destino="");
+
+        [OperationContract]
+        bool graficarArbolBinarioEspejo(string ruta_destino = "");
 
         [OperationContract]
         string debug();

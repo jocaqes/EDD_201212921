@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
+using WebApplication1.NavalWarsWS;
 namespace WebApplication1
 {
+
     public partial class Reports : System.Web.UI.Page
     {
+        public NavalWarsServiceClient servicio;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["servicio"] != null)
+                servicio = (NavalWarsServiceClient)Session["servicio"];
         }
     }
 }

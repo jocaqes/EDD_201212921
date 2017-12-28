@@ -91,29 +91,48 @@ namespace WSproyecto1.Reporte
 
         }
 
-        public bool graficarArbolBinario(ArbolBinario mi_arbol, string ruta_destino="")
+        public bool graficarArbolBinario(ArbolBinario mi_arbol, string ruta_destino="",string nombre_dot="arbolBin.dot",string nombre_png="arbolBin.png")
         {
-            string nombre_dot = "arbolBin.dot";//nombre del dot
-            string nombre_png = "arbolBin.png";//nombre de la grafica
+           // string nombre_dot = "arbolBin.dot";//nombre del dot
+           // string nombre_png = "arbolBin.png";//nombre de la grafica
             string ruta_dot = Path.Combine(path, nombre_dot);
             string ruta_png = Path.Combine(path, nombre_png);
+            bool bandera;
 
             //if (guardar(codigoArbol(mi_arbol), Path.Combine(ruta, nombre_dot)))//1.guardamos el codigo
             if (guardar(codigoArbol(mi_arbol), nombre_dot))//1.guardamos el codigo
             {
-                string comando = "dot " + "-Tpng \"" + ruta_dot + "\" -o \"" + ruta_png + "\"";
+                string comando;
+                if(!string.IsNullOrEmpty(ruta_destino))
+                    comando= "dot " + "-Tpng \"" + ruta_dot + "\" -o \"" + Path.Combine(ruta_destino, nombre_png) + "\"";
+                else
+                     comando = "dot " + "-Tpng \"" + ruta_dot + "\" -o \"" + ruta_png + "\"";
                 if (llamarCMD(comando))
                 {
-                    if (!string.IsNullOrEmpty(ruta_destino))
+
+                    bandera = true;
+                }
+                else
+                    bandera = false;
+            }
+            else
+                bandera = false;
+            if (bandera)
+            {
+                if (!string.IsNullOrEmpty(ruta_destino))
+                {
+                    string destino_final = Path.Combine(ruta_destino, nombre_png);
+                    if (File.Exists(destino_final))//elimino la imagen anterior
                     {
-                        string destino_final = Path.Combine(ruta_destino, nombre_png);
+                        File.Delete(destino_final);
+                    }
+                    if (File.Exists(ruta_png))
+                    {
                         copiarImagen(ruta_png, destino_final);
                     }
-                    return true;
                 }
             }
-            return false;
-
+            return bandera;
         }
         #endregion
 

@@ -24,6 +24,7 @@ namespace WebApplication1
                 {
                     Session["Usuario"] = admin;
                     //setVariablesSesion();//agrego el arbol de usuarios
+                    servicio.cleanBinario();
                     Response.Redirect("Administrador.aspx");
                 }
                 else
@@ -52,7 +53,9 @@ namespace WebApplication1
                 switch (Request.QueryString["msj"].ToString())
                 {
                     case "mty":
+                        servicio.cleanBinario();
                         Response.Write("<script>alert('" + "Nickname o password estan vacios" + "')</script>");
+                        Response.Redirect("Home.aspx");
                         break;
                     case "close":
                         Response.Redirect("Home.aspx");

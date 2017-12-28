@@ -104,7 +104,6 @@
         <asp:Button ID="boton_carga_juegos" runat="server" Text="Cargar" OnClick="boton_carga_juegos_Click" />
 
         <br />
-        <asp:Button ID="boton_graficar" runat="server" Text="Graficar" OnClick="boton_graficar_Click" />
 
         <asp:Label ID="label_msj_carga" runat="server" Text=""></asp:Label>
 
@@ -113,7 +112,9 @@
 
     </div>
     <div>
-        <h3>Agregar Juego</h3>
+        <h3>Reportes</h3>
+        <asp:Button ID="boton_graficar" runat="server" Text="Generar Reportes" OnClick="boton_graficar_Click" />
+
         <br />
 
     </div>

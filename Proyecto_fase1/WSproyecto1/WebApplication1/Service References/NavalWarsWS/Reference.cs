@@ -492,6 +492,30 @@ namespace WebApplication1.NavalWarsWS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/modificar", ReplyAction="http://tempuri.org/INavalWarsService/modificarResponse")]
         System.Threading.Tasks.Task<bool> modificarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/cleanBinario", ReplyAction="http://tempuri.org/INavalWarsService/cleanBinarioResponse")]
+        void cleanBinario();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/cleanBinario", ReplyAction="http://tempuri.org/INavalWarsService/cleanBinarioResponse")]
+        System.Threading.Tasks.Task cleanBinarioAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/alturaBinario", ReplyAction="http://tempuri.org/INavalWarsService/alturaBinarioResponse")]
+        int alturaBinario();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/alturaBinario", ReplyAction="http://tempuri.org/INavalWarsService/alturaBinarioResponse")]
+        System.Threading.Tasks.Task<int> alturaBinarioAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/hojasBinario", ReplyAction="http://tempuri.org/INavalWarsService/hojasBinarioResponse")]
+        int hojasBinario();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/hojasBinario", ReplyAction="http://tempuri.org/INavalWarsService/hojasBinarioResponse")]
+        System.Threading.Tasks.Task<int> hojasBinarioAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/ramasBinario", ReplyAction="http://tempuri.org/INavalWarsService/ramasBinarioResponse")]
+        int ramasBinario();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/ramasBinario", ReplyAction="http://tempuri.org/INavalWarsService/ramasBinarioResponse")]
+        System.Threading.Tasks.Task<int> ramasBinarioAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newJuego", ReplyAction="http://tempuri.org/INavalWarsService/newJuegoResponse")]
         WebApplication1.NavalWarsWS.Juego newJuego(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano);
         
@@ -509,6 +533,12 @@ namespace WebApplication1.NavalWarsWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/graficarArbolBinario", ReplyAction="http://tempuri.org/INavalWarsService/graficarArbolBinarioResponse")]
         System.Threading.Tasks.Task<bool> graficarArbolBinarioAsync(string ruta_destino);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/graficarArbolBinarioEspejo", ReplyAction="http://tempuri.org/INavalWarsService/graficarArbolBinarioEspejoResponse")]
+        bool graficarArbolBinarioEspejo(string ruta_destino);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/graficarArbolBinarioEspejo", ReplyAction="http://tempuri.org/INavalWarsService/graficarArbolBinarioEspejoResponse")]
+        System.Threading.Tasks.Task<bool> graficarArbolBinarioEspejoAsync(string ruta_destino);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/debug", ReplyAction="http://tempuri.org/INavalWarsService/debugResponse")]
         string debug();
@@ -596,6 +626,38 @@ namespace WebApplication1.NavalWarsWS {
             return base.Channel.modificarAsync(nick, persona);
         }
         
+        public void cleanBinario() {
+            base.Channel.cleanBinario();
+        }
+        
+        public System.Threading.Tasks.Task cleanBinarioAsync() {
+            return base.Channel.cleanBinarioAsync();
+        }
+        
+        public int alturaBinario() {
+            return base.Channel.alturaBinario();
+        }
+        
+        public System.Threading.Tasks.Task<int> alturaBinarioAsync() {
+            return base.Channel.alturaBinarioAsync();
+        }
+        
+        public int hojasBinario() {
+            return base.Channel.hojasBinario();
+        }
+        
+        public System.Threading.Tasks.Task<int> hojasBinarioAsync() {
+            return base.Channel.hojasBinarioAsync();
+        }
+        
+        public int ramasBinario() {
+            return base.Channel.ramasBinario();
+        }
+        
+        public System.Threading.Tasks.Task<int> ramasBinarioAsync() {
+            return base.Channel.ramasBinarioAsync();
+        }
+        
         public WebApplication1.NavalWarsWS.Juego newJuego(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano) {
             return base.Channel.newJuego(usuario, oponente, unidades_desplegadas, sobrevivientes, destruidos, gano);
         }
@@ -618,6 +680,14 @@ namespace WebApplication1.NavalWarsWS {
         
         public System.Threading.Tasks.Task<bool> graficarArbolBinarioAsync(string ruta_destino) {
             return base.Channel.graficarArbolBinarioAsync(ruta_destino);
+        }
+        
+        public bool graficarArbolBinarioEspejo(string ruta_destino) {
+            return base.Channel.graficarArbolBinarioEspejo(ruta_destino);
+        }
+        
+        public System.Threading.Tasks.Task<bool> graficarArbolBinarioEspejoAsync(string ruta_destino) {
+            return base.Channel.graficarArbolBinarioEspejoAsync(ruta_destino);
         }
         
         public string debug() {

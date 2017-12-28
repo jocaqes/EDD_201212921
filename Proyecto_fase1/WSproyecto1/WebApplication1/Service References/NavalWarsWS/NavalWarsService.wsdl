@@ -39,6 +39,30 @@
   <wsdl:message name="INavalWarsService_modificar_OutputMessage">
     <wsdl:part name="parameters" element="tns:modificarResponse" />
   </wsdl:message>
+  <wsdl:message name="INavalWarsService_cleanBinario_InputMessage">
+    <wsdl:part name="parameters" element="tns:cleanBinario" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_cleanBinario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cleanBinarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_alturaBinario_InputMessage">
+    <wsdl:part name="parameters" element="tns:alturaBinario" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_alturaBinario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:alturaBinarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_hojasBinario_InputMessage">
+    <wsdl:part name="parameters" element="tns:hojasBinario" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_hojasBinario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:hojasBinarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_ramasBinario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ramasBinario" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_ramasBinario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ramasBinarioResponse" />
+  </wsdl:message>
   <wsdl:message name="INavalWarsService_newJuego_InputMessage">
     <wsdl:part name="parameters" element="tns:newJuego" />
   </wsdl:message>
@@ -56,6 +80,12 @@
   </wsdl:message>
   <wsdl:message name="INavalWarsService_graficarArbolBinario_OutputMessage">
     <wsdl:part name="parameters" element="tns:graficarArbolBinarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_graficarArbolBinarioEspejo_InputMessage">
+    <wsdl:part name="parameters" element="tns:graficarArbolBinarioEspejo" />
+  </wsdl:message>
+  <wsdl:message name="INavalWarsService_graficarArbolBinarioEspejo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:graficarArbolBinarioEspejoResponse" />
   </wsdl:message>
   <wsdl:message name="INavalWarsService_debug_InputMessage">
     <wsdl:part name="parameters" element="tns:debug" />
@@ -96,6 +126,22 @@
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/modificar" message="tns:INavalWarsService_modificar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/modificarResponse" message="tns:INavalWarsService_modificar_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="cleanBinario">
+      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/cleanBinario" message="tns:INavalWarsService_cleanBinario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/cleanBinarioResponse" message="tns:INavalWarsService_cleanBinario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="alturaBinario">
+      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/alturaBinario" message="tns:INavalWarsService_alturaBinario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/alturaBinarioResponse" message="tns:INavalWarsService_alturaBinario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="hojasBinario">
+      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/hojasBinario" message="tns:INavalWarsService_hojasBinario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/hojasBinarioResponse" message="tns:INavalWarsService_hojasBinario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ramasBinario">
+      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/ramasBinario" message="tns:INavalWarsService_ramasBinario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/ramasBinarioResponse" message="tns:INavalWarsService_ramasBinario_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="newJuego">
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/newJuego" message="tns:INavalWarsService_newJuego_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/newJuegoResponse" message="tns:INavalWarsService_newJuego_OutputMessage" />
@@ -107,6 +153,10 @@
     <wsdl:operation name="graficarArbolBinario">
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/graficarArbolBinario" message="tns:INavalWarsService_graficarArbolBinario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/graficarArbolBinarioResponse" message="tns:INavalWarsService_graficarArbolBinario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="graficarArbolBinarioEspejo">
+      <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/graficarArbolBinarioEspejo" message="tns:INavalWarsService_graficarArbolBinarioEspejo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INavalWarsService/graficarArbolBinarioEspejoResponse" message="tns:INavalWarsService_graficarArbolBinarioEspejo_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="debug">
       <wsdl:input wsaw:Action="http://tempuri.org/INavalWarsService/debug" message="tns:INavalWarsService_debug_InputMessage" />
@@ -168,6 +218,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="cleanBinario">
+      <soap:operation soapAction="http://tempuri.org/INavalWarsService/cleanBinario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="alturaBinario">
+      <soap:operation soapAction="http://tempuri.org/INavalWarsService/alturaBinario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hojasBinario">
+      <soap:operation soapAction="http://tempuri.org/INavalWarsService/hojasBinario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ramasBinario">
+      <soap:operation soapAction="http://tempuri.org/INavalWarsService/ramasBinario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="newJuego">
       <soap:operation soapAction="http://tempuri.org/INavalWarsService/newJuego" style="document" />
       <wsdl:input>
@@ -188,6 +274,15 @@
     </wsdl:operation>
     <wsdl:operation name="graficarArbolBinario">
       <soap:operation soapAction="http://tempuri.org/INavalWarsService/graficarArbolBinario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarArbolBinarioEspejo">
+      <soap:operation soapAction="http://tempuri.org/INavalWarsService/graficarArbolBinarioEspejo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

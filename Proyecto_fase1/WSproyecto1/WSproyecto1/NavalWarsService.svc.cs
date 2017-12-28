@@ -42,6 +42,25 @@ namespace WSproyecto1
         {
             return new ArbolBinario();
         }*/
+        public void cleanBinario()
+        {
+            arbol_binario.clean();
+        }
+
+        public int alturaBinario()
+        {
+            return arbol_binario.altura();
+        }
+
+        public int hojasBinario()
+        {
+            return arbol_binario.hojas();
+        }
+
+        public int ramasBinario()
+        {
+            return arbol_binario.ramas();
+        }
         #endregion
 
         #region Objetos
@@ -62,7 +81,10 @@ namespace WSproyecto1
             return AppDomain.CurrentDomain.BaseDirectory;
         }
 
-
+        public bool graficarArbolBinarioEspejo(string ruta_destino = "")
+        {
+            return new Grafica().graficarArbolBinario(arbol_binario.espejo(),ruta_destino,"espejo.dot","espejo.png");
+        }
         #endregion
 
 
@@ -94,6 +116,8 @@ namespace WSproyecto1
             }
             return  arbol_binario.modificar(aux.Item, usuario);
         }
+
+
 
 
 
