@@ -45,7 +45,12 @@ namespace WebApplication1
         protected void boton_graficar_Click(object sender, EventArgs e)
         {
             if (Session["arbol_usuarios"] != null)
+            {
                 servicio.graficarArbolBinario((ArbolBinario)Session["arbol_usuarios"]);
+                Page.ClientScript.RegisterStartupScript(
+                GetType(), "OpenWindow", "window.open('Reports.aspx','_newtab');", true);
+
+            }
         }
 
 

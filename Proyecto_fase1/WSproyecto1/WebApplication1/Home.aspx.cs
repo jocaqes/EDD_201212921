@@ -27,30 +27,11 @@ namespace WebApplication1
                 }
                 else
                 {
-                    if (Session["arbol_usuarios"] != null)//si existe un arbol de usuarios(aun si esta vacio)
-                    {
-                        ArbolBinario arbol_aux = (ArbolBinario)Session["arbol_usuarios"];
-                        Nodo nodo_usuario = servicio.buscar(text_nick.Text, arbol_aux);
-                        if (nodo_usuario != null)//si encontre al usuario
-                        {
-                            if (nodo_usuario.item.password.Equals(text_pass.Text))//el usuario y password son correctos
-                            {
-                                Session["Usuario"] = nodo_usuario;
-                                Response.Redirect("Usuario.aspx");
-                            }else//el password es incorrecto
-                            {
-                                label_mensaje.Text = "El password es incorrecto";
-                            }
-                        }else//el usuario no existe, pero obviamente no le voy a decir eso
-                        {
-                            label_mensaje.Text = "El usuario es incorrecto";
-                        }
-                    }else//no hay arbol
-                    {
-                        label_mensaje.Text = "El password o usuario son incorrectos";
-                    }
-                    //Session["Usuario"] = null;
+                    label_mensaje.Text = "La clave o usuario de administrador son invalidos";
                 }
+            }else
+            {
+                label_mensaje.Text = "No puede dejar campos vacios";
             }
             
         }
