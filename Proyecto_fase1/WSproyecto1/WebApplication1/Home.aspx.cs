@@ -13,6 +13,8 @@ namespace WebApplication1
         {
             urlRequest();
             servicio = new NavalWarsServiceClient();
+            servicio.cleanBinario();
+            servicio.clearMatriz();//nuevo
             Session["servicio"] = servicio;
             
         }

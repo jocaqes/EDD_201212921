@@ -39,6 +39,11 @@
             </tr>
         </table>
     </div>
+
+    <div>
+        <h3>Tablero de Juego</h3>
+        <img alt="Porque no carga mi imagen" src="Imagenes/tablero.png"/>
+    </div>
     </form>
 </body>
 </html>

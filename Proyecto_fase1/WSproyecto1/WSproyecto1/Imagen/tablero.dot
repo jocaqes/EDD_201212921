@@ -1,0 +1,9 @@
+digraph g{
+{rank=same;
+ esquina[color=white,label=""];
+subgraph cluster_columna{
+}
+}
+subgraph cluster_fila{
+}
+}

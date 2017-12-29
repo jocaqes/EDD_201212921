@@ -70,14 +70,17 @@
   <ItemGroup>
     <Compile Include="Arbol\ArbolBinario.cs" />
     <Compile Include="Arbol\ListaD.cs" />
+    <Compile Include="Arbol\Matriz.cs" />
     <Compile Include="INavalWarsService.cs" />
     <Compile Include="NavalWarsService.svc.cs">
       <DependentUpon>NavalWarsService.svc</DependentUpon>
     </Compile>
     <Compile Include="Nodos\Node.cs" />
     <Compile Include="Nodos\Nodo.cs" />
+    <Compile Include="Nodos\NodoO.cs" />
     <Compile Include="Objetos\Juego.cs" />
     <Compile Include="Objetos\Persona.cs" />
+    <Compile Include="Objetos\Unidad.cs" />
     <Compile Include="Reporte\CargaMasiva.cs" />
     <Compile Include="Reporte\Grafica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -136,6 +136,180 @@ namespace WSproyecto1.Reporte
         }
         #endregion
 
+        #region matriz
+        private string codigoMatriz(Matriz tablero, int nivel = 1)
+        {
+            string salida = "digraph g{\n";
+            Node<NodoO> fila = tablero.raiz_row;
+            Node<NodoO> columna = tablero.raiz_col;
+            Node<NodoO> aux = tablero.esquina;
+            salida += "{rank=same;\n esquina[color=white,label=\"\"];\n";
+            salida += codigoColumna(columna);
+            salida += codigoFila(fila);
+            salida += codigoNodos(fila, nivel);//aqui veo que nivel quiero graficar
+            salida += "}";
+            return salida;
+        }
+        private string codigoColumna(Node<NodoO> columna)
+        {
+            string salida = "subgraph cluster_columna{\n";
+            Node<NodoO> aux = columna;
+            while (aux != null)
+            {
+                salida += "col" + aux.key_ + "[label=\"" + aux.key_ + "\";shape=box;height=.7;width=.7;fixedsize=true];\n";
+                if (aux.anterior != null)
+                {
+                    salida += "col" + aux.key_ + "->col" + aux.anterior.key_ + ";\n";
+                    salida += "col" + aux.anterior.key_ + "->col" + aux.key_ + ";\n";
+                }
+                aux = aux.siguiente;
+            }
+            if (columna != null)
+            {
+                salida += "esquina->col" + columna.key_ + "[color=transparent];\n";
+            }
+            salida += "}\n}\n";
+            return salida;
+        }
+        private string codigoFila(Node<NodoO> fila)
+        {
+            string salida = "subgraph cluster_fila{\n";
+            Node<NodoO> aux = fila;
+            while (aux != null)
+            {
+                salida += "row" + aux.key + "[label=\"" + aux.key + "\";shape=box;height=.7;width=.7;fixedsize=true];\n";
+                if (aux.anterior != null)
+                {
+                    salida += "row" + aux.key + "->row" + aux.anterior.key + ";\n";
+                    salida += "row" + aux.anterior.key + "->row" + aux.key + ";\n";
+                }
+                aux = aux.siguiente;
+            }
+            if (fila != null)
+            {
+                salida += "esquina->row" + fila.key + "[color=transparent];\n";
+            }
+            salida += "}\n";
+            return salida;
+        }
+        private NodoO buscarZ(int z, NodoO raiz)
+        {
+            if (raiz == null)
+                return null;
+            NodoO aux = raiz;
+            while (aux.bottom != null)
+            {
+                aux = aux.bottom;
+            }
+            while (aux != null)
+            {
+                if (aux.item.Z == z)
+                    break;
+                aux = aux.top;
+            }
+            return aux;
+        }
+        private string codigoNodos(Node<NodoO> fila, int nivel = 1)
+        {
+            string salida = "";
+            Node<NodoO> aux = fila;
+            NodoO actual;
+            NodoO actual_Z;
+            while (aux != null)
+            {
+                actual = aux.item;
+                actual = actual.der;//el primero es la raiz i ese no tiene nada
+                salida += "{rank=same;\n";
+
+                while (actual != null)
+                {
+                    actual_Z = buscarZ(nivel, actual);//este seria el nodo en el nivel que estoy buscando
+                    if (actual_Z != null)//si hay algo en ese nivel
+                    {
+                        Unidad coso = actual_Z.item;
+                        salida += "orto" + actual_Z.fila + "_" + actual_Z.columna
+                           + "[label=\"" + coso.Tipo + "\nVida:" + coso.Hp + "\nMov:" + coso.Movimiento
+                           + "\nRango:" + coso.Alcance + "\";shape=box;height=.7;width=.7;fixedsize=true;fontsize=8];\n";
+                        if (actual.izq.item == null)//apunta a la raiz que esta dentro de la fila, necesito usar a nodo raiz, no a nodo Z
+                        {
+                            salida += "row" + aux.key + "->orto" + actual_Z.fila + "_" + actual_Z.columna + "[dir=both;weight=0];\n";
+                        }
+                        if (actual.izq.item != null)//apunta a una unidad
+                        {
+                            NodoO companyero_izq = buscarZ(nivel, actual.izq);//busco a ver si tiene un compañero
+                            if (companyero_izq != null)//el codigo no necesita que lo haga con actual Z o companyero, eso da igual
+                            {
+                                salida += "orto" + actual.izq.fila + "_" + actual.izq.columna + "->orto" + actual.fila + "_" + actual.columna + "[dir=both;weight=0];\n";
+                            }
+                        }
+                    }
+                    actual = actual.der;
+                }
+                salida += "}\n";
+                actual = aux.item;
+                actual = actual.der;//el primero es la raiz y ese no tiene nada
+                while (actual != null)//columnas
+                {
+                    actual_Z = buscarZ(nivel, actual);//para terminar, con las columnas
+                    if (actual_Z != null)
+                    {
+                        Unidad coso = actual_Z.item;
+                        if (actual.up.item != null)
+                        {
+                            NodoO companyero_izq = buscarZ(nivel, actual.up);//busco a ver si tiene un compañero
+                            salida += "orto" + actual.up.fila + "_" + actual.up.columna + "->orto" + actual.fila + "_" + actual.columna + "[dir=both];\n";
+                        }
+                        else// (actual.up.item == null)
+                            salida += "col" + actual.columna + "->orto" + actual.fila + "_" + actual.columna + "[dir=both];\n";
+                    }
+                    actual = actual.der;
+                }
+                salida += "\n";
+                aux = aux.siguiente;
+            }
+            return salida;
+        }
+
+        public bool graficarTablero(Matriz tablero,string nombre_dot, string nombre_png , int nivel = 1)
+        {
+            bool bandera = true;
+            string ruta_dot = Path.Combine(path, nombre_dot);
+            string ruta_png = Path.Combine(path, nombre_png);
+            if (guardar(codigoMatriz(tablero, nivel), nombre_dot))//1.guardamos el codigo
+            {
+                string comando;
+                /*if (!string.IsNullOrEmpty(ruta_destino))
+                    comando = "dot " + "-Tpng \"" + ruta_dot + "\" -o \"" + Path.Combine(ruta_destino, nombre_png) + "\"";
+                else*/
+                    comando = "dot " + "-Tpng \"" + ruta_dot + "\" -o \"" + ruta_png + "\"";
+                if (llamarCMD(comando))
+                {
+                    bandera= true;
+                }
+                else
+                    bandera= false;
+            }
+           /* if (bandera)
+            {
+                if (!string.IsNullOrEmpty(ruta_destino))
+                {
+                    string destino_final = Path.Combine(ruta_destino, nombre_png);
+                    if (File.Exists(destino_final))//elimino la imagen anterior
+                    {
+                        File.Delete(destino_final);
+                    }
+                    if (File.Exists(ruta_png))
+                    {
+                        copiarImagen(ruta_png, destino_final);
+                    }
+                }
+            }*/
+            return bandera;
+        }
+
+        #endregion
+
+
 
         public bool llamarCMD(string comando)//aqui se maneja el cmd
         {

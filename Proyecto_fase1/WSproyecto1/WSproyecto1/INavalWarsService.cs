@@ -13,6 +13,7 @@ namespace WSproyecto1
         [OperationContract]
         Persona newPersona(string password, string mail);
 
+
         #region Arbol Binario
         /*[OperationContract]
         ArbolBinario newArbolBinario();*/
@@ -25,6 +26,9 @@ namespace WSproyecto1
 
         [OperationContract]
         Nodo buscar(string nick);
+
+        [OperationContract]
+        Nodo logIn(string nick, string password);
 
         [OperationContract]
         bool eliminar(string nick);
@@ -72,6 +76,36 @@ namespace WSproyecto1
         bool cargaJuegos(string direccion);
         #endregion
 
+        #region Matriz
+        [OperationContract]
+        void setParametrosJuego(int filas, int columnas, int unidades);
 
+        [OperationContract]
+        void clearMatriz();
+
+        [OperationContract]
+        int getNoFilas();
+
+        [OperationContract]
+        int getNoColumnas();
+
+        [OperationContract]
+        int getNoUnidades();
+
+        [OperationContract]
+        int getNoJugador();
+
+        [OperationContract]
+        void setNoJugador(int jugador);
+
+        [OperationContract]
+        bool insertarUnidad(Unidad item, int fila, string columna);
+
+        [OperationContract]
+        Unidad newUnidad(string nombre, string x, int y, string duenyo, int vivo = 1);
+
+        [OperationContract]
+        bool graficarTablero(int nivel);
+        #endregion
     }
 }

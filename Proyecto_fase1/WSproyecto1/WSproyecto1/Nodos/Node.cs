@@ -5,7 +5,13 @@
     {
         public Node<T> siguiente;
         public Node<T> anterior;
-        private T item;
+
+        //nuevo para la matriz
+        public int key;
+        public string key_;
+        //nuevo para la matriz
+
+        public T item;
 
         #region GyS
         public T Item
@@ -34,6 +40,14 @@
             this.item = item;
             siguiente = null;
             anterior = null;
+        }
+        public Node(T item,int key, string key_)
+        {
+            this.item = item;
+            siguiente = null;
+            anterior = null;
+            this.key = key;
+            this.key_ = key_;
         }
     }
 }

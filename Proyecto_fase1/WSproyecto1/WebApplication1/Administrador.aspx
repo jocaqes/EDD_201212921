@@ -112,6 +112,31 @@
 
     </div>
     <div>
+        <h3>Datos de Partida</h3>
+        <asp:Label ID="Label15" runat="server" Text="Numero de Columnas"></asp:Label>
+        <asp:TextBox ID="text_columnas" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="Label16" runat="server" Text="Numero de Filas"></asp:Label>
+        <asp:TextBox ID="text_filas" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="Label17" runat="server" Text="Numero de Unidades"></asp:Label>
+        <asp:TextBox ID="text_unidades" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="Label18" runat="server" Text="Tipo de Partida"></asp:Label>
+        <asp:DropDownList ID="list_tipo_partida" runat="server">
+            <asp:ListItem Selected="True">Normal</asp:ListItem>
+            <asp:ListItem>Tiempo</asp:ListItem>
+            <asp:ListItem>Base</asp:ListItem>
+        </asp:DropDownList>
+        <br />
+        <asp:Label ID="Label19" runat="server" Text="Tiempo"></asp:Label>
+        <asp:TextBox ID="text_tiempo" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="boton_set_partida" runat="server" Text="Set Partida" OnClick="boton_set_partida_Click" />
+        <asp:Label ID="label_msj_partida" runat="server" Text=""></asp:Label>
+        <br />
+        ---------------------------------------------------------------</div>
+    <div>
         <h3>Reportes</h3>
         <asp:Button ID="boton_graficar" runat="server" Text="Generar Reportes" OnClick="boton_graficar_Click" />
 

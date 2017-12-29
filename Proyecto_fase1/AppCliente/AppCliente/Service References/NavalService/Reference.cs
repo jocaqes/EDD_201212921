@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.NavalWarsWS {
+namespace AppCliente.NavalService {
     using System.Runtime.Serialization;
     using System;
     
@@ -26,7 +26,7 @@ namespace WebApplication1.NavalWarsWS {
         
         private string mailField;
         
-        private WebApplication1.NavalWarsWS.ListaDOfJuego209EgP0h mis_partidasField;
+        private AppCliente.NavalService.ListaDOfJuego209EgP0h mis_partidasField;
         
         private string passwordField;
         
@@ -67,7 +67,7 @@ namespace WebApplication1.NavalWarsWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public WebApplication1.NavalWarsWS.ListaDOfJuego209EgP0h mis_partidas {
+        public AppCliente.NavalService.ListaDOfJuego209EgP0h mis_partidas {
             get {
                 return this.mis_partidasField;
             }
@@ -113,9 +113,9 @@ namespace WebApplication1.NavalWarsWS {
         
         private int countField;
         
-        private WebApplication1.NavalWarsWS.NodeOfJuego209EgP0h finField;
+        private AppCliente.NavalService.NodeOfJuego209EgP0h finField;
         
-        private WebApplication1.NavalWarsWS.NodeOfJuego209EgP0h raizField;
+        private AppCliente.NavalService.NodeOfJuego209EgP0h raizField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -141,7 +141,7 @@ namespace WebApplication1.NavalWarsWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public WebApplication1.NavalWarsWS.NodeOfJuego209EgP0h fin {
+        public AppCliente.NavalService.NodeOfJuego209EgP0h fin {
             get {
                 return this.finField;
             }
@@ -154,7 +154,7 @@ namespace WebApplication1.NavalWarsWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public WebApplication1.NavalWarsWS.NodeOfJuego209EgP0h raiz {
+        public AppCliente.NavalService.NodeOfJuego209EgP0h raiz {
             get {
                 return this.raizField;
             }
@@ -185,15 +185,15 @@ namespace WebApplication1.NavalWarsWS {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private WebApplication1.NavalWarsWS.NodeOfJuego209EgP0h anteriorField;
+        private AppCliente.NavalService.NodeOfJuego209EgP0h anteriorField;
         
-        private WebApplication1.NavalWarsWS.Juego itemField;
+        private AppCliente.NavalService.Juego itemField;
         
         private int keyField;
         
         private string key_Field;
         
-        private WebApplication1.NavalWarsWS.NodeOfJuego209EgP0h siguienteField;
+        private AppCliente.NavalService.NodeOfJuego209EgP0h siguienteField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -206,7 +206,7 @@ namespace WebApplication1.NavalWarsWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public WebApplication1.NavalWarsWS.NodeOfJuego209EgP0h anterior {
+        public AppCliente.NavalService.NodeOfJuego209EgP0h anterior {
             get {
                 return this.anteriorField;
             }
@@ -219,7 +219,7 @@ namespace WebApplication1.NavalWarsWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public WebApplication1.NavalWarsWS.Juego item {
+        public AppCliente.NavalService.Juego item {
             get {
                 return this.itemField;
             }
@@ -258,7 +258,7 @@ namespace WebApplication1.NavalWarsWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public WebApplication1.NavalWarsWS.NodeOfJuego209EgP0h siguiente {
+        public AppCliente.NavalService.NodeOfJuego209EgP0h siguiente {
             get {
                 return this.siguienteField;
             }
@@ -408,11 +408,11 @@ namespace WebApplication1.NavalWarsWS {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private WebApplication1.NavalWarsWS.Nodo derField;
+        private AppCliente.NavalService.Nodo derField;
         
-        private WebApplication1.NavalWarsWS.Persona itemField;
+        private AppCliente.NavalService.Persona itemField;
         
-        private WebApplication1.NavalWarsWS.Nodo izqField;
+        private AppCliente.NavalService.Nodo izqField;
         
         private string keyField;
         
@@ -427,7 +427,7 @@ namespace WebApplication1.NavalWarsWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public WebApplication1.NavalWarsWS.Nodo der {
+        public AppCliente.NavalService.Nodo der {
             get {
                 return this.derField;
             }
@@ -440,7 +440,7 @@ namespace WebApplication1.NavalWarsWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public WebApplication1.NavalWarsWS.Persona item {
+        public AppCliente.NavalService.Persona item {
             get {
                 return this.itemField;
             }
@@ -453,7 +453,7 @@ namespace WebApplication1.NavalWarsWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public WebApplication1.NavalWarsWS.Nodo izq {
+        public AppCliente.NavalService.Nodo izq {
             get {
                 return this.izqField;
             }
@@ -713,32 +713,32 @@ namespace WebApplication1.NavalWarsWS {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="NavalWarsWS.INavalWarsService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="NavalService.INavalWarsService")]
     public interface INavalWarsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newPersona", ReplyAction="http://tempuri.org/INavalWarsService/newPersonaResponse")]
-        WebApplication1.NavalWarsWS.Persona newPersona(string password, string mail);
+        AppCliente.NavalService.Persona newPersona(string password, string mail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newPersona", ReplyAction="http://tempuri.org/INavalWarsService/newPersonaResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Persona> newPersonaAsync(string password, string mail);
+        System.Threading.Tasks.Task<AppCliente.NavalService.Persona> newPersonaAsync(string password, string mail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/insertar", ReplyAction="http://tempuri.org/INavalWarsService/insertarResponse")]
-        bool insertar(string nick, WebApplication1.NavalWarsWS.Persona persona);
+        bool insertar(string nick, AppCliente.NavalService.Persona persona);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/insertar", ReplyAction="http://tempuri.org/INavalWarsService/insertarResponse")]
-        System.Threading.Tasks.Task<bool> insertarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona);
+        System.Threading.Tasks.Task<bool> insertarAsync(string nick, AppCliente.NavalService.Persona persona);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/buscar", ReplyAction="http://tempuri.org/INavalWarsService/buscarResponse")]
-        WebApplication1.NavalWarsWS.Nodo buscar(string nick);
+        AppCliente.NavalService.Nodo buscar(string nick);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/buscar", ReplyAction="http://tempuri.org/INavalWarsService/buscarResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Nodo> buscarAsync(string nick);
+        System.Threading.Tasks.Task<AppCliente.NavalService.Nodo> buscarAsync(string nick);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/logIn", ReplyAction="http://tempuri.org/INavalWarsService/logInResponse")]
-        WebApplication1.NavalWarsWS.Nodo logIn(string nick, string password);
+        AppCliente.NavalService.Nodo logIn(string nick, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/logIn", ReplyAction="http://tempuri.org/INavalWarsService/logInResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Nodo> logInAsync(string nick, string password);
+        System.Threading.Tasks.Task<AppCliente.NavalService.Nodo> logInAsync(string nick, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/eliminar", ReplyAction="http://tempuri.org/INavalWarsService/eliminarResponse")]
         bool eliminar(string nick);
@@ -747,10 +747,10 @@ namespace WebApplication1.NavalWarsWS {
         System.Threading.Tasks.Task<bool> eliminarAsync(string nick);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/modificar", ReplyAction="http://tempuri.org/INavalWarsService/modificarResponse")]
-        bool modificar(string nick, WebApplication1.NavalWarsWS.Persona persona);
+        bool modificar(string nick, AppCliente.NavalService.Persona persona);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/modificar", ReplyAction="http://tempuri.org/INavalWarsService/modificarResponse")]
-        System.Threading.Tasks.Task<bool> modificarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona);
+        System.Threading.Tasks.Task<bool> modificarAsync(string nick, AppCliente.NavalService.Persona persona);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/cleanBinario", ReplyAction="http://tempuri.org/INavalWarsService/cleanBinarioResponse")]
         void cleanBinario();
@@ -777,16 +777,16 @@ namespace WebApplication1.NavalWarsWS {
         System.Threading.Tasks.Task<int> ramasBinarioAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newJuego", ReplyAction="http://tempuri.org/INavalWarsService/newJuegoResponse")]
-        WebApplication1.NavalWarsWS.Juego newJuego(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano);
+        AppCliente.NavalService.Juego newJuego(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newJuego", ReplyAction="http://tempuri.org/INavalWarsService/newJuegoResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Juego> newJuegoAsync(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano);
+        System.Threading.Tasks.Task<AppCliente.NavalService.Juego> newJuegoAsync(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/agregarJuego", ReplyAction="http://tempuri.org/INavalWarsService/agregarJuegoResponse")]
-        bool agregarJuego(WebApplication1.NavalWarsWS.Juego nuevo, string usuario);
+        bool agregarJuego(AppCliente.NavalService.Juego nuevo, string usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/agregarJuego", ReplyAction="http://tempuri.org/INavalWarsService/agregarJuegoResponse")]
-        System.Threading.Tasks.Task<bool> agregarJuegoAsync(WebApplication1.NavalWarsWS.Juego nuevo, string usuario);
+        System.Threading.Tasks.Task<bool> agregarJuegoAsync(AppCliente.NavalService.Juego nuevo, string usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/graficarArbolBinario", ReplyAction="http://tempuri.org/INavalWarsService/graficarArbolBinarioResponse")]
         bool graficarArbolBinario(string ruta_destino);
@@ -861,16 +861,16 @@ namespace WebApplication1.NavalWarsWS {
         System.Threading.Tasks.Task setNoJugadorAsync(int jugador);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/insertarUnidad", ReplyAction="http://tempuri.org/INavalWarsService/insertarUnidadResponse")]
-        bool insertarUnidad(WebApplication1.NavalWarsWS.Unidad item, int fila, string columna);
+        bool insertarUnidad(AppCliente.NavalService.Unidad item, int fila, string columna);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/insertarUnidad", ReplyAction="http://tempuri.org/INavalWarsService/insertarUnidadResponse")]
-        System.Threading.Tasks.Task<bool> insertarUnidadAsync(WebApplication1.NavalWarsWS.Unidad item, int fila, string columna);
+        System.Threading.Tasks.Task<bool> insertarUnidadAsync(AppCliente.NavalService.Unidad item, int fila, string columna);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newUnidad", ReplyAction="http://tempuri.org/INavalWarsService/newUnidadResponse")]
-        WebApplication1.NavalWarsWS.Unidad newUnidad(string nombre, string x, int y, string duenyo, int vivo);
+        AppCliente.NavalService.Unidad newUnidad(string nombre, string x, int y, string duenyo, int vivo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/newUnidad", ReplyAction="http://tempuri.org/INavalWarsService/newUnidadResponse")]
-        System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Unidad> newUnidadAsync(string nombre, string x, int y, string duenyo, int vivo);
+        System.Threading.Tasks.Task<AppCliente.NavalService.Unidad> newUnidadAsync(string nombre, string x, int y, string duenyo, int vivo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INavalWarsService/graficarTablero", ReplyAction="http://tempuri.org/INavalWarsService/graficarTableroResponse")]
         bool graficarTablero(int nivel);
@@ -880,12 +880,12 @@ namespace WebApplication1.NavalWarsWS {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface INavalWarsServiceChannel : WebApplication1.NavalWarsWS.INavalWarsService, System.ServiceModel.IClientChannel {
+    public interface INavalWarsServiceChannel : AppCliente.NavalService.INavalWarsService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class NavalWarsServiceClient : System.ServiceModel.ClientBase<WebApplication1.NavalWarsWS.INavalWarsService>, WebApplication1.NavalWarsWS.INavalWarsService {
+    public partial class NavalWarsServiceClient : System.ServiceModel.ClientBase<AppCliente.NavalService.INavalWarsService>, AppCliente.NavalService.INavalWarsService {
         
         public NavalWarsServiceClient() {
         }
@@ -906,35 +906,35 @@ namespace WebApplication1.NavalWarsWS {
                 base(binding, remoteAddress) {
         }
         
-        public WebApplication1.NavalWarsWS.Persona newPersona(string password, string mail) {
+        public AppCliente.NavalService.Persona newPersona(string password, string mail) {
             return base.Channel.newPersona(password, mail);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Persona> newPersonaAsync(string password, string mail) {
+        public System.Threading.Tasks.Task<AppCliente.NavalService.Persona> newPersonaAsync(string password, string mail) {
             return base.Channel.newPersonaAsync(password, mail);
         }
         
-        public bool insertar(string nick, WebApplication1.NavalWarsWS.Persona persona) {
+        public bool insertar(string nick, AppCliente.NavalService.Persona persona) {
             return base.Channel.insertar(nick, persona);
         }
         
-        public System.Threading.Tasks.Task<bool> insertarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona) {
+        public System.Threading.Tasks.Task<bool> insertarAsync(string nick, AppCliente.NavalService.Persona persona) {
             return base.Channel.insertarAsync(nick, persona);
         }
         
-        public WebApplication1.NavalWarsWS.Nodo buscar(string nick) {
+        public AppCliente.NavalService.Nodo buscar(string nick) {
             return base.Channel.buscar(nick);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Nodo> buscarAsync(string nick) {
+        public System.Threading.Tasks.Task<AppCliente.NavalService.Nodo> buscarAsync(string nick) {
             return base.Channel.buscarAsync(nick);
         }
         
-        public WebApplication1.NavalWarsWS.Nodo logIn(string nick, string password) {
+        public AppCliente.NavalService.Nodo logIn(string nick, string password) {
             return base.Channel.logIn(nick, password);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Nodo> logInAsync(string nick, string password) {
+        public System.Threading.Tasks.Task<AppCliente.NavalService.Nodo> logInAsync(string nick, string password) {
             return base.Channel.logInAsync(nick, password);
         }
         
@@ -946,11 +946,11 @@ namespace WebApplication1.NavalWarsWS {
             return base.Channel.eliminarAsync(nick);
         }
         
-        public bool modificar(string nick, WebApplication1.NavalWarsWS.Persona persona) {
+        public bool modificar(string nick, AppCliente.NavalService.Persona persona) {
             return base.Channel.modificar(nick, persona);
         }
         
-        public System.Threading.Tasks.Task<bool> modificarAsync(string nick, WebApplication1.NavalWarsWS.Persona persona) {
+        public System.Threading.Tasks.Task<bool> modificarAsync(string nick, AppCliente.NavalService.Persona persona) {
             return base.Channel.modificarAsync(nick, persona);
         }
         
@@ -986,19 +986,19 @@ namespace WebApplication1.NavalWarsWS {
             return base.Channel.ramasBinarioAsync();
         }
         
-        public WebApplication1.NavalWarsWS.Juego newJuego(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano) {
+        public AppCliente.NavalService.Juego newJuego(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano) {
             return base.Channel.newJuego(usuario, oponente, unidades_desplegadas, sobrevivientes, destruidos, gano);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Juego> newJuegoAsync(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano) {
+        public System.Threading.Tasks.Task<AppCliente.NavalService.Juego> newJuegoAsync(string usuario, string oponente, int unidades_desplegadas, int sobrevivientes, int destruidos, int gano) {
             return base.Channel.newJuegoAsync(usuario, oponente, unidades_desplegadas, sobrevivientes, destruidos, gano);
         }
         
-        public bool agregarJuego(WebApplication1.NavalWarsWS.Juego nuevo, string usuario) {
+        public bool agregarJuego(AppCliente.NavalService.Juego nuevo, string usuario) {
             return base.Channel.agregarJuego(nuevo, usuario);
         }
         
-        public System.Threading.Tasks.Task<bool> agregarJuegoAsync(WebApplication1.NavalWarsWS.Juego nuevo, string usuario) {
+        public System.Threading.Tasks.Task<bool> agregarJuegoAsync(AppCliente.NavalService.Juego nuevo, string usuario) {
             return base.Channel.agregarJuegoAsync(nuevo, usuario);
         }
         
@@ -1098,19 +1098,19 @@ namespace WebApplication1.NavalWarsWS {
             return base.Channel.setNoJugadorAsync(jugador);
         }
         
-        public bool insertarUnidad(WebApplication1.NavalWarsWS.Unidad item, int fila, string columna) {
+        public bool insertarUnidad(AppCliente.NavalService.Unidad item, int fila, string columna) {
             return base.Channel.insertarUnidad(item, fila, columna);
         }
         
-        public System.Threading.Tasks.Task<bool> insertarUnidadAsync(WebApplication1.NavalWarsWS.Unidad item, int fila, string columna) {
+        public System.Threading.Tasks.Task<bool> insertarUnidadAsync(AppCliente.NavalService.Unidad item, int fila, string columna) {
             return base.Channel.insertarUnidadAsync(item, fila, columna);
         }
         
-        public WebApplication1.NavalWarsWS.Unidad newUnidad(string nombre, string x, int y, string duenyo, int vivo) {
+        public AppCliente.NavalService.Unidad newUnidad(string nombre, string x, int y, string duenyo, int vivo) {
             return base.Channel.newUnidad(nombre, x, y, duenyo, vivo);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.NavalWarsWS.Unidad> newUnidadAsync(string nombre, string x, int y, string duenyo, int vivo) {
+        public System.Threading.Tasks.Task<AppCliente.NavalService.Unidad> newUnidadAsync(string nombre, string x, int y, string duenyo, int vivo) {
             return base.Channel.newUnidadAsync(nombre, x, y, duenyo, vivo);
         }
         

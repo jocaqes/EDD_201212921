@@ -11,11 +11,27 @@ namespace WSproyecto1
     public class NavalWarsService : INavalWarsService
     {
         public static ArbolBinario arbol_binario = new ArbolBinario();
+        public static Matriz matriz_tablero = new Matriz();
+        public static int jugadores_conectados = 0;
 
         #region Arbol Binario
         public Nodo buscar(string nick)
         {
             return arbol_binario.buscar(nick);
+        }
+
+        public Nodo logIn(string nick, string password)
+        {
+            Nodo aux = arbol_binario.buscar(nick);
+            if (aux == null)
+                return null;
+            else
+            {
+                if (aux.Item.Password.Equals(password))
+                    return aux;
+                else
+                    return null;
+            }
         }
 
         public bool eliminar(string nick)
@@ -68,6 +84,8 @@ namespace WSproyecto1
         {
             return new Persona(password,mail);
         }
+
+
         #endregion
 
         #region Grafica
@@ -115,6 +133,60 @@ namespace WSproyecto1
                 aux.Item.mis_partidas.insertar(nuevo);
             }
             return  arbol_binario.modificar(aux.Item, usuario);
+        }
+        #endregion
+
+        #region Matriz
+        public void setParametrosJuego(int fila, int columna, int unidades)
+        {
+            matriz_tablero.Limite_filas = fila;
+            matriz_tablero.Limite_columnas = columna;
+            matriz_tablero.Limite_unidades = unidades;
+        }
+        public void clearMatriz()
+        {
+            matriz_tablero.clearMatriz();
+        }
+
+        public int getNoFilas()
+        {
+            return matriz_tablero.Limite_filas;
+        }
+
+        public int getNoColumnas()
+        {
+            return matriz_tablero.Limite_columnas;
+        }
+
+        public int getNoUnidades()
+        {
+            return matriz_tablero.Limite_unidades;
+        }
+
+        public int getNoJugador()
+        {
+            return jugadores_conectados;
+        }
+
+        public void setNoJugador(int jugador)
+        {
+            jugadores_conectados++;
+        }
+
+        public bool insertarUnidad(Unidad item, int fila, string columna)
+        {
+            return matriz_tablero.insertar(item,fila,columna);
+        }
+
+        public Unidad newUnidad(string nombre, string x, int y, string duenyo, int vivo = 1)
+        {
+            return new Unidad(nombre, x, y, duenyo, vivo);
+        }
+
+        public bool graficarTablero(int nivel)
+        {
+            bool respuesta = new Grafica().graficarTablero(matriz_tablero, "tablero" + nivel + ".dot", "tablero" + nivel + ".png", nivel);
+            return respuesta;
         }
 
 

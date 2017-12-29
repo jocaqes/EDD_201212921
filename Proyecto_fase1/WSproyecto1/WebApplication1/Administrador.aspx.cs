@@ -48,6 +48,7 @@ namespace WebApplication1
             {
                 label_msj_carga.Text = "Arbol Graficado";
                 servicio.graficarArbolBinarioEspejo(Server.MapPath("Imagenes"));
+                servicio.graficarTablero(1);
                 Page.ClientScript.RegisterStartupScript(
                 GetType(), "OpenWindow", "window.open('Reports.aspx','_newtab');", true);
                 //label_msj_carga.Text = Server.MapPath("Imagenes");
@@ -209,6 +210,29 @@ namespace WebApplication1
 
         }
 
+        #endregion
+
+
+        #region Partida
+        private bool checkPartidaText()
+        {
+            if (string.IsNullOrEmpty(text_filas.Text) || string.IsNullOrEmpty(text_columnas.Text) ||
+                string.IsNullOrEmpty(text_unidades.Text) || string.IsNullOrEmpty(text_tiempo.Text))
+                return false;
+            return true;
+        }
+
+        protected void boton_set_partida_Click(object sender, EventArgs e)
+        {
+            if (checkPartidaText())
+            {
+                servicio.setParametrosJuego(int.Parse(text_filas.Text), int.Parse(text_columnas.Text), int.Parse(text_unidades.Text));
+                label_msj_partida.Text = "Datos registrados";
+            }else
+            {
+                label_msj_partida.Text = "No pueden haber casillas vacias";
+            }
+        }
         #endregion
 
 

@@ -82,6 +82,9 @@
     <Content Include="Service References\NavalWarsWS\WebApplication1.NavalWarsWS.Juego.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\NavalWarsWS\WebApplication1.NavalWarsWS.Unidad.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
