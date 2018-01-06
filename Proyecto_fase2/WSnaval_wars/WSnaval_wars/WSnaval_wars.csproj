@@ -65,14 +65,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Estructuras\Binario.cs" />
     <Compile Include="INavalWars.cs" />
     <Compile Include="NavalWars.svc.cs">
       <DependentUpon>NavalWars.svc</DependentUpon>
     </Compile>
+    <Compile Include="Nodos\Nodo.cs" />
+    <Compile Include="Objetos\Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Dots\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
