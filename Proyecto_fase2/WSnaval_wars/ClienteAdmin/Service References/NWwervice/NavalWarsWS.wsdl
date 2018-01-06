@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="binarioInsertar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioInsertarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="binarioInsertarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioBuscar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioBuscarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="binarioBuscarResult" type="tns:NodoOfPersona" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NodoOfPersona">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="izq" type="tns:NodoOfPersona" />
+          <s:element minOccurs="0" maxOccurs="1" name="der" type="tns:NodoOfPersona" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Persona" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Altura" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Persona">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Conectado" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="binarioModificar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="conectado" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioModificarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="binarioModificarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioEliminar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioEliminarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="binarioEliminarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioCargaMasiva">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioCargaMasivaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="binarioCargaMasivaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarUsuarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="listarUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarUsuariosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="avlInsertar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="avlInsertarResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="binarioInsertarSoapIn">
+    <wsdl:part name="parameters" element="tns:binarioInsertar" />
+  </wsdl:message>
+  <wsdl:message name="binarioInsertarSoapOut">
+    <wsdl:part name="parameters" element="tns:binarioInsertarResponse" />
+  </wsdl:message>
+  <wsdl:message name="binarioBuscarSoapIn">
+    <wsdl:part name="parameters" element="tns:binarioBuscar" />
+  </wsdl:message>
+  <wsdl:message name="binarioBuscarSoapOut">
+    <wsdl:part name="parameters" element="tns:binarioBuscarResponse" />
+  </wsdl:message>
+  <wsdl:message name="binarioModificarSoapIn">
+    <wsdl:part name="parameters" element="tns:binarioModificar" />
+  </wsdl:message>
+  <wsdl:message name="binarioModificarSoapOut">
+    <wsdl:part name="parameters" element="tns:binarioModificarResponse" />
+  </wsdl:message>
+  <wsdl:message name="binarioEliminarSoapIn">
+    <wsdl:part name="parameters" element="tns:binarioEliminar" />
+  </wsdl:message>
+  <wsdl:message name="binarioEliminarSoapOut">
+    <wsdl:part name="parameters" element="tns:binarioEliminarResponse" />
+  </wsdl:message>
+  <wsdl:message name="binarioCargaMasivaSoapIn">
+    <wsdl:part name="parameters" element="tns:binarioCargaMasiva" />
+  </wsdl:message>
+  <wsdl:message name="binarioCargaMasivaSoapOut">
+    <wsdl:part name="parameters" element="tns:binarioCargaMasivaResponse" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:listarUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:listarUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="avlInsertarSoapIn">
+    <wsdl:part name="parameters" element="tns:avlInsertar" />
+  </wsdl:message>
+  <wsdl:message name="avlInsertarSoapOut">
+    <wsdl:part name="parameters" element="tns:avlInsertarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NavalWarsWSSoap">
+    <wsdl:operation name="binarioInsertar">
+      <wsdl:input message="tns:binarioInsertarSoapIn" />
+      <wsdl:output message="tns:binarioInsertarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="binarioBuscar">
+      <wsdl:input message="tns:binarioBuscarSoapIn" />
+      <wsdl:output message="tns:binarioBuscarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="binarioModificar">
+      <wsdl:input message="tns:binarioModificarSoapIn" />
+      <wsdl:output message="tns:binarioModificarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="binarioEliminar">
+      <wsdl:input message="tns:binarioEliminarSoapIn" />
+      <wsdl:output message="tns:binarioEliminarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="binarioCargaMasiva">
+      <wsdl:input message="tns:binarioCargaMasivaSoapIn" />
+      <wsdl:output message="tns:binarioCargaMasivaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarios">
+      <wsdl:input message="tns:listarUsuariosSoapIn" />
+      <wsdl:output message="tns:listarUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="avlInsertar">
+      <wsdl:input message="tns:avlInsertarSoapIn" />
+      <wsdl:output message="tns:avlInsertarSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NavalWarsWSSoap" type="tns:NavalWarsWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="binarioInsertar">
+      <soap:operation soapAction="http://tempuri.org/binarioInsertar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioBuscar">
+      <soap:operation soapAction="http://tempuri.org/binarioBuscar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioModificar">
+      <soap:operation soapAction="http://tempuri.org/binarioModificar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioEliminar">
+      <soap:operation soapAction="http://tempuri.org/binarioEliminar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioCargaMasiva">
+      <soap:operation soapAction="http://tempuri.org/binarioCargaMasiva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarios">
+      <soap:operation soapAction="http://tempuri.org/listarUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="avlInsertar">
+      <soap:operation soapAction="http://tempuri.org/avlInsertar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NavalWarsWSSoap12" type="tns:NavalWarsWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="binarioInsertar">
+      <soap12:operation soapAction="http://tempuri.org/binarioInsertar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioBuscar">
+      <soap12:operation soapAction="http://tempuri.org/binarioBuscar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioModificar">
+      <soap12:operation soapAction="http://tempuri.org/binarioModificar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioEliminar">
+      <soap12:operation soapAction="http://tempuri.org/binarioEliminar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioCargaMasiva">
+      <soap12:operation soapAction="http://tempuri.org/binarioCargaMasiva" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/listarUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="avlInsertar">
+      <soap12:operation soapAction="http://tempuri.org/avlInsertar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NavalWarsWS">
+    <wsdl:port name="NavalWarsWSSoap" binding="tns:NavalWarsWSSoap">
+      <soap:address location="http://localhost:52755/NavalWarsWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NavalWarsWSSoap12" binding="tns:NavalWarsWSSoap12">
+      <soap12:address location="http://localhost:52755/NavalWarsWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

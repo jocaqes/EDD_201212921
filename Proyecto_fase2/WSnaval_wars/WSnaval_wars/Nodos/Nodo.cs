@@ -1,5 +1,6 @@
 ﻿namespace WSnaval_wars.Nodos
 {
+    [System.Serializable]
     public class Nodo<T>
     {
         public Nodo<T> izq;

@@ -124,6 +124,7 @@ namespace WSnaval_wars.Estructuras
             if (isEmpty())
             {
                 raiz = new Nodo<T>(item, key);
+                count++;
                 //raiz.F_e = factorEquilibrio(raiz);
             }
             else
@@ -140,6 +141,7 @@ namespace WSnaval_wars.Estructuras
                 if (raiz.izq == null)
                 {
                     raiz.izq = new Nodo<T>(item, key);
+                    count++;
                 }
                 else
                 {
@@ -152,6 +154,7 @@ namespace WSnaval_wars.Estructuras
                 if (raiz.der == null)//si el derecho es null
                 {
                     raiz.der = new Nodo<T>(item, key);//inserto inmediatamente
+                    count++;
                 }
                 else
                     insertar(item, key, raiz.der, raiz, false);//contrario ingreso a la rama der; agregue al padre; agregue izq

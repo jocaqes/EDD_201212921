@@ -61,16 +61,18 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NavalWars.svc" />
+    <Content Include="NavalWarsWS.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Estructuras\AVL.cs" />
     <Compile Include="Estructuras\Binario.cs" />
-    <Compile Include="INavalWars.cs" />
-    <Compile Include="NavalWars.svc.cs">
-      <DependentUpon>NavalWars.svc</DependentUpon>
+    <Compile Include="NavalWarsWS.asmx.cs">
+      <DependentUpon>NavalWarsWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Nodos\Nodo.cs" />
+    <Compile Include="Objetos\Archivo.cs" />
     <Compile Include="Objetos\Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

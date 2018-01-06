@@ -313,11 +313,18 @@ namespace WSnaval_wars.Estructuras
         }
         #endregion
 
-
         #region Aux
         public bool isEmpty()
         {
             return raiz == null;
+        }
+
+        public string listarUsuarios(Nodo<T> raiz)
+        {
+            if (raiz == null)
+                return "";
+            else
+                return raiz.Key + "," + listarUsuarios(raiz.izq) + listarUsuarios(raiz.der);
         }
         #endregion
 

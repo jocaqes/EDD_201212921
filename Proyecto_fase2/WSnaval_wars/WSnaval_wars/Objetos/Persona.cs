@@ -1,5 +1,6 @@
 ﻿namespace WSnaval_wars.Objetos
 {
+    [System.Serializable]
     public class Persona
     {
         public string password;
@@ -32,6 +33,10 @@
         }
         #endregion
 
+        public Persona()
+        {
+
+        }
 
         public Persona(string password, string mail, bool conectado=true)
         {
