@@ -2,11 +2,12 @@
 
 namespace WSnaval_wars.Objetos
 {
+    [Serializable]
     public class Ataque
     {
         private string x;
         private int y;
-       // private Unidad atacante;
+        private string atacante;
         private bool resultado;
         private string tipo_unidad_danyada;
         private string emisor;
@@ -42,7 +43,7 @@ namespace WSnaval_wars.Objetos
             }
         }
 
-        /*internal Unidad Atacante
+        public string Atacante
         {
             get
             {
@@ -53,7 +54,7 @@ namespace WSnaval_wars.Objetos
             {
                 atacante = value;
             }
-        }*/
+        }
 
         public bool Resultado
         {
@@ -147,11 +148,11 @@ namespace WSnaval_wars.Objetos
         }
         #endregion
 
-        public Ataque(string x, int y, /*Unidad atacante,*/ bool resultado, string tipo_unidad_danyada, string emisor, string receptor, string tiempo_restante, int numero_ataque)
+        public Ataque(string x, int y, string atacante, bool resultado, string tipo_unidad_danyada, string emisor, string receptor, string tiempo_restante, int numero_ataque)
         {
             this.x = x;
             this.y = y;
-            //this.atacante = atacante;
+            this.atacante = atacante;
             this.resultado = resultado;
             this.tipo_unidad_danyada = tipo_unidad_danyada;
             this.emisor = emisor;
@@ -159,11 +160,6 @@ namespace WSnaval_wars.Objetos
             fecha = DateTime.Today.ToString("dd-MM-yyyy");
             this.tiempo_restante = tiempo_restante;
             this.numero_ataque = numero_ataque;
-        }
-
-        public Ataque(int y)//debug
-        {
-            this.y = y;
         }
 
         public Ataque()

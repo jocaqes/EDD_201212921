@@ -18,7 +18,8 @@ namespace WSnaval_wars
 
 
         public static Binario<Persona> arbol_binario = new Binario<Persona>();
-        public static AVL<Persona> arbol_avl = new AVL<Persona>();
+        //public static AVL<Persona> arbol_avl = new AVL<Persona>();
+        public static ArbolB arbol_b = new ArbolB();
 
         #region Binario
         [WebMethod]
@@ -58,11 +59,21 @@ namespace WSnaval_wars
         }
         #endregion
 
-        #region Arbol Avl
+        #region Arbol B
         [WebMethod]
-        public void avlInsertar(string nick, string mail, string password)
+        public void bSetGrado(int grado)
         {
-            arbol_avl.insertar(new Persona(password, mail), nick);
+            arbol_b.Grado = grado;
+        }
+        [WebMethod]
+        public void bSetPatron(string patron)
+        {
+            arbol_b.Patron = patron;
+        }
+        [WebMethod]
+        public bool bCargaMasiva(string url)
+        {
+            return new Archivo().cargaHistorial(url, arbol_b);
         }
         #endregion
 

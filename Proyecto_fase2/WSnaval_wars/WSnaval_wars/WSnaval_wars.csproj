@@ -65,14 +65,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Estructuras\ArbolB.cs" />
     <Compile Include="Estructuras\AVL.cs" />
     <Compile Include="Estructuras\Binario.cs" />
+    <Compile Include="Estructuras\Lista.cs" />
     <Compile Include="NavalWarsWS.asmx.cs">
       <DependentUpon>NavalWarsWS.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Nodos\Nodo.cs" />
+    <Compile Include="Nodos\NodoB.cs" />
+    <Compile Include="Nodos\Nodus.cs" />
     <Compile Include="Objetos\Archivo.cs" />
+    <Compile Include="Objetos\Ataque.cs" />
     <Compile Include="Objetos\Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
