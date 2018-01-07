@@ -9,6 +9,12 @@
         .auto-style1 {
             width: 160px;
         }
+        .auto-style2 {
+            margin-left: 0px;
+        }
+        .auto-style3 {
+            width: 180px;
+        }
     </style>
 </head>
 <body>
@@ -75,6 +81,48 @@
             </tr>
         </table>
         <asp:Label ID="msj_ABin_modificar" runat="server" Text=""></asp:Label>
+    </div>
+    ------------------------------------------------------------
+    <div><!--div carga partidas-->
+
+    </div>
+    <div><!--div carga arbol B-->
+        <h2>Arbol B</h2>
+        <table style="width: 40%;">
+            <tr>
+                <td class="auto-style3"><asp:Label ID="Label9" runat="server" Text="Parametro de Orden"></asp:Label></td>
+                <td><asp:DropDownList ID="drop_B_parametro" runat="server" CssClass="auto-style2" Width="260px">
+                    <asp:ListItem Selected="True" Value="CoordenadaY"></asp:ListItem>
+                    <asp:ListItem Value="CoordenadaX"></asp:ListItem>
+                    <asp:ListItem Value="Unidad Atacante"></asp:ListItem>
+                    <asp:ListItem Value="Resultado"></asp:ListItem>
+                    <asp:ListItem Value="Tipo Unidad"></asp:ListItem>
+                    <asp:ListItem Value="Emisor"></asp:ListItem>
+                    <asp:ListItem Value="Receptor"></asp:ListItem>
+                    <asp:ListItem Value="Fecha"></asp:ListItem>
+                    <asp:ListItem Value="Tiempo Restante"></asp:ListItem>
+                    <asp:ListItem Value="No. Ataque"></asp:ListItem>
+                    </asp:DropDownList></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="Label11" runat="server" Text="Grado"></asp:Label></td>
+                <td><asp:TextBox ID="text_B_grado" runat="server" Width="35px"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td class="auto-style3"><asp:Label ID="Label10" runat="server" Text="Direccion"></asp:Label></td>
+                <td><asp:TextBox ID="text_B_carga" runat="server" Width="260px"></asp:TextBox></td>
+                <td><asp:Button ID="boton_B_cargar" runat="server" Text="Cargar" /></td>
+            </tr>
+        </table>
+        <asp:Label ID="msj_B_carga" runat="server" Text=""></asp:Label>
+    
+    </div>
+        ------------------------------------------------------------
+    <div><!--div reglas del juego-->
+
+    </div>
+    <div><!--div carga tablero-->
+
     </div>
     </form>
 </body>
