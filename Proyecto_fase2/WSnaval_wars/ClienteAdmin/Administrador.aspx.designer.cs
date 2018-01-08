@@ -139,6 +139,33 @@ namespace ClienteAdmin {
         protected global::System.Web.UI.WebControls.Button boton_ABin_carga;
         
         /// <summary>
+        /// Label12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label12;
+        
+        /// <summary>
+        /// text_ABin_games control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox text_ABin_games;
+        
+        /// <summary>
+        /// boton_ABin_games_carga control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button boton_ABin_games_carga;
+        
+        /// <summary>
         /// msj_ABin_carga control.
         /// </summary>
         /// <remarks>
@@ -245,6 +272,15 @@ namespace ClienteAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label msj_ABin_modificar;
+        
+        /// <summary>
+        /// label_juegos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_juegos;
         
         /// <summary>
         /// Label9 control.

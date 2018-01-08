@@ -26,8 +26,8 @@ namespace WSnaval_wars.Objetos
                     if (!string.IsNullOrEmpty(entrada))
                     {
                         split = entrada.Split(',');
-                        actual = new Persona(split[1], split[2]);
-                        actual.setConectado(split[3]);
+                        actual = new Persona(split[1], split[2], split[3]);
+                        //actual.setConectado(split[3]);
                         arbol_usuarios.insertar(actual, split[0]);
                     }
                 }
@@ -88,6 +88,48 @@ namespace WSnaval_wars.Objetos
             return todo_bien;
         }
 
+        #endregion
+
+        #region Lista Doble de Juegos
+        public bool cargaJuegos(string direccion,ref Binario<Persona> arbol_usuarios)
+        {
+            bool todo_bien;
+            StreamReader archivo = new StreamReader(direccion);
+            string entrada = "";
+            string[] split;
+            Juego actual;
+            try
+            {
+                if (archivo.Peek() > -1)
+                    entrada = archivo.ReadLine();//me como la primera linea porque por lo visto es una cabezera
+                Nodos.Nodo<Persona> aux;
+                while (archivo.Peek() > -1)
+                {
+                    entrada = archivo.ReadLine();
+                    if (!string.IsNullOrEmpty(entrada))
+                    {
+                        split = entrada.Split(',');
+                        aux = arbol_usuarios.buscar(split[0]);
+                        if (aux != null)
+                        {
+                            actual = new Juego(split[0], split[1], int.Parse(split[2]), int.Parse(split[3]), int.Parse(split[4]), split[5]);
+                            aux.Item.juegos.pushTop(actual);
+                            //arbol_usuarios.modificar(aux.Item, aux.Key);//nuevo
+                        }
+
+                        //actual.setConectado(split[3]);
+                        //arbol_usuarios.insertar(actual, split[0]);
+                    }
+                }
+                todo_bien = true;
+            }
+            catch (Exception e)
+            {
+                todo_bien = false;
+            }
+            archivo.Close();
+            return todo_bien;
+        }
         #endregion
     }
 }

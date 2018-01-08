@@ -1,4 +1,5 @@
 ﻿using System;
+using ClienteAdmin.Clases_aux;
 using ClienteAdmin.NWwervice;
 
 namespace ClienteAdmin
@@ -59,6 +60,26 @@ namespace ClienteAdmin
                 msj_ABin_carga.Text = "No puede dejar la direccion vacia";
             }
         }
+
+        protected void boton_ABin_games_carga_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(text_ABin_games.Text))
+            {
+                if (servicio.binarioCargaJuegos(text_ABin_games.Text))
+                {
+                    msj_ABin_carga.Text = "Carga exitosa";
+                    //cargarDropList();
+                }
+                else
+                {
+                    msj_ABin_carga.Text = "Carga fallida";
+                }
+            }
+            else
+            {
+                msj_ABin_carga.Text = "No puede dejar la direccion vacia";
+            }
+        }
         #endregion
 
         #region Buscar
@@ -67,13 +88,15 @@ namespace ClienteAdmin
             string aux = drop_ABin_usuarios.SelectedValue;
             if (!string.IsNullOrEmpty(aux))
             {
-                NodoOfPersona nodo_aux = servicio.binarioBuscar(aux);
-                if (nodo_aux != null)
+                Persona user = servicio.binarioBuscar(aux);//modificado
+                if (user != null)
                 {
-                    text_ABin_Mmail.Text = nodo_aux.Item.mail;
-                    text_ABin_Mpass.Text = nodo_aux.Item.password;
-                    radio_ABin_Mconectado.Checked = nodo_aux.Item.Conectado;
-                }else
+                    text_ABin_Mmail.Text = user.mail;//modificado
+                    text_ABin_Mpass.Text = user.password;//modificado
+                    radio_ABin_Mconectado.Checked = user.Conectado;//modificado
+                    label_juegos.Text = Tabla.tablaUsuarios(user);//modificado
+                }
+                else
                 {
                     msj_ABin_modificar.Text = "Usuario no encontrado";
                 }
@@ -125,6 +148,7 @@ namespace ClienteAdmin
             text_ABin_Mmail.Text = "";
             text_ABin_Mpass.Text = "";
         }
+
         #endregion
 
 

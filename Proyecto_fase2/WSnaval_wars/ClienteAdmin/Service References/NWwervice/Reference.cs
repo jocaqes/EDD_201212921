@@ -15,114 +15,6 @@ namespace ClienteAdmin.NWwervice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NodoOfPersona", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class NodoOfPersona : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ClienteAdmin.NWwervice.NodoOfPersona izqField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ClienteAdmin.NWwervice.NodoOfPersona derField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ClienteAdmin.NWwervice.Persona ItemField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string KeyField;
-        
-        private int AlturaField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public ClienteAdmin.NWwervice.NodoOfPersona izq {
-            get {
-                return this.izqField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.izqField, value) != true)) {
-                    this.izqField = value;
-                    this.RaisePropertyChanged("izq");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public ClienteAdmin.NWwervice.NodoOfPersona der {
-            get {
-                return this.derField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.derField, value) != true)) {
-                    this.derField = value;
-                    this.RaisePropertyChanged("der");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public ClienteAdmin.NWwervice.Persona Item {
-            get {
-                return this.ItemField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ItemField, value) != true)) {
-                    this.ItemField = value;
-                    this.RaisePropertyChanged("Item");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Key {
-            get {
-                return this.KeyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.KeyField, value) != true)) {
-                    this.KeyField = value;
-                    this.RaisePropertyChanged("Key");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public int Altura {
-            get {
-                return this.AlturaField;
-            }
-            set {
-                if ((this.AlturaField.Equals(value) != true)) {
-                    this.AlturaField = value;
-                    this.RaisePropertyChanged("Altura");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Persona", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
     public partial class Persona : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -135,6 +27,9 @@ namespace ClienteAdmin.NWwervice {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string mailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteAdmin.NWwervice.ListaDOfJuego juegosField;
         
         private bool ConectadoField;
         
@@ -174,7 +69,20 @@ namespace ClienteAdmin.NWwervice {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public ClienteAdmin.NWwervice.ListaDOfJuego juegos {
+            get {
+                return this.juegosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.juegosField, value) != true)) {
+                    this.juegosField = value;
+                    this.RaisePropertyChanged("juegos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
         public bool Conectado {
             get {
                 return this.ConectadoField;
@@ -183,6 +91,264 @@ namespace ClienteAdmin.NWwervice {
                 if ((this.ConectadoField.Equals(value) != true)) {
                     this.ConectadoField = value;
                     this.RaisePropertyChanged("Conectado");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ListaDOfJuego", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class ListaDOfJuego : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteAdmin.NWwervice.NodoDOfJuego raizField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteAdmin.NWwervice.NodoDOfJuego finField;
+        
+        private int countField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public ClienteAdmin.NWwervice.NodoDOfJuego raiz {
+            get {
+                return this.raizField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.raizField, value) != true)) {
+                    this.raizField = value;
+                    this.RaisePropertyChanged("raiz");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public ClienteAdmin.NWwervice.NodoDOfJuego fin {
+            get {
+                return this.finField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.finField, value) != true)) {
+                    this.finField = value;
+                    this.RaisePropertyChanged("fin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int count {
+            get {
+                return this.countField;
+            }
+            set {
+                if ((this.countField.Equals(value) != true)) {
+                    this.countField = value;
+                    this.RaisePropertyChanged("count");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NodoDOfJuego", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class NodoDOfJuego : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteAdmin.NWwervice.NodoDOfJuego siguienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteAdmin.NWwervice.Juego ItemField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public ClienteAdmin.NWwervice.NodoDOfJuego siguiente {
+            get {
+                return this.siguienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.siguienteField, value) != true)) {
+                    this.siguienteField = value;
+                    this.RaisePropertyChanged("siguiente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public ClienteAdmin.NWwervice.Juego Item {
+            get {
+                return this.ItemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemField, value) != true)) {
+                    this.ItemField = value;
+                    this.RaisePropertyChanged("Item");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Juego", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Juego : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsuarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OponenteField;
+        
+        private int Unidades_desplegadasField;
+        
+        private int Unidades_sobrevivientesField;
+        
+        private int Unidades_destruidas_por_miField;
+        
+        private bool GaneField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Usuario {
+            get {
+                return this.UsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsuarioField, value) != true)) {
+                    this.UsuarioField = value;
+                    this.RaisePropertyChanged("Usuario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string Oponente {
+            get {
+                return this.OponenteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OponenteField, value) != true)) {
+                    this.OponenteField = value;
+                    this.RaisePropertyChanged("Oponente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int Unidades_desplegadas {
+            get {
+                return this.Unidades_desplegadasField;
+            }
+            set {
+                if ((this.Unidades_desplegadasField.Equals(value) != true)) {
+                    this.Unidades_desplegadasField = value;
+                    this.RaisePropertyChanged("Unidades_desplegadas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int Unidades_sobrevivientes {
+            get {
+                return this.Unidades_sobrevivientesField;
+            }
+            set {
+                if ((this.Unidades_sobrevivientesField.Equals(value) != true)) {
+                    this.Unidades_sobrevivientesField = value;
+                    this.RaisePropertyChanged("Unidades_sobrevivientes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public int Unidades_destruidas_por_mi {
+            get {
+                return this.Unidades_destruidas_por_miField;
+            }
+            set {
+                if ((this.Unidades_destruidas_por_miField.Equals(value) != true)) {
+                    this.Unidades_destruidas_por_miField = value;
+                    this.RaisePropertyChanged("Unidades_destruidas_por_mi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public bool Gane {
+            get {
+                return this.GaneField;
+            }
+            set {
+                if ((this.GaneField.Equals(value) != true)) {
+                    this.GaneField = value;
+                    this.RaisePropertyChanged("Gane");
                 }
             }
         }
@@ -236,6 +402,13 @@ namespace ClienteAdmin.NWwervice {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/binarioCargaMasiva", ReplyAction="*")]
         System.Threading.Tasks.Task<ClienteAdmin.NWwervice.binarioCargaMasivaResponse> binarioCargaMasivaAsync(ClienteAdmin.NWwervice.binarioCargaMasivaRequest request);
         
+        // CODEGEN: Generating message contract since element name url from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/binarioCargaJuegos", ReplyAction="*")]
+        ClienteAdmin.NWwervice.binarioCargaJuegosResponse binarioCargaJuegos(ClienteAdmin.NWwervice.binarioCargaJuegosRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/binarioCargaJuegos", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.binarioCargaJuegosResponse> binarioCargaJuegosAsync(ClienteAdmin.NWwervice.binarioCargaJuegosRequest request);
+        
         // CODEGEN: Generating message contract since element name listarUsuariosResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/listarUsuarios", ReplyAction="*")]
         ClienteAdmin.NWwervice.listarUsuariosResponse listarUsuarios(ClienteAdmin.NWwervice.listarUsuariosRequest request);
@@ -243,12 +416,37 @@ namespace ClienteAdmin.NWwervice {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/listarUsuarios", ReplyAction="*")]
         System.Threading.Tasks.Task<ClienteAdmin.NWwervice.listarUsuariosResponse> listarUsuariosAsync(ClienteAdmin.NWwervice.listarUsuariosRequest request);
         
-        // CODEGEN: Generating message contract since element name nick from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/avlInsertar", ReplyAction="*")]
-        ClienteAdmin.NWwervice.avlInsertarResponse avlInsertar(ClienteAdmin.NWwervice.avlInsertarRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/bSetGrado", ReplyAction="*")]
+        void bSetGrado(int grado);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/avlInsertar", ReplyAction="*")]
-        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.avlInsertarResponse> avlInsertarAsync(ClienteAdmin.NWwervice.avlInsertarRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/bSetGrado", ReplyAction="*")]
+        System.Threading.Tasks.Task bSetGradoAsync(int grado);
+        
+        // CODEGEN: Generating message contract since element name patron from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/bSetPatron", ReplyAction="*")]
+        ClienteAdmin.NWwervice.bSetPatronResponse bSetPatron(ClienteAdmin.NWwervice.bSetPatronRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/bSetPatron", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.bSetPatronResponse> bSetPatronAsync(ClienteAdmin.NWwervice.bSetPatronRequest request);
+        
+        // CODEGEN: Generating message contract since element name url from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/bCargaMasiva", ReplyAction="*")]
+        ClienteAdmin.NWwervice.bCargaMasivaResponse bCargaMasiva(ClienteAdmin.NWwervice.bCargaMasivaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/bCargaMasiva", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.bCargaMasivaResponse> bCargaMasivaAsync(ClienteAdmin.NWwervice.bCargaMasivaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/debugJuego", ReplyAction="*")]
+        void debugJuego();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/debugJuego", ReplyAction="*")]
+        System.Threading.Tasks.Task debugJuegoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/debugMord", ReplyAction="*")]
+        int debugMord();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/debugMord", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> debugMordAsync();
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -385,12 +583,12 @@ namespace ClienteAdmin.NWwervice {
     public partial class binarioBuscarResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public ClienteAdmin.NWwervice.NodoOfPersona binarioBuscarResult;
+        public ClienteAdmin.NWwervice.Persona binarioBuscarResult;
         
         public binarioBuscarResponseBody() {
         }
         
-        public binarioBuscarResponseBody(ClienteAdmin.NWwervice.NodoOfPersona binarioBuscarResult) {
+        public binarioBuscarResponseBody(ClienteAdmin.NWwervice.Persona binarioBuscarResult) {
             this.binarioBuscarResult = binarioBuscarResult;
         }
     }
@@ -615,6 +813,74 @@ namespace ClienteAdmin.NWwervice {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class binarioCargaJuegosRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="binarioCargaJuegos", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.binarioCargaJuegosRequestBody Body;
+        
+        public binarioCargaJuegosRequest() {
+        }
+        
+        public binarioCargaJuegosRequest(ClienteAdmin.NWwervice.binarioCargaJuegosRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class binarioCargaJuegosRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string url;
+        
+        public binarioCargaJuegosRequestBody() {
+        }
+        
+        public binarioCargaJuegosRequestBody(string url) {
+            this.url = url;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class binarioCargaJuegosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="binarioCargaJuegosResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.binarioCargaJuegosResponseBody Body;
+        
+        public binarioCargaJuegosResponse() {
+        }
+        
+        public binarioCargaJuegosResponse(ClienteAdmin.NWwervice.binarioCargaJuegosResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class binarioCargaJuegosResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool binarioCargaJuegosResult;
+        
+        public binarioCargaJuegosResponseBody() {
+        }
+        
+        public binarioCargaJuegosResponseBody(bool binarioCargaJuegosResult) {
+            this.binarioCargaJuegosResult = binarioCargaJuegosResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class listarUsuariosRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="listarUsuarios", Namespace="http://tempuri.org/", Order=0)]
@@ -676,15 +942,15 @@ namespace ClienteAdmin.NWwervice {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class avlInsertarRequest {
+    public partial class bSetPatronRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="avlInsertar", Namespace="http://tempuri.org/", Order=0)]
-        public ClienteAdmin.NWwervice.avlInsertarRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="bSetPatron", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.bSetPatronRequestBody Body;
         
-        public avlInsertarRequest() {
+        public bSetPatronRequest() {
         }
         
-        public avlInsertarRequest(ClienteAdmin.NWwervice.avlInsertarRequestBody Body) {
+        public bSetPatronRequest(ClienteAdmin.NWwervice.bSetPatronRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -693,24 +959,16 @@ namespace ClienteAdmin.NWwervice {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class avlInsertarRequestBody {
+    public partial class bSetPatronRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string nick;
+        public string patron;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string mail;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string password;
-        
-        public avlInsertarRequestBody() {
+        public bSetPatronRequestBody() {
         }
         
-        public avlInsertarRequestBody(string nick, string mail, string password) {
-            this.nick = nick;
-            this.mail = mail;
-            this.password = password;
+        public bSetPatronRequestBody(string patron) {
+            this.patron = patron;
         }
     }
     
@@ -718,15 +976,15 @@ namespace ClienteAdmin.NWwervice {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class avlInsertarResponse {
+    public partial class bSetPatronResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="avlInsertarResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ClienteAdmin.NWwervice.avlInsertarResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="bSetPatronResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.bSetPatronResponseBody Body;
         
-        public avlInsertarResponse() {
+        public bSetPatronResponse() {
         }
         
-        public avlInsertarResponse(ClienteAdmin.NWwervice.avlInsertarResponseBody Body) {
+        public bSetPatronResponse(ClienteAdmin.NWwervice.bSetPatronResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -735,9 +993,77 @@ namespace ClienteAdmin.NWwervice {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class avlInsertarResponseBody {
+    public partial class bSetPatronResponseBody {
         
-        public avlInsertarResponseBody() {
+        public bSetPatronResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class bCargaMasivaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="bCargaMasiva", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.bCargaMasivaRequestBody Body;
+        
+        public bCargaMasivaRequest() {
+        }
+        
+        public bCargaMasivaRequest(ClienteAdmin.NWwervice.bCargaMasivaRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class bCargaMasivaRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string url;
+        
+        public bCargaMasivaRequestBody() {
+        }
+        
+        public bCargaMasivaRequestBody(string url) {
+            this.url = url;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class bCargaMasivaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="bCargaMasivaResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.bCargaMasivaResponseBody Body;
+        
+        public bCargaMasivaResponse() {
+        }
+        
+        public bCargaMasivaResponse(ClienteAdmin.NWwervice.bCargaMasivaResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class bCargaMasivaResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool bCargaMasivaResult;
+        
+        public bCargaMasivaResponseBody() {
+        }
+        
+        public bCargaMasivaResponseBody(bool bCargaMasivaResult) {
+            this.bCargaMasivaResult = bCargaMasivaResult;
         }
     }
     
@@ -802,7 +1128,7 @@ namespace ClienteAdmin.NWwervice {
             return base.Channel.binarioBuscar(request);
         }
         
-        public ClienteAdmin.NWwervice.NodoOfPersona binarioBuscar(string nick) {
+        public ClienteAdmin.NWwervice.Persona binarioBuscar(string nick) {
             ClienteAdmin.NWwervice.binarioBuscarRequest inValue = new ClienteAdmin.NWwervice.binarioBuscarRequest();
             inValue.Body = new ClienteAdmin.NWwervice.binarioBuscarRequestBody();
             inValue.Body.nick = nick;
@@ -904,6 +1230,31 @@ namespace ClienteAdmin.NWwervice {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.binarioCargaJuegosResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.binarioCargaJuegos(ClienteAdmin.NWwervice.binarioCargaJuegosRequest request) {
+            return base.Channel.binarioCargaJuegos(request);
+        }
+        
+        public bool binarioCargaJuegos(string url) {
+            ClienteAdmin.NWwervice.binarioCargaJuegosRequest inValue = new ClienteAdmin.NWwervice.binarioCargaJuegosRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.binarioCargaJuegosRequestBody();
+            inValue.Body.url = url;
+            ClienteAdmin.NWwervice.binarioCargaJuegosResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).binarioCargaJuegos(inValue);
+            return retVal.Body.binarioCargaJuegosResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.binarioCargaJuegosResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.binarioCargaJuegosAsync(ClienteAdmin.NWwervice.binarioCargaJuegosRequest request) {
+            return base.Channel.binarioCargaJuegosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.binarioCargaJuegosResponse> binarioCargaJuegosAsync(string url) {
+            ClienteAdmin.NWwervice.binarioCargaJuegosRequest inValue = new ClienteAdmin.NWwervice.binarioCargaJuegosRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.binarioCargaJuegosRequestBody();
+            inValue.Body.url = url;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).binarioCargaJuegosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         ClienteAdmin.NWwervice.listarUsuariosResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.listarUsuarios(ClienteAdmin.NWwervice.listarUsuariosRequest request) {
             return base.Channel.listarUsuarios(request);
         }
@@ -926,32 +1277,77 @@ namespace ClienteAdmin.NWwervice {
             return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).listarUsuariosAsync(inValue);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ClienteAdmin.NWwervice.avlInsertarResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.avlInsertar(ClienteAdmin.NWwervice.avlInsertarRequest request) {
-            return base.Channel.avlInsertar(request);
+        public void bSetGrado(int grado) {
+            base.Channel.bSetGrado(grado);
         }
         
-        public void avlInsertar(string nick, string mail, string password) {
-            ClienteAdmin.NWwervice.avlInsertarRequest inValue = new ClienteAdmin.NWwervice.avlInsertarRequest();
-            inValue.Body = new ClienteAdmin.NWwervice.avlInsertarRequestBody();
-            inValue.Body.nick = nick;
-            inValue.Body.mail = mail;
-            inValue.Body.password = password;
-            ClienteAdmin.NWwervice.avlInsertarResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).avlInsertar(inValue);
+        public System.Threading.Tasks.Task bSetGradoAsync(int grado) {
+            return base.Channel.bSetGradoAsync(grado);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.avlInsertarResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.avlInsertarAsync(ClienteAdmin.NWwervice.avlInsertarRequest request) {
-            return base.Channel.avlInsertarAsync(request);
+        ClienteAdmin.NWwervice.bSetPatronResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.bSetPatron(ClienteAdmin.NWwervice.bSetPatronRequest request) {
+            return base.Channel.bSetPatron(request);
         }
         
-        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.avlInsertarResponse> avlInsertarAsync(string nick, string mail, string password) {
-            ClienteAdmin.NWwervice.avlInsertarRequest inValue = new ClienteAdmin.NWwervice.avlInsertarRequest();
-            inValue.Body = new ClienteAdmin.NWwervice.avlInsertarRequestBody();
-            inValue.Body.nick = nick;
-            inValue.Body.mail = mail;
-            inValue.Body.password = password;
-            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).avlInsertarAsync(inValue);
+        public void bSetPatron(string patron) {
+            ClienteAdmin.NWwervice.bSetPatronRequest inValue = new ClienteAdmin.NWwervice.bSetPatronRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.bSetPatronRequestBody();
+            inValue.Body.patron = patron;
+            ClienteAdmin.NWwervice.bSetPatronResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).bSetPatron(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.bSetPatronResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.bSetPatronAsync(ClienteAdmin.NWwervice.bSetPatronRequest request) {
+            return base.Channel.bSetPatronAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.bSetPatronResponse> bSetPatronAsync(string patron) {
+            ClienteAdmin.NWwervice.bSetPatronRequest inValue = new ClienteAdmin.NWwervice.bSetPatronRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.bSetPatronRequestBody();
+            inValue.Body.patron = patron;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).bSetPatronAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.bCargaMasivaResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.bCargaMasiva(ClienteAdmin.NWwervice.bCargaMasivaRequest request) {
+            return base.Channel.bCargaMasiva(request);
+        }
+        
+        public bool bCargaMasiva(string url) {
+            ClienteAdmin.NWwervice.bCargaMasivaRequest inValue = new ClienteAdmin.NWwervice.bCargaMasivaRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.bCargaMasivaRequestBody();
+            inValue.Body.url = url;
+            ClienteAdmin.NWwervice.bCargaMasivaResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).bCargaMasiva(inValue);
+            return retVal.Body.bCargaMasivaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.bCargaMasivaResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.bCargaMasivaAsync(ClienteAdmin.NWwervice.bCargaMasivaRequest request) {
+            return base.Channel.bCargaMasivaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.bCargaMasivaResponse> bCargaMasivaAsync(string url) {
+            ClienteAdmin.NWwervice.bCargaMasivaRequest inValue = new ClienteAdmin.NWwervice.bCargaMasivaRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.bCargaMasivaRequestBody();
+            inValue.Body.url = url;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).bCargaMasivaAsync(inValue);
+        }
+        
+        public void debugJuego() {
+            base.Channel.debugJuego();
+        }
+        
+        public System.Threading.Tasks.Task debugJuegoAsync() {
+            return base.Channel.debugJuegoAsync();
+        }
+        
+        public int debugMord() {
+            return base.Channel.debugMord();
+        }
+        
+        public System.Threading.Tasks.Task<int> debugMordAsync() {
+            return base.Channel.debugMordAsync();
         }
     }
 }

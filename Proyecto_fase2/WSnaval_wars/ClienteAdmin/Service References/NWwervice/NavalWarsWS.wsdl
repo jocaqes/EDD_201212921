@@ -28,24 +28,39 @@
       <s:element name="binarioBuscarResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="binarioBuscarResult" type="tns:NodoOfPersona" />
+            <s:element minOccurs="0" maxOccurs="1" name="binarioBuscarResult" type="tns:Persona" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="NodoOfPersona">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="izq" type="tns:NodoOfPersona" />
-          <s:element minOccurs="0" maxOccurs="1" name="der" type="tns:NodoOfPersona" />
-          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Persona" />
-          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Altura" type="s:int" />
-        </s:sequence>
-      </s:complexType>
       <s:complexType name="Persona">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="juegos" type="tns:ListaDOfJuego" />
           <s:element minOccurs="1" maxOccurs="1" name="Conectado" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ListaDOfJuego">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="raiz" type="tns:NodoDOfJuego" />
+          <s:element minOccurs="0" maxOccurs="1" name="fin" type="tns:NodoDOfJuego" />
+          <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NodoDOfJuego">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="siguiente" type="tns:NodoDOfJuego" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Juego" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Juego">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Oponente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unidades_desplegadas" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unidades_sobrevivientes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unidades_destruidas_por_mi" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gane" type="s:boolean" />
         </s:sequence>
       </s:complexType>
       <s:element name="binarioModificar">
@@ -93,6 +108,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="binarioCargaJuegos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioCargaJuegosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="binarioCargaJuegosResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="listarUsuarios">
         <s:complexType />
       </s:element>
@@ -103,17 +132,55 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="avlInsertar">
+      <s:element name="bSetGrado">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="grado" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="avlInsertarResponse">
+      <s:element name="bSetGradoResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="bSetPatron">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="patron" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="bSetPatronResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="bCargaMasiva">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="bCargaMasivaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="bCargaMasivaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="debugJuego">
+        <s:complexType />
+      </s:element>
+      <s:element name="debugJuegoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="debugMord">
+        <s:complexType />
+      </s:element>
+      <s:element name="debugMordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="debugMordResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -147,17 +214,47 @@
   <wsdl:message name="binarioCargaMasivaSoapOut">
     <wsdl:part name="parameters" element="tns:binarioCargaMasivaResponse" />
   </wsdl:message>
+  <wsdl:message name="binarioCargaJuegosSoapIn">
+    <wsdl:part name="parameters" element="tns:binarioCargaJuegos" />
+  </wsdl:message>
+  <wsdl:message name="binarioCargaJuegosSoapOut">
+    <wsdl:part name="parameters" element="tns:binarioCargaJuegosResponse" />
+  </wsdl:message>
   <wsdl:message name="listarUsuariosSoapIn">
     <wsdl:part name="parameters" element="tns:listarUsuarios" />
   </wsdl:message>
   <wsdl:message name="listarUsuariosSoapOut">
     <wsdl:part name="parameters" element="tns:listarUsuariosResponse" />
   </wsdl:message>
-  <wsdl:message name="avlInsertarSoapIn">
-    <wsdl:part name="parameters" element="tns:avlInsertar" />
+  <wsdl:message name="bSetGradoSoapIn">
+    <wsdl:part name="parameters" element="tns:bSetGrado" />
   </wsdl:message>
-  <wsdl:message name="avlInsertarSoapOut">
-    <wsdl:part name="parameters" element="tns:avlInsertarResponse" />
+  <wsdl:message name="bSetGradoSoapOut">
+    <wsdl:part name="parameters" element="tns:bSetGradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="bSetPatronSoapIn">
+    <wsdl:part name="parameters" element="tns:bSetPatron" />
+  </wsdl:message>
+  <wsdl:message name="bSetPatronSoapOut">
+    <wsdl:part name="parameters" element="tns:bSetPatronResponse" />
+  </wsdl:message>
+  <wsdl:message name="bCargaMasivaSoapIn">
+    <wsdl:part name="parameters" element="tns:bCargaMasiva" />
+  </wsdl:message>
+  <wsdl:message name="bCargaMasivaSoapOut">
+    <wsdl:part name="parameters" element="tns:bCargaMasivaResponse" />
+  </wsdl:message>
+  <wsdl:message name="debugJuegoSoapIn">
+    <wsdl:part name="parameters" element="tns:debugJuego" />
+  </wsdl:message>
+  <wsdl:message name="debugJuegoSoapOut">
+    <wsdl:part name="parameters" element="tns:debugJuegoResponse" />
+  </wsdl:message>
+  <wsdl:message name="debugMordSoapIn">
+    <wsdl:part name="parameters" element="tns:debugMord" />
+  </wsdl:message>
+  <wsdl:message name="debugMordSoapOut">
+    <wsdl:part name="parameters" element="tns:debugMordResponse" />
   </wsdl:message>
   <wsdl:portType name="NavalWarsWSSoap">
     <wsdl:operation name="binarioInsertar">
@@ -180,13 +277,33 @@
       <wsdl:input message="tns:binarioCargaMasivaSoapIn" />
       <wsdl:output message="tns:binarioCargaMasivaSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="binarioCargaJuegos">
+      <wsdl:input message="tns:binarioCargaJuegosSoapIn" />
+      <wsdl:output message="tns:binarioCargaJuegosSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="listarUsuarios">
       <wsdl:input message="tns:listarUsuariosSoapIn" />
       <wsdl:output message="tns:listarUsuariosSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="avlInsertar">
-      <wsdl:input message="tns:avlInsertarSoapIn" />
-      <wsdl:output message="tns:avlInsertarSoapOut" />
+    <wsdl:operation name="bSetGrado">
+      <wsdl:input message="tns:bSetGradoSoapIn" />
+      <wsdl:output message="tns:bSetGradoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="bSetPatron">
+      <wsdl:input message="tns:bSetPatronSoapIn" />
+      <wsdl:output message="tns:bSetPatronSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="bCargaMasiva">
+      <wsdl:input message="tns:bCargaMasivaSoapIn" />
+      <wsdl:output message="tns:bCargaMasivaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="debugJuego">
+      <wsdl:input message="tns:debugJuegoSoapIn" />
+      <wsdl:output message="tns:debugJuegoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="debugMord">
+      <wsdl:input message="tns:debugMordSoapIn" />
+      <wsdl:output message="tns:debugMordSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NavalWarsWSSoap" type="tns:NavalWarsWSSoap">
@@ -236,6 +353,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="binarioCargaJuegos">
+      <soap:operation soapAction="http://tempuri.org/binarioCargaJuegos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="listarUsuarios">
       <soap:operation soapAction="http://tempuri.org/listarUsuarios" style="document" />
       <wsdl:input>
@@ -245,8 +371,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="avlInsertar">
-      <soap:operation soapAction="http://tempuri.org/avlInsertar" style="document" />
+    <wsdl:operation name="bSetGrado">
+      <soap:operation soapAction="http://tempuri.org/bSetGrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bSetPatron">
+      <soap:operation soapAction="http://tempuri.org/bSetPatron" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bCargaMasiva">
+      <soap:operation soapAction="http://tempuri.org/bCargaMasiva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="debugJuego">
+      <soap:operation soapAction="http://tempuri.org/debugJuego" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="debugMord">
+      <soap:operation soapAction="http://tempuri.org/debugMord" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -302,6 +464,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="binarioCargaJuegos">
+      <soap12:operation soapAction="http://tempuri.org/binarioCargaJuegos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="listarUsuarios">
       <soap12:operation soapAction="http://tempuri.org/listarUsuarios" style="document" />
       <wsdl:input>
@@ -311,8 +482,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="avlInsertar">
-      <soap12:operation soapAction="http://tempuri.org/avlInsertar" style="document" />
+    <wsdl:operation name="bSetGrado">
+      <soap12:operation soapAction="http://tempuri.org/bSetGrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bSetPatron">
+      <soap12:operation soapAction="http://tempuri.org/bSetPatron" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bCargaMasiva">
+      <soap12:operation soapAction="http://tempuri.org/bCargaMasiva" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="debugJuego">
+      <soap12:operation soapAction="http://tempuri.org/debugJuego" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="debugMord">
+      <soap12:operation soapAction="http://tempuri.org/debugMord" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

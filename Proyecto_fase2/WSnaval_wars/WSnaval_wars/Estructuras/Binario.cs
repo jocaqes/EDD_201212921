@@ -1,4 +1,6 @@
 ﻿using WSnaval_wars.Nodos;
+using WSnaval_wars.Objetos;
+
 namespace WSnaval_wars.Estructuras
 {
     public class Binario<T>

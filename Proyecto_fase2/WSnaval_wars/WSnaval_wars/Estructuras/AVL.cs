@@ -2,6 +2,7 @@
 
 namespace WSnaval_wars.Estructuras
 {
+    [System.Serializable]
     public class AVL<T>
     {
         public Nodo<T> raiz;

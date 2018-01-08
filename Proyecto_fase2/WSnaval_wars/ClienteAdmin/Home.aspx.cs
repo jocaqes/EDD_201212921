@@ -1,4 +1,5 @@
 ﻿using System;
+using ClienteAdmin.NWwervice;
 
 namespace ClienteAdmin
 {
@@ -6,12 +7,14 @@ namespace ClienteAdmin
     {
         private string admin_nick;
         private string admin_pass;
+        private NavalWarsWSSoapClient servicio;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             msjRequest();
             admin_nick = "admin";
             admin_pass = "admin";
+            servicio = new NavalWarsWSSoapClient();
         }
 
         protected void boton_login_Click(object sender, EventArgs e)
@@ -25,10 +28,27 @@ namespace ClienteAdmin
                 {
                     Session["user"] = "admin";
                     Response.Redirect("Administrador.aspx");
-                }else
-                {
-                    msj_error.Text = "Usuario o contraseña incorrectos";
                 }
+                else
+                {
+                    Persona aux = servicio.binarioBuscar(text_admin_nick.Text);//modificado
+                    if (aux != null)
+                    {
+                        if (aux.password.Equals(text_admin_pass.Text))//modificado
+                        {
+                            Session["user"] = text_admin_nick.Text;
+                            //Session["nombre"] = text_admin_nick.Text;//nuevo
+                            Response.Redirect("Usuario.aspx");
+                        }else
+                        {
+                            msj_error.Text = "Usuario o contraseña invalidos";
+                        }
+                    }else
+                    {
+                        msj_error.Text = "Usuario o contraseña invalidos";
+                    }
+                }
+
             }
         }
         
@@ -51,6 +71,11 @@ namespace ClienteAdmin
                 switch (aux)
                 {
                     case "mty":
+                        Response.Redirect("Home.aspx");
+                        break;
+                    case "close":
+                        Session.Abandon();
+                        Response.Cookies.Add(new System.Web.HttpCookie("ASP.NET_SessionId", ""));
                         Response.Redirect("Home.aspx");
                         break;
                 }

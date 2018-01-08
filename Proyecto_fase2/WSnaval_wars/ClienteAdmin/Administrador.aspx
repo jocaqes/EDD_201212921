@@ -50,9 +50,14 @@
         <br />
         <table style="width: 40%;"><!--Form para carga masiva de usuarios-->
             <tr>
-                <td><asp:Label ID="Label5" runat="server" Text="Direccion"></asp:Label></td>
+                <td><asp:Label ID="Label5" runat="server" Text="Direccion Usuarios"></asp:Label></td>
                 <td><asp:TextBox ID="text_ABin_carga" runat="server" Width="300px"></asp:TextBox></td>
                 <td><asp:Button ID="boton_ABin_carga" runat="server" Text="Cargar" OnClick="boton_ABin_carga_Click" /></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="Label12" runat="server" Text="Direccion Juegos"></asp:Label></td>
+                <td><asp:TextBox ID="text_ABin_games" runat="server" Width="300px"></asp:TextBox></td>
+                <td><asp:Button ID="boton_ABin_games_carga" runat="server" Text="Cargar" OnClick="boton_ABin_games_carga_Click" /></td>
             </tr>
         </table>
         <asp:Label ID="msj_ABin_carga" runat="server" Text=""></asp:Label>
@@ -81,6 +86,8 @@
             </tr>
         </table>
         <asp:Label ID="msj_ABin_modificar" runat="server" Text=""></asp:Label>
+        <h3>Sus Juegos</h3>
+        <asp:Label ID="label_juegos" runat="server" Text=""></asp:Label>
     </div>
     ------------------------------------------------------------
     <div><!--div carga partidas-->
