@@ -198,7 +198,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="ortogonalMaxFilasColumnas">
+      <s:element name="ortogonalSetMaxFilasColumnas">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="filas" type="s:int" />
@@ -206,10 +206,83 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="ortogonalMaxFilasColumnasResponse">
+      <s:element name="ortogonalSetMaxFilasColumnasResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ortogonalMaxFilasColumnasResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalSetMaxFilasColumnasResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalSetMaxUnidades">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="unidades" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalSetMaxUnidadesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalSetMaxUnidadesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalFueraDelTablero">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="columna" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fila" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalFueraDelTableroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalFueraDelTableroResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalTableroDeJuego">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ruta_destino" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_dot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_png" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nivel" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalTableroDeJuegoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalTableroDeJuegoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalAreRulesSet">
+        <s:complexType />
+      </s:element>
+      <s:element name="ortogonalAreRulesSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalAreRulesSetResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalMover">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_unidad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="duenyo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="columna" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fila" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalMoverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalMoverResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -343,11 +416,41 @@
   <wsdl:message name="avlInsertarSoapOut">
     <wsdl:part name="parameters" element="tns:avlInsertarResponse" />
   </wsdl:message>
-  <wsdl:message name="ortogonalMaxFilasColumnasSoapIn">
-    <wsdl:part name="parameters" element="tns:ortogonalMaxFilasColumnas" />
+  <wsdl:message name="ortogonalSetMaxFilasColumnasSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalSetMaxFilasColumnas" />
   </wsdl:message>
-  <wsdl:message name="ortogonalMaxFilasColumnasSoapOut">
-    <wsdl:part name="parameters" element="tns:ortogonalMaxFilasColumnasResponse" />
+  <wsdl:message name="ortogonalSetMaxFilasColumnasSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalSetMaxFilasColumnasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalSetMaxUnidadesSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalSetMaxUnidades" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalSetMaxUnidadesSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalSetMaxUnidadesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalFueraDelTableroSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalFueraDelTablero" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalFueraDelTableroSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalFueraDelTableroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalTableroDeJuegoSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalTableroDeJuego" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalTableroDeJuegoSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalTableroDeJuegoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalAreRulesSetSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalAreRulesSet" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalAreRulesSetSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalAreRulesSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalMoverSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalMover" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalMoverSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalMoverResponse" />
   </wsdl:message>
   <wsdl:message name="graficarBinarioSoapIn">
     <wsdl:part name="parameters" element="tns:graficarBinario" />
@@ -424,9 +527,29 @@
       <wsdl:input message="tns:avlInsertarSoapIn" />
       <wsdl:output message="tns:avlInsertarSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="ortogonalMaxFilasColumnas">
-      <wsdl:input message="tns:ortogonalMaxFilasColumnasSoapIn" />
-      <wsdl:output message="tns:ortogonalMaxFilasColumnasSoapOut" />
+    <wsdl:operation name="ortogonalSetMaxFilasColumnas">
+      <wsdl:input message="tns:ortogonalSetMaxFilasColumnasSoapIn" />
+      <wsdl:output message="tns:ortogonalSetMaxFilasColumnasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalSetMaxUnidades">
+      <wsdl:input message="tns:ortogonalSetMaxUnidadesSoapIn" />
+      <wsdl:output message="tns:ortogonalSetMaxUnidadesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalFueraDelTablero">
+      <wsdl:input message="tns:ortogonalFueraDelTableroSoapIn" />
+      <wsdl:output message="tns:ortogonalFueraDelTableroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalTableroDeJuego">
+      <wsdl:input message="tns:ortogonalTableroDeJuegoSoapIn" />
+      <wsdl:output message="tns:ortogonalTableroDeJuegoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalAreRulesSet">
+      <wsdl:input message="tns:ortogonalAreRulesSetSoapIn" />
+      <wsdl:output message="tns:ortogonalAreRulesSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalMover">
+      <wsdl:input message="tns:ortogonalMoverSoapIn" />
+      <wsdl:output message="tns:ortogonalMoverSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="graficarBinario">
       <wsdl:input message="tns:graficarBinarioSoapIn" />
@@ -550,8 +673,53 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ortogonalMaxFilasColumnas">
-      <soap:operation soapAction="http://tempuri.org/ortogonalMaxFilasColumnas" style="document" />
+    <wsdl:operation name="ortogonalSetMaxFilasColumnas">
+      <soap:operation soapAction="http://tempuri.org/ortogonalSetMaxFilasColumnas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalSetMaxUnidades">
+      <soap:operation soapAction="http://tempuri.org/ortogonalSetMaxUnidades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalFueraDelTablero">
+      <soap:operation soapAction="http://tempuri.org/ortogonalFueraDelTablero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalTableroDeJuego">
+      <soap:operation soapAction="http://tempuri.org/ortogonalTableroDeJuego" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalAreRulesSet">
+      <soap:operation soapAction="http://tempuri.org/ortogonalAreRulesSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalMover">
+      <soap:operation soapAction="http://tempuri.org/ortogonalMover" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -706,8 +874,53 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ortogonalMaxFilasColumnas">
-      <soap12:operation soapAction="http://tempuri.org/ortogonalMaxFilasColumnas" style="document" />
+    <wsdl:operation name="ortogonalSetMaxFilasColumnas">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalSetMaxFilasColumnas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalSetMaxUnidades">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalSetMaxUnidades" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalFueraDelTablero">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalFueraDelTablero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalTableroDeJuego">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalTableroDeJuego" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalAreRulesSet">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalAreRulesSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalMover">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalMover" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

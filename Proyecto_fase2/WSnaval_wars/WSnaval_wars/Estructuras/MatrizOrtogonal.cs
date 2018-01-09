@@ -6,8 +6,9 @@ namespace WSnaval_wars.Estructuras
     {
         public NodoAux<Orto<Unidad>> cabezera_fila;
         public NodoAux<Orto<Unidad>> cabezera_columna;
-        private int max_filas;
-        private int max_columnas;
+        private int max_filas=0;
+        private int max_columnas=0;
+        private int max_unidades = 0;
 
         #region GyS
         public int Max_filas
@@ -33,6 +34,19 @@ namespace WSnaval_wars.Estructuras
             set
             {
                 max_columnas = value;
+            }
+        }
+
+        public int Max_unidades
+        {
+            get
+            {
+                return max_unidades;
+            }
+
+            set
+            {
+                max_unidades = value;
             }
         }
         #endregion
@@ -90,6 +104,11 @@ namespace WSnaval_wars.Estructuras
             aux.izq = nodo_base.izq;
             nodo_base.izq.der = aux;
             return aux;
+        }
+        public bool outOfBounds(string columna_nueva, int fila_nueva)//si el movimiento se sale del tablero
+        {
+            int col_nueva = columnaAentero(columna_nueva);
+            return col_nueva > max_columnas || fila_nueva > max_filas;
         }
         #endregion
 

@@ -1,6 +1,7 @@
 ﻿using WSnaval_wars.Nodos;
 namespace WSnaval_wars.Estructuras
 {
+    [System.Serializable]//nuevo
     public class Lista<T>
     {
         public Nodus<T> raiz;
@@ -14,7 +15,7 @@ namespace WSnaval_wars.Estructuras
         }
 
         #region Insertar
-        public void push(T item)
+        public bool push(T item)
         {
             if (isEmpty())
             {
@@ -27,6 +28,7 @@ namespace WSnaval_wars.Estructuras
 
             }
             count++;
+            return true;
         }
 
         public void pushTop(T item)

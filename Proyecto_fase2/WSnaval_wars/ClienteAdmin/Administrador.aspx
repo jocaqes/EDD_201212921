@@ -101,9 +101,6 @@
         <asp:Label ID="msj_reporte_binario" runat="server" Text=""></asp:Label>
     </div>
     ------------------------------------------------------------
-    <div><!--div carga partidas-->
-
-    </div>
     <div><!--div carga arbol B-->
         <h2>Arbol B</h2>
         <table style="width: 40%;">
@@ -136,11 +133,28 @@
     
     </div>
         ------------------------------------------------------------
-    <div><!--div reglas del juego-->
-
-    </div>
-    <div><!--div carga tablero-->
-
+    <div><!--div matriz ortogonal-->
+        <h2>Matriz Dispersa(en realidad es ortogonal)</h2>
+        <table style="width: 30%;">
+            <tr>
+                <td>Formato De Juego</td>
+                <td><asp:DropDownList ID="drop_matriz_formato" runat="server" Width="163px"></asp:DropDownList></td>
+            </tr>
+            <tr>
+                <td>Numero de Filas</td>
+                <td><asp:TextBox ID="text_matriz_filas" runat="server"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td>Numero de Columnas</td>
+                <td><asp:TextBox ID="text_matriz_columnas" runat="server"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td>Maximo de Unidades</td>
+                <td><asp:TextBox ID="text_matriz_unidades" runat="server"></asp:TextBox></td>
+            </tr>
+        </table>
+        <asp:Button ID="boton_matriz_set_rules" runat="server" Text="Aceptar" OnClick="boton_matriz_set_rules_Click" /><br />
+        <asp:Label ID="msj_matriz_rules" runat="server" Text=""></asp:Label>
     </div>
     </form>
 </body>

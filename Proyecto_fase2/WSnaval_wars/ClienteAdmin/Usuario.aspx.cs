@@ -34,5 +34,12 @@ namespace ClienteAdmin
             return true;
         }
         #endregion
+
+        #region Partida
+        protected void boton_nueva_partida_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Usuarios/AgregarUnidades.aspx");
+        }
+        #endregion
     }
 }

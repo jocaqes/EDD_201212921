@@ -261,17 +261,131 @@ namespace WSnaval_wars.Objetos
         }
         #endregion
         #region Tablero Completo
+        private static string codigoTableroCompleto(MatrizOrtogonal tablero, int nivel)//siempre muestra solo los vivos, este es solo para clientes
+        {
+            string salida = "digraph g{\n"
+                         + "node[shape=plaintext];\n";
+            salida += "matriz[label=<<TABLE border=\"0\" cellspacing=\"0\" cellborder=\"1\">\n";
+            NodoAux<Orto<Unidad>> fila = tablero.cabezera_fila;
+            char char_1 = (char)65;
+            char char_2 = (char)64;
+            //char char_3;
+
+            #region Encabezados columnas
+            salida += "<TR>";
+            salida += "<TD width=\"100\" height=\"100\" fixedsize=\"true\"></TD>\n";//esta es la esquina
+            for (int i = 0; i < tablero.Max_columnas; i++)//headers
+            {
+                if (i < 26)//una letra
+                {
+                    salida += "<TD width=\"100\" height=\"100\" fixedsize=\"true\">" + char_1 + "</TD>\n";
+                    char_1++;
+                }
+                else if (i >= 26 && i < 702)//dos letras
+                {
+                    if (char_1 > 90)
+                    {
+                        char_1 = (char)65;//regresa a ser A
+                        char_2++;
+                    }
+                    salida += "<TD width=\"100\" height=\"100\" fixedsize=\"true\">" + char_2 + char_1 + "</TD>\n";
+                    char_1++;
+                }//que ganas hacer mas letras
+            }
+            salida += "</TR>\n";
+            #endregion
+            #region Filas y todo lo demas
+            for (int i = 1; i <= tablero.Max_filas; i++)
+            {
+                salida += "<TR>\n";
+                if (i < 10)
+                    salida += "<TD width=\"100\" height=\"100\" fixedsize=\"true\">" + i + "</TD>\n";//cabezera de fila
+                else
+                    salida += "<TD width=\"100\" height=\"100\" fixedsize=\"true\">" + i + "</TD>\n";//cabezera de fila
+                NodoAux<Orto<Unidad>> aux = tablero.buscarRow(i);
+                char_1 = (char)65;//reseteamos las columnas
+                char_2 = (char)64;//de busqueda
+                if (aux != null)//si la fila existe
+                {
+                    for (int j = 1; j <= tablero.Max_columnas; j++, char_1++)//reviso todos los espacios
+                    {
+                        if (char_1 > 90)//si me paso de z
+                        {
+                            char_1 = (char)65;
+                            char_2++;//uso otra letra
+                        }
+                        Unidad actual;//busco a la unidad
+                        if (j < 26)
+                        {
+                            actual = tablero.buscarPorPosicion(i, char_1.ToString(), nivel);
+                        }
+                        else
+                        {
+                            string row = char_2.ToString() + char_1.ToString();
+                            actual = tablero.buscarPorPosicion(i, row, nivel);
+                        }
+                        if (actual != null && actual.Vivo==true)//si encuentro algo y esta vivo(no es necesario el true pero por si acaso)
+                        {
+                            salida += "<TD width=\"100\" height=\"100\" fixedsize=\"true\">" + actual.Nombre + "<br/>HP:" + actual.Hp + "<br/>" + actual.Duenyo + "</TD>\n";//agrego su info
+                        }
+                        else
+                        {
+                            salida += "<TD width=\"100\" height=\"100\" fixedsize=\"true\"></TD>\n";
+                        }
+
+                    }
+                }
+                else//si la fila no existe
+                {
+                    for (int j = 0; j < tablero.Max_columnas; j++)
+                    {
+                        salida += "<TD width=\"100\" height=\"100\" fixedsize=\"true\"></TD>\n";
+                    }
+                }
+                salida += "</TR>";
+            }
+            #endregion
+
+
+            salida += "</TABLE>>];\n"
+                + "}";
+            return salida;
+
+
+        }
         #endregion
         #endregion
 
         #region Graficar Tablero Disperso
-        public static bool graficarTablero(MatrizOrtogonal tablero, string nombre_dot,string ruta_destino, string nombre_png, int nivel, bool vivo=true)
+        public static bool graficarTableroDisperso(MatrizOrtogonal tablero, string nombre_dot,string ruta_destino, string nombre_png, int nivel, bool vivo=true)
         {
             bool bandera = true;
             string path_principal = string.Format(@"{0}Dots\", AppDomain.CurrentDomain.BaseDirectory);//path donde se instale el coso
             string ruta_dot = Path.Combine(path_principal, nombre_dot);
             string ruta_png = Path.Combine(ruta_destino, nombre_png);
             if (guardarDot(codigoDisperso(tablero, nivel,vivo), nombre_dot))//1.guardamos el codigo
+            {
+                string comando;
+                comando = "dot " + "-Tpng \"" + ruta_dot + "\" -o \"" + ruta_png + "\"";
+                if (llamarCMD(comando))
+                {
+                    bandera = true;
+                }
+                else
+                    bandera = false;
+            }
+            return bandera;
+        }
+        #endregion
+
+        #region Graficar Tablero Completo
+        public static bool graficarTableroCompleto(MatrizOrtogonal tablero, string nombre_dot, string ruta_destino, string nombre_png, int nivel)
+        {
+            bool bandera = true;
+            string path_principal = string.Format(@"{0}Dots\", AppDomain.CurrentDomain.BaseDirectory);//path donde se instale el coso
+            string ruta_dot = Path.Combine(path_principal, nombre_dot);
+            string ruta_png = Path.Combine(ruta_destino, nombre_png);
+            if (guardarDot(codigoTableroCompleto(tablero, nivel), nombre_dot))//1.guardamos el codigo
             {
                 string comando;
                 comando = "dot " + "-Tpng \"" + ruta_dot + "\" -o \"" + ruta_png + "\"";

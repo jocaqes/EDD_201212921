@@ -43,7 +43,7 @@
             <table style="width: 25%;">
                 <tr>
                     <td>Iniciar nueva Partida</td>
-                    <td><asp:Button ID="boton_nueva_partida" runat="server" Text="Iniciar" /></td>
+                    <td><asp:Button ID="boton_nueva_partida" runat="server" Text="Iniciar" OnClick="boton_nueva_partida_Click" /></td>
                 </tr>
             </table>
         </div>

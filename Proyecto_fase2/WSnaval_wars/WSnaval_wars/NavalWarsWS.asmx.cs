@@ -105,11 +105,38 @@ namespace WSnaval_wars
 
         #region Matriz Ortogonal
         [WebMethod]
-        public bool ortogonalMaxFilasColumnas(int filas, int columnas)
+        public bool ortogonalSetMaxFilasColumnas(int filas, int columnas)
         {
             tablero_juego.Max_columnas = columnas;
-            tablero_juego.Max_columnas = filas;
+            tablero_juego.Max_filas = filas;
             return true;
+        }
+        [WebMethod]
+        public bool ortogonalSetMaxUnidades(int unidades)
+        {
+            tablero_juego.Max_unidades = unidades;
+            return true;
+        }
+        [WebMethod]
+        public bool ortogonalFueraDelTablero(string columna, int fila)
+        {
+            return tablero_juego.outOfBounds(columna, fila);
+        }
+        [WebMethod]
+        public bool ortogonalTableroDeJuego(string ruta_destino,string nombre_dot, string nombre_png,int nivel)
+        {
+            return Grafica.graficarTableroCompleto(tablero_juego, nombre_dot, ruta_destino, nombre_png, nivel);
+        }
+        [WebMethod]
+        public bool ortogonalAreRulesSet()
+        {
+            //faltan otras reglas pero ahi se va por ahora
+            return tablero_juego.Max_columnas > 0 && tablero_juego.Max_filas > 0&&tablero_juego.Max_unidades>0;
+        }
+        [WebMethod]
+        public bool ortogonalMover(string nombre_unidad, string duenyo, string columna, int fila)
+        {
+            return tablero_juego.mover(duenyo, nombre_unidad, fila, columna);
         }
         #endregion
 
@@ -142,6 +169,14 @@ namespace WSnaval_wars
         }
         #endregion
         #endregion
+
+        #region Lista simple
+        public bool listaInsertar(ref Lista<string> lista_unidades, string unidad)
+        {
+            return lista_unidades.push(unidad);
+        }
+        #endregion
+
 
     }
 }

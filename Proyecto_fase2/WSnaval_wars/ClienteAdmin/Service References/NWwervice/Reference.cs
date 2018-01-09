@@ -627,11 +627,44 @@ namespace ClienteAdmin.NWwervice {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/avlInsertar", ReplyAction="*")]
         System.Threading.Tasks.Task<ClienteAdmin.NWwervice.avlInsertarResponse> avlInsertarAsync(ClienteAdmin.NWwervice.avlInsertarRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalMaxFilasColumnas", ReplyAction="*")]
-        bool ortogonalMaxFilasColumnas(int filas, int columnas);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalSetMaxFilasColumnas", ReplyAction="*")]
+        bool ortogonalSetMaxFilasColumnas(int filas, int columnas);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalMaxFilasColumnas", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> ortogonalMaxFilasColumnasAsync(int filas, int columnas);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalSetMaxFilasColumnas", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> ortogonalSetMaxFilasColumnasAsync(int filas, int columnas);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalSetMaxUnidades", ReplyAction="*")]
+        bool ortogonalSetMaxUnidades(int unidades);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalSetMaxUnidades", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> ortogonalSetMaxUnidadesAsync(int unidades);
+        
+        // CODEGEN: Generating message contract since element name columna from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalFueraDelTablero", ReplyAction="*")]
+        ClienteAdmin.NWwervice.ortogonalFueraDelTableroResponse ortogonalFueraDelTablero(ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalFueraDelTablero", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalFueraDelTableroResponse> ortogonalFueraDelTableroAsync(ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequest request);
+        
+        // CODEGEN: Generating message contract since element name ruta_destino from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalTableroDeJuego", ReplyAction="*")]
+        ClienteAdmin.NWwervice.ortogonalTableroDeJuegoResponse ortogonalTableroDeJuego(ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalTableroDeJuego", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalTableroDeJuegoResponse> ortogonalTableroDeJuegoAsync(ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalAreRulesSet", ReplyAction="*")]
+        bool ortogonalAreRulesSet();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalAreRulesSet", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> ortogonalAreRulesSetAsync();
+        
+        // CODEGEN: Generating message contract since element name nombre_unidad from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalMover", ReplyAction="*")]
+        ClienteAdmin.NWwervice.ortogonalMoverResponse ortogonalMover(ClienteAdmin.NWwervice.ortogonalMoverRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalMover", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalMoverResponse> ortogonalMoverAsync(ClienteAdmin.NWwervice.ortogonalMoverRequest request);
         
         // CODEGEN: Generating message contract since element name ruta_destino from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarBinario", ReplyAction="*")]
@@ -1364,6 +1397,238 @@ namespace ClienteAdmin.NWwervice {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ortogonalFueraDelTableroRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ortogonalFueraDelTablero", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequestBody Body;
+        
+        public ortogonalFueraDelTableroRequest() {
+        }
+        
+        public ortogonalFueraDelTableroRequest(ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ortogonalFueraDelTableroRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string columna;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int fila;
+        
+        public ortogonalFueraDelTableroRequestBody() {
+        }
+        
+        public ortogonalFueraDelTableroRequestBody(string columna, int fila) {
+            this.columna = columna;
+            this.fila = fila;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ortogonalFueraDelTableroResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ortogonalFueraDelTableroResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.ortogonalFueraDelTableroResponseBody Body;
+        
+        public ortogonalFueraDelTableroResponse() {
+        }
+        
+        public ortogonalFueraDelTableroResponse(ClienteAdmin.NWwervice.ortogonalFueraDelTableroResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ortogonalFueraDelTableroResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool ortogonalFueraDelTableroResult;
+        
+        public ortogonalFueraDelTableroResponseBody() {
+        }
+        
+        public ortogonalFueraDelTableroResponseBody(bool ortogonalFueraDelTableroResult) {
+            this.ortogonalFueraDelTableroResult = ortogonalFueraDelTableroResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ortogonalTableroDeJuegoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ortogonalTableroDeJuego", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequestBody Body;
+        
+        public ortogonalTableroDeJuegoRequest() {
+        }
+        
+        public ortogonalTableroDeJuegoRequest(ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ortogonalTableroDeJuegoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string ruta_destino;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string nombre_dot;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string nombre_png;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public int nivel;
+        
+        public ortogonalTableroDeJuegoRequestBody() {
+        }
+        
+        public ortogonalTableroDeJuegoRequestBody(string ruta_destino, string nombre_dot, string nombre_png, int nivel) {
+            this.ruta_destino = ruta_destino;
+            this.nombre_dot = nombre_dot;
+            this.nombre_png = nombre_png;
+            this.nivel = nivel;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ortogonalTableroDeJuegoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ortogonalTableroDeJuegoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.ortogonalTableroDeJuegoResponseBody Body;
+        
+        public ortogonalTableroDeJuegoResponse() {
+        }
+        
+        public ortogonalTableroDeJuegoResponse(ClienteAdmin.NWwervice.ortogonalTableroDeJuegoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ortogonalTableroDeJuegoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool ortogonalTableroDeJuegoResult;
+        
+        public ortogonalTableroDeJuegoResponseBody() {
+        }
+        
+        public ortogonalTableroDeJuegoResponseBody(bool ortogonalTableroDeJuegoResult) {
+            this.ortogonalTableroDeJuegoResult = ortogonalTableroDeJuegoResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ortogonalMoverRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ortogonalMover", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.ortogonalMoverRequestBody Body;
+        
+        public ortogonalMoverRequest() {
+        }
+        
+        public ortogonalMoverRequest(ClienteAdmin.NWwervice.ortogonalMoverRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ortogonalMoverRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nombre_unidad;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string duenyo;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string columna;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public int fila;
+        
+        public ortogonalMoverRequestBody() {
+        }
+        
+        public ortogonalMoverRequestBody(string nombre_unidad, string duenyo, string columna, int fila) {
+            this.nombre_unidad = nombre_unidad;
+            this.duenyo = duenyo;
+            this.columna = columna;
+            this.fila = fila;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ortogonalMoverResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ortogonalMoverResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.ortogonalMoverResponseBody Body;
+        
+        public ortogonalMoverResponse() {
+        }
+        
+        public ortogonalMoverResponse(ClienteAdmin.NWwervice.ortogonalMoverResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ortogonalMoverResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool ortogonalMoverResult;
+        
+        public ortogonalMoverResponseBody() {
+        }
+        
+        public ortogonalMoverResponseBody(bool ortogonalMoverResult) {
+            this.ortogonalMoverResult = ortogonalMoverResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class graficarBinarioRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarBinario", Namespace="http://tempuri.org/", Order=0)]
@@ -1808,12 +2073,117 @@ namespace ClienteAdmin.NWwervice {
             return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).avlInsertarAsync(inValue);
         }
         
-        public bool ortogonalMaxFilasColumnas(int filas, int columnas) {
-            return base.Channel.ortogonalMaxFilasColumnas(filas, columnas);
+        public bool ortogonalSetMaxFilasColumnas(int filas, int columnas) {
+            return base.Channel.ortogonalSetMaxFilasColumnas(filas, columnas);
         }
         
-        public System.Threading.Tasks.Task<bool> ortogonalMaxFilasColumnasAsync(int filas, int columnas) {
-            return base.Channel.ortogonalMaxFilasColumnasAsync(filas, columnas);
+        public System.Threading.Tasks.Task<bool> ortogonalSetMaxFilasColumnasAsync(int filas, int columnas) {
+            return base.Channel.ortogonalSetMaxFilasColumnasAsync(filas, columnas);
+        }
+        
+        public bool ortogonalSetMaxUnidades(int unidades) {
+            return base.Channel.ortogonalSetMaxUnidades(unidades);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ortogonalSetMaxUnidadesAsync(int unidades) {
+            return base.Channel.ortogonalSetMaxUnidadesAsync(unidades);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.ortogonalFueraDelTableroResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.ortogonalFueraDelTablero(ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequest request) {
+            return base.Channel.ortogonalFueraDelTablero(request);
+        }
+        
+        public bool ortogonalFueraDelTablero(string columna, int fila) {
+            ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequest inValue = new ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequestBody();
+            inValue.Body.columna = columna;
+            inValue.Body.fila = fila;
+            ClienteAdmin.NWwervice.ortogonalFueraDelTableroResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).ortogonalFueraDelTablero(inValue);
+            return retVal.Body.ortogonalFueraDelTableroResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalFueraDelTableroResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.ortogonalFueraDelTableroAsync(ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequest request) {
+            return base.Channel.ortogonalFueraDelTableroAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalFueraDelTableroResponse> ortogonalFueraDelTableroAsync(string columna, int fila) {
+            ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequest inValue = new ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.ortogonalFueraDelTableroRequestBody();
+            inValue.Body.columna = columna;
+            inValue.Body.fila = fila;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).ortogonalFueraDelTableroAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.ortogonalTableroDeJuegoResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.ortogonalTableroDeJuego(ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequest request) {
+            return base.Channel.ortogonalTableroDeJuego(request);
+        }
+        
+        public bool ortogonalTableroDeJuego(string ruta_destino, string nombre_dot, string nombre_png, int nivel) {
+            ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequest inValue = new ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequestBody();
+            inValue.Body.ruta_destino = ruta_destino;
+            inValue.Body.nombre_dot = nombre_dot;
+            inValue.Body.nombre_png = nombre_png;
+            inValue.Body.nivel = nivel;
+            ClienteAdmin.NWwervice.ortogonalTableroDeJuegoResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).ortogonalTableroDeJuego(inValue);
+            return retVal.Body.ortogonalTableroDeJuegoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalTableroDeJuegoResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.ortogonalTableroDeJuegoAsync(ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequest request) {
+            return base.Channel.ortogonalTableroDeJuegoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalTableroDeJuegoResponse> ortogonalTableroDeJuegoAsync(string ruta_destino, string nombre_dot, string nombre_png, int nivel) {
+            ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequest inValue = new ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequestBody();
+            inValue.Body.ruta_destino = ruta_destino;
+            inValue.Body.nombre_dot = nombre_dot;
+            inValue.Body.nombre_png = nombre_png;
+            inValue.Body.nivel = nivel;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).ortogonalTableroDeJuegoAsync(inValue);
+        }
+        
+        public bool ortogonalAreRulesSet() {
+            return base.Channel.ortogonalAreRulesSet();
+        }
+        
+        public System.Threading.Tasks.Task<bool> ortogonalAreRulesSetAsync() {
+            return base.Channel.ortogonalAreRulesSetAsync();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.ortogonalMoverResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.ortogonalMover(ClienteAdmin.NWwervice.ortogonalMoverRequest request) {
+            return base.Channel.ortogonalMover(request);
+        }
+        
+        public bool ortogonalMover(string nombre_unidad, string duenyo, string columna, int fila) {
+            ClienteAdmin.NWwervice.ortogonalMoverRequest inValue = new ClienteAdmin.NWwervice.ortogonalMoverRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.ortogonalMoverRequestBody();
+            inValue.Body.nombre_unidad = nombre_unidad;
+            inValue.Body.duenyo = duenyo;
+            inValue.Body.columna = columna;
+            inValue.Body.fila = fila;
+            ClienteAdmin.NWwervice.ortogonalMoverResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).ortogonalMover(inValue);
+            return retVal.Body.ortogonalMoverResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalMoverResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.ortogonalMoverAsync(ClienteAdmin.NWwervice.ortogonalMoverRequest request) {
+            return base.Channel.ortogonalMoverAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalMoverResponse> ortogonalMoverAsync(string nombre_unidad, string duenyo, string columna, int fila) {
+            ClienteAdmin.NWwervice.ortogonalMoverRequest inValue = new ClienteAdmin.NWwervice.ortogonalMoverRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.ortogonalMoverRequestBody();
+            inValue.Body.nombre_unidad = nombre_unidad;
+            inValue.Body.duenyo = duenyo;
+            inValue.Body.columna = columna;
+            inValue.Body.fila = fila;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).ortogonalMoverAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

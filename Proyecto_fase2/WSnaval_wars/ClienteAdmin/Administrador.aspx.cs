@@ -28,6 +28,12 @@ namespace ClienteAdmin
                 drop_ABin_usuarios.Items.Add(arr[i]);
             }
         }
+        private bool reglasVacias()
+        {
+            if (string.IsNullOrEmpty(text_matriz_columnas.Text) || string.IsNullOrEmpty(text_matriz_filas.Text)||string.IsNullOrEmpty(text_matriz_unidades.Text))
+                return true;
+            return false;
+        }
         #endregion
 
         #region Revision de usuario
@@ -42,6 +48,7 @@ namespace ClienteAdmin
         #region Carga Masiva
         protected void boton_ABin_carga_Click(object sender, EventArgs e)
         {
+
             if (!string.IsNullOrEmpty(text_ABin_carga.Text))
             {
                 if (servicio.binarioCargaMasiva(text_ABin_carga.Text))
@@ -59,6 +66,7 @@ namespace ClienteAdmin
             {
                 msj_ABin_carga.Text = "No puede dejar la direccion vacia";
             }
+        
         }
 
         protected void boton_ABin_games_carga_Click(object sender, EventArgs e)
@@ -79,6 +87,7 @@ namespace ClienteAdmin
             {
                 msj_ABin_carga.Text = "No puede dejar la direccion vacia";
             }
+        
         }
         #endregion
 
@@ -101,6 +110,7 @@ namespace ClienteAdmin
                     msj_ABin_modificar.Text = "Usuario no encontrado";
                 }
             }
+        
         }
 
         #endregion
@@ -110,17 +120,20 @@ namespace ClienteAdmin
         {
             if (hayDatosModificar())
             {
-                if (servicio.binarioModificar(drop_ABin_usuarios.SelectedValue, text_ABin_Mmail.Text, text_ABin_Mpass.Text,radio_ABin_Mconectado.Checked))
+                if (servicio.binarioModificar(drop_ABin_usuarios.SelectedValue, text_ABin_Mmail.Text, text_ABin_Mpass.Text, radio_ABin_Mconectado.Checked))
                 {
                     msj_ABin_modificar.Text = "Modificacion exitosa";
-                }else
+                }
+                else
                 {
                     msj_ABin_modificar.Text = "Error al modificar";
                 }
-            }else
+            }
+            else
             {
                 msj_ABin_modificar.Text = "No puede dejar campos vacios";
             }
+        
         }
 
         protected void boton_ABin_eliminar_Click(object sender, EventArgs e)
@@ -130,10 +143,12 @@ namespace ClienteAdmin
                 cargarDropList();
                 limpiarText();
                 msj_ABin_modificar.Text = "Usuario eliminado";
-            }else
+            }
+            else
             {
                 msj_ABin_modificar.Text = "Error al eliminar";
             }
+        
         }
 
         private bool hayDatosModificar()
@@ -168,6 +183,36 @@ namespace ClienteAdmin
         {
 
             return true;
+        }
+        #endregion
+
+        #region Matriz Ortogonal
+        protected void boton_matriz_set_rules_Click(object sender, EventArgs e)
+        {
+            if (reglasVacias())
+            {
+                msj_matriz_rules.Text = "No puede dejar campos vacios";
+            }
+            else
+            {
+                int filas = int.Parse(text_matriz_filas.Text);
+                int columnas = int.Parse(text_matriz_columnas.Text);
+                int unidades = int.Parse(text_matriz_unidades.Text);
+                if (servicio.ortogonalSetMaxFilasColumnas(filas, columnas))//siempre da true
+                {
+                    drawTablerosDeJuego();
+                    servicio.ortogonalSetMaxUnidades(unidades);
+                    msj_matriz_rules.Text = "Reglas actualizadas";
+                }
+            }
+        
+        }
+        private void drawTablerosDeJuego()
+        {
+            servicio.ortogonalTableroDeJuego(Server.MapPath("Imagenes"), "tablero_satelite.dot", "tablero_satelite.png", 3);
+            servicio.ortogonalTableroDeJuego(Server.MapPath("Imagenes"), "tablero_aviones.dot", "tablero_aviones.png", 2);
+            servicio.ortogonalTableroDeJuego(Server.MapPath("Imagenes"), "tablero_barcos.dot", "tablero_barcos.png", 1);
+            servicio.ortogonalTableroDeJuego(Server.MapPath("Imagenes"), "tablero_submarinos.dot", "tablero_submarinos.png", 0);
         }
         #endregion
     }
