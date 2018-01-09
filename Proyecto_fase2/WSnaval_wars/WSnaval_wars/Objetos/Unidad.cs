@@ -10,7 +10,7 @@
         private string duenyo;
         private int movimiento;
         private int alcance;
-        private int alcance_;
+        private int alcance_=0;
         private int danyo;
         private int hp;
         private bool visible;
@@ -305,6 +305,10 @@
                 Vivo = false;
             }
             return vivo;
+        }
+        public bool puedoAtacar(int x, int y)
+        {
+            return x + y <= alcance && x + y >= alcance_;
         }
         #endregion
 

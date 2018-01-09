@@ -364,7 +364,7 @@ namespace WSnaval_wars.Estructuras
 
         public bool insertar(Unidad item)//insertar principal
         {
-            Unidad auxiliar = buscar(item.Fila_y, item.Col_x, item.Nivel_z);
+            Unidad auxiliar = buscarPorPosicion(item.Fila_y, item.Col_x, item.Nivel_z);
             if (auxiliar != null)//si ya hay algo en ese espacio
                 return false;//regreso false y no hago nada mas
             NodoAux<Orto<Unidad>> row = buscarRow(item.Fila_y);
@@ -391,7 +391,7 @@ namespace WSnaval_wars.Estructuras
         #endregion
 
         #region Buscar
-        public Unidad buscar(int fila, string columna, int z)
+        public Unidad buscarPorPosicion(int fila, string columna, int z)
         {
             NodoAux<Orto<Unidad>> row = buscarRow(fila);
             if (row != null)//si la fila existe es porque mínimo hay un nodo en esa fila
@@ -405,6 +405,214 @@ namespace WSnaval_wars.Estructuras
                     return aux.Item;
             }
             return null;//si no encontro el valor
+        }
+
+        public Unidad buscarPorNombre(string duenyo, string nombre, bool sacar=false)
+        {
+            if (areColumnsEmpty() && areRowsEmpty())
+                return null;
+            NodoAux<Orto<Unidad>> pivote = cabezera_fila;
+            Orto<Unidad> actual;
+            Unidad encontrado;
+            while (pivote != null)//reviso hasta que ya no tenga mas filas
+            {
+                actual = pivote.Item.der;//el primer item solo es la raiz, el primer nodo es item.der
+                while (actual != null)//reviso los nodos en la fila actual
+                {
+                    encontrado = buscarEnZ(duenyo, nombre, actual,sacar);
+                    if (encontrado != null)//si encontre la unidad
+                    {
+                        return encontrado;
+                    }
+                    actual = actual.der;
+                }
+                pivote = pivote.siguiente;
+            }
+            return null;
+        }
+        private Unidad buscarEnZ(string duenyo, string nombre_unidad, Orto<Unidad> pivote, bool sacar)
+        {
+            Orto<Unidad> aux = pivote;
+            while (aux.bottom != null)//voy hasta el fondo
+            {
+                aux = aux.bottom;
+            }
+            while (aux != null)//y busco hacia arriva
+            {
+                if (aux.Item.Duenyo.Equals(duenyo) && aux.Item.Nombre.Equals(nombre_unidad))
+                {
+                    if (!sacar)//si no lo quiero sacar solo muestro el item, sin sacarlo del nodo
+                    {
+                        return aux.Item;
+                    }else
+                    {
+                        break;
+                    }
+                }
+                    //return aux.Item;
+                aux = aux.top;
+            }
+            if (aux == null)
+                return null;
+            else//si aux no es null, significa que en este punto yo quiero quitar la unidad de ahi
+            {
+                Unidad item = aux.Item;//recupero el item
+                if (aux.der == null && aux.izq == null && aux.up == null && aux.down == null)//si no es el nodo raiz en Z
+                {
+                    if (aux.bottom == null)//si es el ultimo de abajo a arriba
+                    {
+                        //item = aux.Item;
+                        aux.top.bottom = null;
+                        return item;
+                    }else if (aux.top == null)//es el ultimo de arriba a abajo
+                    {
+                       // item = aux.Item;
+                        aux.bottom.top = null;
+                        return item;
+                    }else//esta en medio
+                    {
+                        //item = aux.Item;
+                        aux.bottom.top = aux.top;//bottom apunta al top de aux
+                        aux.top.bottom = aux.bottom;//top apunta al bottom de aux
+                        return item;
+                    }
+                }else if (aux.top != null || aux.bottom != null)//el nodo no queda vacio luego de la extraccion
+                {
+                    if (aux.top != null)//como prioridad establecemos a top como la nueva raiz en Z
+                    {
+                        //item = aux.Item;//recupero el item
+                        if (aux.top.top == null)//si ya no hay nada mas arriba
+                        {
+                            aux.Item = aux.top.Item;//muevo el item de arriba hacia aqui, asi no tengo que reacomodar los punteros
+                            aux.top = null;//elimino el nodo vacio
+                        }else
+                        {
+                            aux.Item = aux.top.Item;//muevo el item de arriba aqui
+                            aux.top.Item = aux.top.top.Item;//muevo el item de arriba arriba aqui
+                            aux.top.top = null;//elimino el nodo vacio
+                        }
+                    }else
+                    {
+                        //item = aux.Item;//recupero el item
+                        if (aux.bottom.bottom == null)//si no hay nada mas abajo
+                        {
+                            aux.Item = aux.bottom.Item;//muevo el item de abajo aqui
+                            aux.bottom = null;//elimino el nodo de abajo
+                        }else
+                        {
+                            aux.Item = aux.bottom.Item;//muevo el item de abajo aqui
+                            aux.bottom.Item = aux.bottom.bottom.Item;//muevo el item de abajo abajo aqui
+                            aux.bottom.bottom = null;//elimino el nodo vacio
+                        }
+                    }
+                }else//si no queda nada despues de la extraccion
+                {
+                    if (aux.up.Item == null && aux.down == null)//si la columna queda vacia(aux.up.item==null es porque la raiz siempre tiene item nulo)
+                    {
+                        eliminarColumna(item.Col_x);//elimino la columna
+                    }
+                    if (aux.izq.Item == null && aux.der == null)//si la fila queda vacia(aux.izq.item==null es porque la raiz siempre tiene item nulo)
+                    {
+                        eliminarFila(item.Fila_y);
+                    }
+                    aux.up.down = aux.down;//recupero los punteros de arriba y abajo
+                    if (aux.down != null)
+                    {
+                        aux.down.up = aux.up;
+                    }//termino de recuperar los punteros de arriba y abajo
+                    aux.izq.der = aux.der;//recupero los punteros de izq y derecha
+                    if (aux.der != null)
+                    {
+                        aux.der.izq = aux.izq;
+                    }//termino de recuperar los punteros de izq y derecha
+                }
+                return item;
+            }
+        }
+        #endregion
+
+        #region Aux Eliminar
+        private void eliminarColumna(string columna)
+        {
+            NodoAux<Orto<Unidad>> aux = buscarCol(columna);
+            if (aux.anterior == null && aux.siguiente == null)//es la unica columna
+            {
+                cabezera_columna = null;
+            }else if (aux.anterior == null)//es la raiz
+            {
+                aux.siguiente.anterior = null;//elimio el puntero a este
+                cabezera_columna = aux.siguiente;//muevo la raiz
+            }else if (aux.siguiente == null)//es el ultimio
+            {
+                aux.anterior.siguiente = null;//simplemente elimino el puntero a este
+            }else//esta en medio
+            {
+                aux.anterior.siguiente = aux.siguiente;//anterior apunta a siguiente de aux
+                aux.siguiente.anterior = aux.anterior;//siguiente apunta a anterior de aux
+            }
+        }
+        private void eliminarFila(int fila)
+        {
+            NodoAux<Orto<Unidad>> aux = buscarRow(fila);
+            if (aux.anterior == null && aux.siguiente == null)//es la unica fila
+            {
+                cabezera_fila = null;
+            }
+            else if (aux.anterior == null)//es la raiz
+            {
+                aux.siguiente.anterior = null;//elimio el puntero a este
+                cabezera_fila = aux.siguiente;//muevo la raiz
+            }
+            else if (aux.siguiente == null)//es el ultimio
+            {
+                aux.anterior.siguiente = null;//simplemente elimino el puntero a este
+            }
+            else//esta en medio
+            {
+                aux.anterior.siguiente = aux.siguiente;//anterior apunta a siguiente de aux
+                aux.siguiente.anterior = aux.anterior;//siguiente apunta a anterior de aux
+            }
+        }
+
+        private bool eliminarUnidad(string duenyo, string nombre_unidad)
+        {
+            return buscarPorNombre(duenyo, nombre_unidad, true) != null;
+        }
+        #endregion
+
+        #region Mover
+        public bool mover(string duenyo, string nombre_unidad, int y, string x)
+        {
+            Unidad aux = buscarPorNombre(duenyo, nombre_unidad, false);//primero tengo que ver si el movimiento es valido
+            if (aux == null)
+                return false;
+            if (!aux.puedoMover(columnaAentero(x), y))
+                return false;
+            Unidad posible_ocupante = buscarPorPosicion(y, x, aux.Nivel_z);
+            if (posible_ocupante != null)
+                return false;
+            aux = buscarPorNombre(duenyo, nombre_unidad, true);//ahora que se que el movimiento es valido, saco a la unidad de esa posicion
+            if (insertar(aux))
+                return true;
+            return false;
+        }
+        #endregion
+
+        #region Atacar
+        public bool atacar(string duenyo, string nombre_unidad, int y, string x, int z)
+        {
+            Unidad aux = buscarPorNombre(duenyo, nombre_unidad, false);
+            if (aux == null)//si no existe la unidad con la que quiero atacar
+                return false;
+            if (!aux.puedoAtacar(columnaAentero(x), y))//si el alcance no entra en el rango
+                return false;
+            Unidad victima = buscarPorPosicion(y, x, z);
+            if (victima == null)//si no hay nada ahi
+                return false;
+            if (!victima.Vivo)//si hay algo pero ya esta muerto
+                return false;
+            victima.recibirDanyo(aux.Danyo);//aun si muere, no elimino la unidad del tablero porque esa posicion sirve para los reportes
+            return true;
         }
         #endregion
 
