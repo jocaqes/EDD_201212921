@@ -149,8 +149,26 @@ namespace ClienteAdmin
             text_ABin_Mpass.Text = "";
         }
 
+
         #endregion
 
+        #region Reporte Arbol Binario
+        protected void boton_reporte_binario_Click(object sender, EventArgs e)
+        {
+            if (servicio.graficarBinario(Server.MapPath("Imagenes"), "binario.dot", "binario.png"))
+            {
+                servicio.graficarEspejo(Server.MapPath("Imagenes"), "espejo.dot", "espejo.png");
+                msj_reporte_binario.Text = "Reporte Generado";
+            }
+            else
+                msj_reporte_binario.Text = "Error al Generar el reporte";
 
+        }
+        private bool reporteCompletoBinario(ref string mensaje_error)
+        {
+
+            return true;
+        }
+        #endregion
     }
 }

@@ -37,6 +37,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="juegos" type="tns:ListaDOfJuego" />
+          <s:element minOccurs="0" maxOccurs="1" name="contactos" type="tns:AVLOfPersona" />
           <s:element minOccurs="1" maxOccurs="1" name="Conectado" type="s:boolean" />
         </s:sequence>
       </s:complexType>
@@ -61,6 +62,21 @@
           <s:element minOccurs="1" maxOccurs="1" name="Unidades_sobrevivientes" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="Unidades_destruidas_por_mi" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="Gane" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AVLOfPersona">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="raiz" type="tns:NodoOfPersona" />
+          <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NodoOfPersona">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="izq" type="tns:NodoOfPersona" />
+          <s:element minOccurs="0" maxOccurs="1" name="der" type="tns:NodoOfPersona" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Persona" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Altura" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:element name="binarioModificar">
@@ -166,19 +182,96 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="debugJuego">
-        <s:complexType />
-      </s:element>
-      <s:element name="debugJuegoResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="debugMord">
-        <s:complexType />
-      </s:element>
-      <s:element name="debugMordResponse">
+      <s:element name="avlInsertar">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="debugMordResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nick_contacto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mail_contacto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="avlInsertarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="avlInsertarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalMaxFilasColumnas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="filas" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="columnas" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalMaxFilasColumnasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalMaxFilasColumnasResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="graficarBinario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ruta_destino" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_dot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_png" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="graficarBinarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="graficarBinarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="graficarEspejo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ruta_destino" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_dot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_png" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="graficarEspejoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="graficarEspejoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioHojas">
+        <s:complexType />
+      </s:element>
+      <s:element name="binarioHojasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="binarioHojasResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioAltura">
+        <s:complexType />
+      </s:element>
+      <s:element name="binarioAlturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="binarioAlturaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="binarioRamas">
+        <s:complexType />
+      </s:element>
+      <s:element name="binarioRamasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="binarioRamasResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -244,17 +337,47 @@
   <wsdl:message name="bCargaMasivaSoapOut">
     <wsdl:part name="parameters" element="tns:bCargaMasivaResponse" />
   </wsdl:message>
-  <wsdl:message name="debugJuegoSoapIn">
-    <wsdl:part name="parameters" element="tns:debugJuego" />
+  <wsdl:message name="avlInsertarSoapIn">
+    <wsdl:part name="parameters" element="tns:avlInsertar" />
   </wsdl:message>
-  <wsdl:message name="debugJuegoSoapOut">
-    <wsdl:part name="parameters" element="tns:debugJuegoResponse" />
+  <wsdl:message name="avlInsertarSoapOut">
+    <wsdl:part name="parameters" element="tns:avlInsertarResponse" />
   </wsdl:message>
-  <wsdl:message name="debugMordSoapIn">
-    <wsdl:part name="parameters" element="tns:debugMord" />
+  <wsdl:message name="ortogonalMaxFilasColumnasSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalMaxFilasColumnas" />
   </wsdl:message>
-  <wsdl:message name="debugMordSoapOut">
-    <wsdl:part name="parameters" element="tns:debugMordResponse" />
+  <wsdl:message name="ortogonalMaxFilasColumnasSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalMaxFilasColumnasResponse" />
+  </wsdl:message>
+  <wsdl:message name="graficarBinarioSoapIn">
+    <wsdl:part name="parameters" element="tns:graficarBinario" />
+  </wsdl:message>
+  <wsdl:message name="graficarBinarioSoapOut">
+    <wsdl:part name="parameters" element="tns:graficarBinarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="graficarEspejoSoapIn">
+    <wsdl:part name="parameters" element="tns:graficarEspejo" />
+  </wsdl:message>
+  <wsdl:message name="graficarEspejoSoapOut">
+    <wsdl:part name="parameters" element="tns:graficarEspejoResponse" />
+  </wsdl:message>
+  <wsdl:message name="binarioHojasSoapIn">
+    <wsdl:part name="parameters" element="tns:binarioHojas" />
+  </wsdl:message>
+  <wsdl:message name="binarioHojasSoapOut">
+    <wsdl:part name="parameters" element="tns:binarioHojasResponse" />
+  </wsdl:message>
+  <wsdl:message name="binarioAlturaSoapIn">
+    <wsdl:part name="parameters" element="tns:binarioAltura" />
+  </wsdl:message>
+  <wsdl:message name="binarioAlturaSoapOut">
+    <wsdl:part name="parameters" element="tns:binarioAlturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="binarioRamasSoapIn">
+    <wsdl:part name="parameters" element="tns:binarioRamas" />
+  </wsdl:message>
+  <wsdl:message name="binarioRamasSoapOut">
+    <wsdl:part name="parameters" element="tns:binarioRamasResponse" />
   </wsdl:message>
   <wsdl:portType name="NavalWarsWSSoap">
     <wsdl:operation name="binarioInsertar">
@@ -297,13 +420,33 @@
       <wsdl:input message="tns:bCargaMasivaSoapIn" />
       <wsdl:output message="tns:bCargaMasivaSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="debugJuego">
-      <wsdl:input message="tns:debugJuegoSoapIn" />
-      <wsdl:output message="tns:debugJuegoSoapOut" />
+    <wsdl:operation name="avlInsertar">
+      <wsdl:input message="tns:avlInsertarSoapIn" />
+      <wsdl:output message="tns:avlInsertarSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="debugMord">
-      <wsdl:input message="tns:debugMordSoapIn" />
-      <wsdl:output message="tns:debugMordSoapOut" />
+    <wsdl:operation name="ortogonalMaxFilasColumnas">
+      <wsdl:input message="tns:ortogonalMaxFilasColumnasSoapIn" />
+      <wsdl:output message="tns:ortogonalMaxFilasColumnasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="graficarBinario">
+      <wsdl:input message="tns:graficarBinarioSoapIn" />
+      <wsdl:output message="tns:graficarBinarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="graficarEspejo">
+      <wsdl:input message="tns:graficarEspejoSoapIn" />
+      <wsdl:output message="tns:graficarEspejoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="binarioHojas">
+      <wsdl:input message="tns:binarioHojasSoapIn" />
+      <wsdl:output message="tns:binarioHojasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="binarioAltura">
+      <wsdl:input message="tns:binarioAlturaSoapIn" />
+      <wsdl:output message="tns:binarioAlturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="binarioRamas">
+      <wsdl:input message="tns:binarioRamasSoapIn" />
+      <wsdl:output message="tns:binarioRamasSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NavalWarsWSSoap" type="tns:NavalWarsWSSoap">
@@ -398,8 +541,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="debugJuego">
-      <soap:operation soapAction="http://tempuri.org/debugJuego" style="document" />
+    <wsdl:operation name="avlInsertar">
+      <soap:operation soapAction="http://tempuri.org/avlInsertar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -407,8 +550,53 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="debugMord">
-      <soap:operation soapAction="http://tempuri.org/debugMord" style="document" />
+    <wsdl:operation name="ortogonalMaxFilasColumnas">
+      <soap:operation soapAction="http://tempuri.org/ortogonalMaxFilasColumnas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarBinario">
+      <soap:operation soapAction="http://tempuri.org/graficarBinario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarEspejo">
+      <soap:operation soapAction="http://tempuri.org/graficarEspejo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioHojas">
+      <soap:operation soapAction="http://tempuri.org/binarioHojas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioAltura">
+      <soap:operation soapAction="http://tempuri.org/binarioAltura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioRamas">
+      <soap:operation soapAction="http://tempuri.org/binarioRamas" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -509,8 +697,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="debugJuego">
-      <soap12:operation soapAction="http://tempuri.org/debugJuego" style="document" />
+    <wsdl:operation name="avlInsertar">
+      <soap12:operation soapAction="http://tempuri.org/avlInsertar" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -518,8 +706,53 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="debugMord">
-      <soap12:operation soapAction="http://tempuri.org/debugMord" style="document" />
+    <wsdl:operation name="ortogonalMaxFilasColumnas">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalMaxFilasColumnas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarBinario">
+      <soap12:operation soapAction="http://tempuri.org/graficarBinario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarEspejo">
+      <soap12:operation soapAction="http://tempuri.org/graficarEspejo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioHojas">
+      <soap12:operation soapAction="http://tempuri.org/binarioHojas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioAltura">
+      <soap12:operation soapAction="http://tempuri.org/binarioAltura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="binarioRamas">
+      <soap12:operation soapAction="http://tempuri.org/binarioRamas" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

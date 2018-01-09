@@ -19,6 +19,7 @@ namespace WSnaval_wars
 
         public static Binario<Persona> arbol_binario = new Binario<Persona>();
         public static ArbolB arbol_b = new ArbolB();
+        public static MatrizOrtogonal tablero_juego = new MatrizOrtogonal();
         public static int usuarios_conectados = 0;
         public static string usuario_en_turno = "admin";
 
@@ -100,8 +101,46 @@ namespace WSnaval_wars
             }
             return false;
         }
+        #endregion
 
+        #region Matriz Ortogonal
+        [WebMethod]
+        public bool ortogonalMaxFilasColumnas(int filas, int columnas)
+        {
+            tablero_juego.Max_columnas = columnas;
+            tablero_juego.Max_columnas = filas;
+            return true;
+        }
+        #endregion
 
+        #region Reportes
+        #region Arbol Binario
+        [WebMethod]
+        public bool graficarBinario(string ruta_destino, string nombre_dot, string nombre_png)
+        {
+            return Grafica.graficarArbolBinario(arbol_binario, ruta_destino, nombre_dot, nombre_png);
+        }
+        [WebMethod]
+        public bool graficarEspejo(string ruta_destino, string nombre_dot, string nombre_png)
+        {
+            return Grafica.graficarArbolBinario(arbol_binario.espejo(), ruta_destino, nombre_dot, nombre_png);
+        }
+        [WebMethod]
+        public int binarioHojas()//numero de hojas del arbol binario
+        {
+            return arbol_binario.hojas();
+        }
+        [WebMethod]
+        public int binarioAltura()
+        {
+            return arbol_binario.altura();
+        }
+        [WebMethod]
+        public int binarioRamas()
+        {
+            return arbol_binario.ramas();
+        }
+        #endregion
         #endregion
 
     }

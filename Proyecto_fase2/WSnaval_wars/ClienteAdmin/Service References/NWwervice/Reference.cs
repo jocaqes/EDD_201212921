@@ -31,6 +31,9 @@ namespace ClienteAdmin.NWwervice {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private ClienteAdmin.NWwervice.ListaDOfJuego juegosField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteAdmin.NWwervice.AVLOfPersona contactosField;
+        
         private bool ConectadoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -82,7 +85,20 @@ namespace ClienteAdmin.NWwervice {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public ClienteAdmin.NWwervice.AVLOfPersona contactos {
+            get {
+                return this.contactosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.contactosField, value) != true)) {
+                    this.contactosField = value;
+                    this.RaisePropertyChanged("contactos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
         public bool Conectado {
             get {
                 return this.ConectadoField;
@@ -159,6 +175,66 @@ namespace ClienteAdmin.NWwervice {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int count {
+            get {
+                return this.countField;
+            }
+            set {
+                if ((this.countField.Equals(value) != true)) {
+                    this.countField = value;
+                    this.RaisePropertyChanged("count");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AVLOfPersona", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class AVLOfPersona : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteAdmin.NWwervice.NodoOfPersona raizField;
+        
+        private int countField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public ClienteAdmin.NWwervice.NodoOfPersona raiz {
+            get {
+                return this.raizField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.raizField, value) != true)) {
+                    this.raizField = value;
+                    this.RaisePropertyChanged("raiz");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
         public int count {
             get {
                 return this.countField;
@@ -363,6 +439,114 @@ namespace ClienteAdmin.NWwervice {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NodoOfPersona", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class NodoOfPersona : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteAdmin.NWwervice.NodoOfPersona izqField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteAdmin.NWwervice.NodoOfPersona derField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteAdmin.NWwervice.Persona ItemField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KeyField;
+        
+        private int AlturaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public ClienteAdmin.NWwervice.NodoOfPersona izq {
+            get {
+                return this.izqField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.izqField, value) != true)) {
+                    this.izqField = value;
+                    this.RaisePropertyChanged("izq");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public ClienteAdmin.NWwervice.NodoOfPersona der {
+            get {
+                return this.derField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.derField, value) != true)) {
+                    this.derField = value;
+                    this.RaisePropertyChanged("der");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public ClienteAdmin.NWwervice.Persona Item {
+            get {
+                return this.ItemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemField, value) != true)) {
+                    this.ItemField = value;
+                    this.RaisePropertyChanged("Item");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Key {
+            get {
+                return this.KeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KeyField, value) != true)) {
+                    this.KeyField = value;
+                    this.RaisePropertyChanged("Key");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public int Altura {
+            get {
+                return this.AlturaField;
+            }
+            set {
+                if ((this.AlturaField.Equals(value) != true)) {
+                    this.AlturaField = value;
+                    this.RaisePropertyChanged("Altura");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="NWwervice.NavalWarsWSSoap")]
     public interface NavalWarsWSSoap {
@@ -436,17 +620,50 @@ namespace ClienteAdmin.NWwervice {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/bCargaMasiva", ReplyAction="*")]
         System.Threading.Tasks.Task<ClienteAdmin.NWwervice.bCargaMasivaResponse> bCargaMasivaAsync(ClienteAdmin.NWwervice.bCargaMasivaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/debugJuego", ReplyAction="*")]
-        void debugJuego();
+        // CODEGEN: Generating message contract since element name nick from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/avlInsertar", ReplyAction="*")]
+        ClienteAdmin.NWwervice.avlInsertarResponse avlInsertar(ClienteAdmin.NWwervice.avlInsertarRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/debugJuego", ReplyAction="*")]
-        System.Threading.Tasks.Task debugJuegoAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/avlInsertar", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.avlInsertarResponse> avlInsertarAsync(ClienteAdmin.NWwervice.avlInsertarRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/debugMord", ReplyAction="*")]
-        int debugMord();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalMaxFilasColumnas", ReplyAction="*")]
+        bool ortogonalMaxFilasColumnas(int filas, int columnas);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/debugMord", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> debugMordAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalMaxFilasColumnas", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> ortogonalMaxFilasColumnasAsync(int filas, int columnas);
+        
+        // CODEGEN: Generating message contract since element name ruta_destino from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarBinario", ReplyAction="*")]
+        ClienteAdmin.NWwervice.graficarBinarioResponse graficarBinario(ClienteAdmin.NWwervice.graficarBinarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarBinario", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.graficarBinarioResponse> graficarBinarioAsync(ClienteAdmin.NWwervice.graficarBinarioRequest request);
+        
+        // CODEGEN: Generating message contract since element name ruta_destino from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarEspejo", ReplyAction="*")]
+        ClienteAdmin.NWwervice.graficarEspejoResponse graficarEspejo(ClienteAdmin.NWwervice.graficarEspejoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarEspejo", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.graficarEspejoResponse> graficarEspejoAsync(ClienteAdmin.NWwervice.graficarEspejoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/binarioHojas", ReplyAction="*")]
+        int binarioHojas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/binarioHojas", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> binarioHojasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/binarioAltura", ReplyAction="*")]
+        int binarioAltura();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/binarioAltura", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> binarioAlturaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/binarioRamas", ReplyAction="*")]
+        int binarioRamas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/binarioRamas", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> binarioRamasAsync();
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1067,6 +1284,234 @@ namespace ClienteAdmin.NWwervice {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class avlInsertarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="avlInsertar", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.avlInsertarRequestBody Body;
+        
+        public avlInsertarRequest() {
+        }
+        
+        public avlInsertarRequest(ClienteAdmin.NWwervice.avlInsertarRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class avlInsertarRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nick;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string nick_contacto;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string mail_contacto;
+        
+        public avlInsertarRequestBody() {
+        }
+        
+        public avlInsertarRequestBody(string nick, string nick_contacto, string mail_contacto) {
+            this.nick = nick;
+            this.nick_contacto = nick_contacto;
+            this.mail_contacto = mail_contacto;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class avlInsertarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="avlInsertarResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.avlInsertarResponseBody Body;
+        
+        public avlInsertarResponse() {
+        }
+        
+        public avlInsertarResponse(ClienteAdmin.NWwervice.avlInsertarResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class avlInsertarResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool avlInsertarResult;
+        
+        public avlInsertarResponseBody() {
+        }
+        
+        public avlInsertarResponseBody(bool avlInsertarResult) {
+            this.avlInsertarResult = avlInsertarResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarBinarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarBinario", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.graficarBinarioRequestBody Body;
+        
+        public graficarBinarioRequest() {
+        }
+        
+        public graficarBinarioRequest(ClienteAdmin.NWwervice.graficarBinarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class graficarBinarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string ruta_destino;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string nombre_dot;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string nombre_png;
+        
+        public graficarBinarioRequestBody() {
+        }
+        
+        public graficarBinarioRequestBody(string ruta_destino, string nombre_dot, string nombre_png) {
+            this.ruta_destino = ruta_destino;
+            this.nombre_dot = nombre_dot;
+            this.nombre_png = nombre_png;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarBinarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarBinarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.graficarBinarioResponseBody Body;
+        
+        public graficarBinarioResponse() {
+        }
+        
+        public graficarBinarioResponse(ClienteAdmin.NWwervice.graficarBinarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class graficarBinarioResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool graficarBinarioResult;
+        
+        public graficarBinarioResponseBody() {
+        }
+        
+        public graficarBinarioResponseBody(bool graficarBinarioResult) {
+            this.graficarBinarioResult = graficarBinarioResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarEspejoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarEspejo", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.graficarEspejoRequestBody Body;
+        
+        public graficarEspejoRequest() {
+        }
+        
+        public graficarEspejoRequest(ClienteAdmin.NWwervice.graficarEspejoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class graficarEspejoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string ruta_destino;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string nombre_dot;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string nombre_png;
+        
+        public graficarEspejoRequestBody() {
+        }
+        
+        public graficarEspejoRequestBody(string ruta_destino, string nombre_dot, string nombre_png) {
+            this.ruta_destino = ruta_destino;
+            this.nombre_dot = nombre_dot;
+            this.nombre_png = nombre_png;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarEspejoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarEspejoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.graficarEspejoResponseBody Body;
+        
+        public graficarEspejoResponse() {
+        }
+        
+        public graficarEspejoResponse(ClienteAdmin.NWwervice.graficarEspejoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class graficarEspejoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool graficarEspejoResult;
+        
+        public graficarEspejoResponseBody() {
+        }
+        
+        public graficarEspejoResponseBody(bool graficarEspejoResult) {
+            this.graficarEspejoResult = graficarEspejoResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface NavalWarsWSSoapChannel : ClienteAdmin.NWwervice.NavalWarsWSSoap, System.ServiceModel.IClientChannel {
     }
@@ -1334,20 +1779,123 @@ namespace ClienteAdmin.NWwervice {
             return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).bCargaMasivaAsync(inValue);
         }
         
-        public void debugJuego() {
-            base.Channel.debugJuego();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.avlInsertarResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.avlInsertar(ClienteAdmin.NWwervice.avlInsertarRequest request) {
+            return base.Channel.avlInsertar(request);
         }
         
-        public System.Threading.Tasks.Task debugJuegoAsync() {
-            return base.Channel.debugJuegoAsync();
+        public bool avlInsertar(string nick, string nick_contacto, string mail_contacto) {
+            ClienteAdmin.NWwervice.avlInsertarRequest inValue = new ClienteAdmin.NWwervice.avlInsertarRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.avlInsertarRequestBody();
+            inValue.Body.nick = nick;
+            inValue.Body.nick_contacto = nick_contacto;
+            inValue.Body.mail_contacto = mail_contacto;
+            ClienteAdmin.NWwervice.avlInsertarResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).avlInsertar(inValue);
+            return retVal.Body.avlInsertarResult;
         }
         
-        public int debugMord() {
-            return base.Channel.debugMord();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.avlInsertarResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.avlInsertarAsync(ClienteAdmin.NWwervice.avlInsertarRequest request) {
+            return base.Channel.avlInsertarAsync(request);
         }
         
-        public System.Threading.Tasks.Task<int> debugMordAsync() {
-            return base.Channel.debugMordAsync();
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.avlInsertarResponse> avlInsertarAsync(string nick, string nick_contacto, string mail_contacto) {
+            ClienteAdmin.NWwervice.avlInsertarRequest inValue = new ClienteAdmin.NWwervice.avlInsertarRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.avlInsertarRequestBody();
+            inValue.Body.nick = nick;
+            inValue.Body.nick_contacto = nick_contacto;
+            inValue.Body.mail_contacto = mail_contacto;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).avlInsertarAsync(inValue);
+        }
+        
+        public bool ortogonalMaxFilasColumnas(int filas, int columnas) {
+            return base.Channel.ortogonalMaxFilasColumnas(filas, columnas);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ortogonalMaxFilasColumnasAsync(int filas, int columnas) {
+            return base.Channel.ortogonalMaxFilasColumnasAsync(filas, columnas);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.graficarBinarioResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.graficarBinario(ClienteAdmin.NWwervice.graficarBinarioRequest request) {
+            return base.Channel.graficarBinario(request);
+        }
+        
+        public bool graficarBinario(string ruta_destino, string nombre_dot, string nombre_png) {
+            ClienteAdmin.NWwervice.graficarBinarioRequest inValue = new ClienteAdmin.NWwervice.graficarBinarioRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.graficarBinarioRequestBody();
+            inValue.Body.ruta_destino = ruta_destino;
+            inValue.Body.nombre_dot = nombre_dot;
+            inValue.Body.nombre_png = nombre_png;
+            ClienteAdmin.NWwervice.graficarBinarioResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).graficarBinario(inValue);
+            return retVal.Body.graficarBinarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.graficarBinarioResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.graficarBinarioAsync(ClienteAdmin.NWwervice.graficarBinarioRequest request) {
+            return base.Channel.graficarBinarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.graficarBinarioResponse> graficarBinarioAsync(string ruta_destino, string nombre_dot, string nombre_png) {
+            ClienteAdmin.NWwervice.graficarBinarioRequest inValue = new ClienteAdmin.NWwervice.graficarBinarioRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.graficarBinarioRequestBody();
+            inValue.Body.ruta_destino = ruta_destino;
+            inValue.Body.nombre_dot = nombre_dot;
+            inValue.Body.nombre_png = nombre_png;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).graficarBinarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.graficarEspejoResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.graficarEspejo(ClienteAdmin.NWwervice.graficarEspejoRequest request) {
+            return base.Channel.graficarEspejo(request);
+        }
+        
+        public bool graficarEspejo(string ruta_destino, string nombre_dot, string nombre_png) {
+            ClienteAdmin.NWwervice.graficarEspejoRequest inValue = new ClienteAdmin.NWwervice.graficarEspejoRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.graficarEspejoRequestBody();
+            inValue.Body.ruta_destino = ruta_destino;
+            inValue.Body.nombre_dot = nombre_dot;
+            inValue.Body.nombre_png = nombre_png;
+            ClienteAdmin.NWwervice.graficarEspejoResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).graficarEspejo(inValue);
+            return retVal.Body.graficarEspejoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.graficarEspejoResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.graficarEspejoAsync(ClienteAdmin.NWwervice.graficarEspejoRequest request) {
+            return base.Channel.graficarEspejoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.graficarEspejoResponse> graficarEspejoAsync(string ruta_destino, string nombre_dot, string nombre_png) {
+            ClienteAdmin.NWwervice.graficarEspejoRequest inValue = new ClienteAdmin.NWwervice.graficarEspejoRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.graficarEspejoRequestBody();
+            inValue.Body.ruta_destino = ruta_destino;
+            inValue.Body.nombre_dot = nombre_dot;
+            inValue.Body.nombre_png = nombre_png;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).graficarEspejoAsync(inValue);
+        }
+        
+        public int binarioHojas() {
+            return base.Channel.binarioHojas();
+        }
+        
+        public System.Threading.Tasks.Task<int> binarioHojasAsync() {
+            return base.Channel.binarioHojasAsync();
+        }
+        
+        public int binarioAltura() {
+            return base.Channel.binarioAltura();
+        }
+        
+        public System.Threading.Tasks.Task<int> binarioAlturaAsync() {
+            return base.Channel.binarioAlturaAsync();
+        }
+        
+        public int binarioRamas() {
+            return base.Channel.binarioRamas();
+        }
+        
+        public System.Threading.Tasks.Task<int> binarioRamasAsync() {
+            return base.Channel.binarioRamasAsync();
         }
     }
 }

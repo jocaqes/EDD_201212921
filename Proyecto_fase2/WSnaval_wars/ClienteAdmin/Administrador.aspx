@@ -21,6 +21,9 @@
     <form id="form1" runat="server">
     <div><!--Div titulo-->
     <h1>Administración</h1>
+        <ul>
+            <li><a href="ReporteBinario.aspx">Reporte Arbol Binario</a></li>
+        </ul>
     </div>
     <div><!--div manejo de arbol binario-->
         -------------------------------------------------------------
@@ -88,6 +91,14 @@
         <asp:Label ID="msj_ABin_modificar" runat="server" Text=""></asp:Label>
         <h3>Sus Juegos</h3>
         <asp:Label ID="label_juegos" runat="server" Text=""></asp:Label>
+
+        <table style="width: 20%;">
+            <tr>
+                <td>Generar Reporte Arbol Binario</td>
+                <td><asp:Button ID="boton_reporte_binario" runat="server" Text="Generar" OnClick="boton_reporte_binario_Click" /></td>
+            </tr>
+        </table>
+        <asp:Label ID="msj_reporte_binario" runat="server" Text=""></asp:Label>
     </div>
     ------------------------------------------------------------
     <div><!--div carga partidas-->

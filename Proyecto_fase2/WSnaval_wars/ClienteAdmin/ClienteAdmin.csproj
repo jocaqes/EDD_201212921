@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="ReporteBinario.aspx" />
     <Content Include="Service References\NWwervice\ClienteAdmin.NWwervice.bCargaMasivaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -79,6 +80,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\NWwervice\ClienteAdmin.NWwervice.Persona.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NWwervice\ClienteAdmin.NWwervice.avlInsertarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NWwervice\ClienteAdmin.NWwervice.graficarBinarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NWwervice\ClienteAdmin.NWwervice.graficarEspejoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\NWwervice\NavalWarsWS.wsdl" />
@@ -136,6 +146,13 @@
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteBinario.aspx.cs">
+      <DependentUpon>ReporteBinario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteBinario.aspx.designer.cs">
+      <DependentUpon>ReporteBinario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Service References\NWwervice\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

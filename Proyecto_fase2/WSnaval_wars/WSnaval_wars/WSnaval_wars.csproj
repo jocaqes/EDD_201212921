@@ -70,18 +70,23 @@
     <Compile Include="Estructuras\Binario.cs" />
     <Compile Include="Estructuras\Lista.cs" />
     <Compile Include="Estructuras\ListaD.cs" />
+    <Compile Include="Estructuras\MatrizOrtogonal.cs" />
     <Compile Include="NavalWarsWS.asmx.cs">
       <DependentUpon>NavalWarsWS.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Nodos\Nodo.cs" />
+    <Compile Include="Nodos\NodoAux.cs" />
     <Compile Include="Nodos\NodoB.cs" />
     <Compile Include="Nodos\NodoD.cs" />
     <Compile Include="Nodos\Nodus.cs" />
+    <Compile Include="Nodos\Orto.cs" />
     <Compile Include="Objetos\Archivo.cs" />
     <Compile Include="Objetos\Ataque.cs" />
+    <Compile Include="Objetos\Grafica.cs" />
     <Compile Include="Objetos\Juego.cs" />
     <Compile Include="Objetos\Persona.cs" />
+    <Compile Include="Objetos\Unidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

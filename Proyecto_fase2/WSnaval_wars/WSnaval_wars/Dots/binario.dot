@@ -1,0 +1,202 @@
+digraph g{
+Mord86[label="Nick:	Mord86
+Password:	NPZ44VGE5FD
+Mail:	scelerisque.sed@lectusa.com
+Estado:	True";shape=box]
+Mord86->juego0;
+juego0[label="Partida0
+Oponente:Jado86
+Desplegados:25
+Sobrevivientes:1
+Caidos:24
+Gane:False";shape=box];
+juego1[label="Partida1
+Oponente:Idin94
+Desplegados:30
+Sobrevivientes:29
+Caidos:1
+Gane:True";shape=box];
+juego1->juego0;
+juego0->juego1;
+juego2[label="Partida2
+Oponente:Kaez42
+Desplegados:20
+Sobrevivientes:10
+Caidos:10
+Gane:False";shape=box];
+juego2->juego1;
+juego1->juego2;
+juego3[label="Partida3
+Oponente:Avey48
+Desplegados:18
+Sobrevivientes:8
+Caidos:10
+Gane:False";shape=box];
+juego3->juego2;
+juego2->juego3;
+juego4[label="Partida4
+Oponente:Taon95
+Desplegados:16
+Sobrevivientes:10
+Caidos:6
+Gane:False";shape=box];
+juego4->juego3;
+juego3->juego4;
+juego5[label="Partida5
+Oponente:Imre78
+Desplegados:20
+Sobrevivientes:3
+Caidos:17
+Gane:False";shape=box];
+juego5->juego4;
+juego4->juego5;
+juego6[label="Partida6
+Oponente:Asro25
+Desplegados:15
+Sobrevivientes:10
+Caidos:5
+Gane:True";shape=box];
+juego6->juego5;
+juego5->juego6;
+juego7[label="Partida7
+Oponente:Stin94
+Desplegados:10
+Sobrevivientes:8
+Caidos:2
+Gane:True";shape=box];
+juego7->juego6;
+juego6->juego7;
+Mord86:sw->Asro25
+Mord86:se->Stin94
+Asro25[label="Nick:	Asro25
+Password:	PDW92QLF0HC
+Mail:	turpis.Aliquam.adipiscing@tincidunt.net
+Estado:	False";shape=box]
+Asro25:sw->Amer64
+Asro25:se->Imre78
+Amer64[label="Nick:	Amer64
+Password:	MMU55KUG4GZ
+Mail:	sit@eu.org
+Estado:	False";shape=box]
+Amer64:sw->Abwn30
+Abwn30[label="Nick:	Abwn30
+Password:	EMX47IQS8EJ
+Mail:	imperdiet.non.vestibulum@tellusidnunc.ca
+Estado:	False";shape=box]
+Imre78[label="Nick:	Imre78
+Password:	MDQ80CXX3XT
+Mail:	eget.dictum.placerat@atsem.net
+Estado:	False";shape=box]
+Imre78:sw->Avey48
+Imre78:se->Kaez42
+Avey48[label="Nick:	Avey48
+Password:	ZEE21HJG3WL
+Mail:	Class@orci.net
+Estado:	False";shape=box]
+Avey48:se->Idin94
+Idin94[label="Nick:	Idin94
+Password:	NMB35GLX6GU
+Mail:	tempus.non@nullaDonec.com
+Estado:	False";shape=box]
+Idin94:sw->Axon36
+Axon36[label="Nick:	Axon36
+Password:	XJJ16GWD0XD
+Mail:	Pellentesque.ultricies.dignissim@idmagnaet.ca
+Estado:	False";shape=box]
+Axon36:se->Frly47
+Frly47[label="Nick:	Frly47
+Password:	UBB80CLZ9IE
+Mail:	elit.a@aliquamiaculis.ca
+Estado:	True";shape=box]
+Kaez42[label="Nick:	Kaez42
+Password:	BLH11FPZ6AP
+Mail:	consectetuer.cursus.et@semmolestiesodales.co.uk
+Estado:	False";shape=box]
+Kaez42:sw->Jado86
+Jado86[label="Nick:	Jado86
+Password:	NDG72OCE0BM
+Mail:	eu@eleifendvitaeerat.org
+Estado:	True";shape=box]
+Jado86:se->jocaqes
+jocaqes[label="Nick:	jocaqes
+Password:	pancho
+Mail:	pancho_jose_carlos@hotmail.com
+Estado:	True";shape=box]
+Stin94[label="Nick:	Stin94
+Password:	WAG95DOM2LZ
+Mail:	in.tempus@a.com
+Estado:	True";shape=box]
+Stin94->juego8;
+juego8[label="Partida8
+Oponente:Jado86
+Desplegados:28
+Sobrevivientes:5
+Caidos:23
+Gane:True";shape=box];
+juego9[label="Partida9
+Oponente:Idin94
+Desplegados:23
+Sobrevivientes:3
+Caidos:20
+Gane:True";shape=box];
+juego9->juego8;
+juego8->juego9;
+juego10[label="Partida10
+Oponente:Kaez42
+Desplegados:17
+Sobrevivientes:8
+Caidos:9
+Gane:False";shape=box];
+juego10->juego9;
+juego9->juego10;
+juego11[label="Partida11
+Oponente:Avey48
+Desplegados:19
+Sobrevivientes:10
+Caidos:9
+Gane:True";shape=box];
+juego11->juego10;
+juego10->juego11;
+juego12[label="Partida12
+Oponente:Taon95
+Desplegados:10
+Sobrevivientes:9
+Caidos:1
+Gane:False";shape=box];
+juego12->juego11;
+juego11->juego12;
+juego13[label="Partida13
+Oponente:Imre78
+Desplegados:18
+Sobrevivientes:16
+Caidos:2
+Gane:True";shape=box];
+juego13->juego12;
+juego12->juego13;
+juego14[label="Partida14
+Oponente:Asro25
+Desplegados:19
+Sobrevivientes:14
+Caidos:5
+Gane:False";shape=box];
+juego14->juego13;
+juego13->juego14;
+juego15[label="Partida15
+Oponente:Mord86
+Desplegados:21
+Sobrevivientes:15
+Caidos:6
+Gane:False";shape=box];
+juego15->juego14;
+juego14->juego15;
+Stin94:sw->Roan78
+Stin94:se->Taon95
+Roan78[label="Nick:	Roan78
+Password:	FOA51PLE0LG
+Mail:	odio@Etiambibendumfermentum.edu
+Estado:	True";shape=box]
+Taon95[label="Nick:	Taon95
+Password:	USW07EIK1AC
+Mail:	parturient@Nulla.co.uk
+Estado:	False";shape=box]
+}
