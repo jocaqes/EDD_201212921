@@ -14,6 +14,7 @@
             </ul>
         </div>
     <div>
+        <asp:ScriptManager ID="script" runat="server" EnablePartialRendering="true"></asp:ScriptManager><!--nuevo-->
     <h2>Aqui puedes agregar tus unidades al tablero</h2>
         <table style="width: 100%;">
             <tr>
@@ -31,8 +32,24 @@
                     </asp:DropDownList></td>
             </tr>
             <tr>
-                <td><asp:Label ID="label_tablero_satelites" runat="server" Text=""></asp:Label></td>
-                <td><asp:Label ID="label_tablero_aviones" runat="server" Text=""></asp:Label></td>
+                <td>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <fieldset>
+                                <asp:Label ID="label_tablero_satelites" runat="server" Text=""></asp:Label>
+                            </fieldset>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+                <td>
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+                            <fieldset>
+                                <asp:Label ID="label_tablero_aviones" runat="server" Text=""></asp:Label>
+                            </fieldset>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
                 <td>Coordenada X(letras)</td>
                 <td align="right"><asp:TextBox ID="text_coordenada_x" runat="server"></asp:TextBox></td>
             </tr>
@@ -43,8 +60,24 @@
                 <td align="right"><asp:TextBox ID="text_coordenada_y" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
-                <td><asp:Label ID="label_tablero_barcos" runat="server" Text=""></asp:Label></td>
-                <td><asp:Label ID="label_tablero_submarinos" runat="server" Text=""></asp:Label></td>
+                <td>
+                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                        <ContentTemplate>
+                            <fieldset>
+                                <asp:Label ID="label_tablero_barcos" runat="server" Text=""></asp:Label>
+                            </fieldset>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+                <td>
+                    <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                        <ContentTemplate>
+                            <fieldset>
+                                <asp:Label ID="label_tablero_submarinos" runat="server" Text=""></asp:Label>
+                            </fieldset>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
                 <td><asp:Label ID="label_unidades_restantes" runat="server" Text=""></asp:Label></td>
                 <td align="right"><asp:Button ID="boton_agregar_unidad" runat="server" Text="Agregar" OnClick="boton_agregar_unidad_Click" /></td>
             </tr>

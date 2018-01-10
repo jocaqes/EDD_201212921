@@ -23,16 +23,36 @@ namespace ClienteAdmin.Usuarios
             cargarTableros();//cargamos las imagenes de los tableros
             setContadores();//iniciamos todos los contadores con 1, estos se usan para los nombres de las unidades
             max_unidades = servicio.ortogonalUnidades();//seteamos el contador de unidades
+            max_columnas = servicio.ortogonalColumnas();//seteamos el maximo de columnas
             mi_id = Session["user"].ToString();
+            setTurno();
         }
 
         #region Cargar Tableros
         private void cargarTableros()
         {
-            label_tablero_satelites.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_satelite.png\" heigh=\"500\" width=\"500\"/>";
+            string texto_base = "<asp:UpdatePanel ID=\"UpdatePanel1\" runat=\"server\" UpdateMode=\"Always\">"
+                                + "<ContentTemplate>";
+            string texto_base_2 = "<asp:UpdatePanel ID=\"UpdatePanel2\" runat=\"server\" UpdateMode=\"Always\">"
+                                + "<ContentTemplate>";
+            string texto_base_3= "<asp:UpdatePanel ID=\"UpdatePanel3\" runat=\"server\" UpdateMode=\"Always\">"
+                                + "<ContentTemplate>";
+            string texto_base_4 = "<asp:UpdatePanel ID=\"UpdatePanel4\" runat=\"server\" UpdateMode=\"Always\">"
+                                + "<ContentTemplate>";
+            string texto_img1 = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_satelite.png\" heigh=\"500\" width=\"500\"/>"; 
+            string texto_img2 = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_aviones.png\" heigh=\"500\" width=\"500\"/>"; 
+            string texto_img3 = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_barcos.png\" heigh=\"500\" width=\"500\"/>";
+            string texto_img4 = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_submarinos.png\" heigh=\"500\" width=\"500\"/>";
+            string texto_fin = " </ContentTemplate>"
+                                 + "</asp:UpdatePanel> ";
+            label_tablero_satelites.Text = texto_base + texto_img1 + texto_fin;
+            label_tablero_aviones.Text = texto_base_2 + texto_img2 + texto_fin;
+            label_tablero_barcos.Text = texto_base_3 + texto_img3 + texto_fin;
+            label_tablero_submarinos.Text = texto_base_4 + texto_img4 + texto_fin;
+            /*label_tablero_satelites.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_satelite.png\" heigh=\"500\" width=\"500\"/>";
             label_tablero_aviones.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_aviones.png\" heigh=\"500\" width=\"500\"/>";
             label_tablero_barcos.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_barcos.png\" heigh=\"500\" width=\"500\"/>";
-            label_tablero_submarinos.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_submarinos.png\" heigh=\"500\" width=\"500\"/>";
+            label_tablero_submarinos.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_submarinos.png\" heigh=\"500\" width=\"500\"/>";*/
         }
         #endregion
 
@@ -46,7 +66,7 @@ namespace ClienteAdmin.Usuarios
         }
         private void hayUsuarioConectado()
         {
-            if(string.IsNullOrEmpty(Session["user"].ToString()))
+            if(Session["user"]==null||string.IsNullOrEmpty(Session["user"].ToString()))
                 Response.Write("<script>window.alert('Debe ingresar con su usuario primero');window.location='../Home.aspx';</script>");
         }
 
@@ -113,31 +133,24 @@ namespace ClienteAdmin.Usuarios
             {
                 case 0:
                     servicio.ortogonalTableroDeJuego(MapPath("../Imagenes"), "tablero_submarinos.dot", "tablero_submarinos.png", 0);
-                    label_tablero_submarinos.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_submarinos.png\" heigh=\"500\" width=\"500\"/>";
                     break;
                 case 1:
-                    servicio.ortogonalTableroDeJuego(MapPath("..Imagenes"), "tablero_barcos.dot", "tablero_barcos.png", 1);
-                    label_tablero_barcos.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_barcos.png\" heigh=\"500\" width=\"500\"/>";
+                    servicio.ortogonalTableroDeJuego(MapPath("../Imagenes"), "tablero_barcos.dot", "tablero_barcos.png", 1);
                     break;
                 case 2:
                     servicio.ortogonalTableroDeJuego(MapPath("../Imagenes"), "tablero_barcos.dot", "tablero_barcos.png", 1);
-                    label_tablero_barcos.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_barcos.png\" heigh=\"500\" width=\"500\"/>";
                     break;
                 case 3:
                     servicio.ortogonalTableroDeJuego(MapPath("../Imagenes"), "tablero_aviones.dot", "tablero_aviones.png", 2);
-                    label_tablero_aviones.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_aviones.png\" heigh=\"500\" width=\"500\"/>";
                     break;
                 case 4:
                     servicio.ortogonalTableroDeJuego(MapPath("../Imagenes"), "tablero_aviones.dot", "tablero_aviones.png", 2);
-                    label_tablero_aviones.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_aviones.png\" heigh=\"500\" width=\"500\"/>";
                     break;
                 case 5:
                     servicio.ortogonalTableroDeJuego(MapPath("../Imagenes"), "tablero_aviones.dot", "tablero_aviones.png", 2);
-                    label_tablero_aviones.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_aviones.png\" heigh=\"500\" width=\"500\"/>";
                     break;
                 default:
                     servicio.ortogonalTableroDeJuego(MapPath("../Imagenes"), "tablero_satelite.dot", "tablero_satelite.png", 3);
-                    label_tablero_satelites.Text = "<img alt=\"Intente Recargar\" src=\"../Imagenes/tablero_satelite.png\" heigh=\"500\" width=\"500\"/>";
                     break;
             }
         }
