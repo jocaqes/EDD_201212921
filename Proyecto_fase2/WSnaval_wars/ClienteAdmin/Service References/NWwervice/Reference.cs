@@ -653,6 +653,13 @@ namespace ClienteAdmin.NWwervice {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalTableroDeJuego", ReplyAction="*")]
         System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalTableroDeJuegoResponse> ortogonalTableroDeJuegoAsync(ClienteAdmin.NWwervice.ortogonalTableroDeJuegoRequest request);
         
+        // CODEGEN: Generating message contract since element name nombre from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalInsertar", ReplyAction="*")]
+        ClienteAdmin.NWwervice.ortogonalInsertarResponse ortogonalInsertar(ClienteAdmin.NWwervice.ortogonalInsertarRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalInsertar", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalInsertarResponse> ortogonalInsertarAsync(ClienteAdmin.NWwervice.ortogonalInsertarRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalAreRulesSet", ReplyAction="*")]
         bool ortogonalAreRulesSet();
         
@@ -665,6 +672,24 @@ namespace ClienteAdmin.NWwervice {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalMover", ReplyAction="*")]
         System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalMoverResponse> ortogonalMoverAsync(ClienteAdmin.NWwervice.ortogonalMoverRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalColumnas", ReplyAction="*")]
+        int ortogonalColumnas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalColumnas", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ortogonalColumnasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalFilas", ReplyAction="*")]
+        int ortogonalFilas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalFilas", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ortogonalFilasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalUnidades", ReplyAction="*")]
+        int ortogonalUnidades();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ortogonalUnidades", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ortogonalUnidadesAsync();
         
         // CODEGEN: Generating message contract since element name ruta_destino from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarBinario", ReplyAction="*")]
@@ -697,6 +722,33 @@ namespace ClienteAdmin.NWwervice {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/binarioRamas", ReplyAction="*")]
         System.Threading.Tasks.Task<int> binarioRamasAsync();
+        
+        // CODEGEN: Generating message contract since element name columna from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/columnaAEntero", ReplyAction="*")]
+        ClienteAdmin.NWwervice.columnaAEnteroResponse columnaAEntero(ClienteAdmin.NWwervice.columnaAEnteroRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/columnaAEntero", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.columnaAEnteroResponse> columnaAEnteroAsync(ClienteAdmin.NWwervice.columnaAEnteroRequest request);
+        
+        // CODEGEN: Generating message contract since element name nick from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/setUsuarioEnTurno", ReplyAction="*")]
+        ClienteAdmin.NWwervice.setUsuarioEnTurnoResponse setUsuarioEnTurno(ClienteAdmin.NWwervice.setUsuarioEnTurnoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/setUsuarioEnTurno", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.setUsuarioEnTurnoResponse> setUsuarioEnTurnoAsync(ClienteAdmin.NWwervice.setUsuarioEnTurnoRequest request);
+        
+        // CODEGEN: Generating message contract since element name getUsuarioEnTurnoResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getUsuarioEnTurno", ReplyAction="*")]
+        ClienteAdmin.NWwervice.getUsuarioEnTurnoResponse getUsuarioEnTurno(ClienteAdmin.NWwervice.getUsuarioEnTurnoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getUsuarioEnTurno", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.getUsuarioEnTurnoResponse> getUsuarioEnTurnoAsync(ClienteAdmin.NWwervice.getUsuarioEnTurnoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/conectar", ReplyAction="*")]
+        void conectar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/conectar", ReplyAction="*")]
+        System.Threading.Tasks.Task conectarAsync();
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1549,6 +1601,86 @@ namespace ClienteAdmin.NWwervice {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ortogonalInsertarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ortogonalInsertar", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.ortogonalInsertarRequestBody Body;
+        
+        public ortogonalInsertarRequest() {
+        }
+        
+        public ortogonalInsertarRequest(ClienteAdmin.NWwervice.ortogonalInsertarRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ortogonalInsertarRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nombre;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string columna;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int fila;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string duenyo;
+        
+        public ortogonalInsertarRequestBody() {
+        }
+        
+        public ortogonalInsertarRequestBody(string nombre, string columna, int fila, string duenyo) {
+            this.nombre = nombre;
+            this.columna = columna;
+            this.fila = fila;
+            this.duenyo = duenyo;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ortogonalInsertarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ortogonalInsertarResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.ortogonalInsertarResponseBody Body;
+        
+        public ortogonalInsertarResponse() {
+        }
+        
+        public ortogonalInsertarResponse(ClienteAdmin.NWwervice.ortogonalInsertarResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ortogonalInsertarResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool ortogonalInsertarResult;
+        
+        public ortogonalInsertarResponseBody() {
+        }
+        
+        public ortogonalInsertarResponseBody(bool ortogonalInsertarResult) {
+            this.ortogonalInsertarResult = ortogonalInsertarResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class ortogonalMoverRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ortogonalMover", Namespace="http://tempuri.org/", Order=0)]
@@ -1774,6 +1906,196 @@ namespace ClienteAdmin.NWwervice {
         
         public graficarEspejoResponseBody(bool graficarEspejoResult) {
             this.graficarEspejoResult = graficarEspejoResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class columnaAEnteroRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="columnaAEntero", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.columnaAEnteroRequestBody Body;
+        
+        public columnaAEnteroRequest() {
+        }
+        
+        public columnaAEnteroRequest(ClienteAdmin.NWwervice.columnaAEnteroRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class columnaAEnteroRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string columna;
+        
+        public columnaAEnteroRequestBody() {
+        }
+        
+        public columnaAEnteroRequestBody(string columna) {
+            this.columna = columna;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class columnaAEnteroResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="columnaAEnteroResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.columnaAEnteroResponseBody Body;
+        
+        public columnaAEnteroResponse() {
+        }
+        
+        public columnaAEnteroResponse(ClienteAdmin.NWwervice.columnaAEnteroResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class columnaAEnteroResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int columnaAEnteroResult;
+        
+        public columnaAEnteroResponseBody() {
+        }
+        
+        public columnaAEnteroResponseBody(int columnaAEnteroResult) {
+            this.columnaAEnteroResult = columnaAEnteroResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class setUsuarioEnTurnoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="setUsuarioEnTurno", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.setUsuarioEnTurnoRequestBody Body;
+        
+        public setUsuarioEnTurnoRequest() {
+        }
+        
+        public setUsuarioEnTurnoRequest(ClienteAdmin.NWwervice.setUsuarioEnTurnoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class setUsuarioEnTurnoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nick;
+        
+        public setUsuarioEnTurnoRequestBody() {
+        }
+        
+        public setUsuarioEnTurnoRequestBody(string nick) {
+            this.nick = nick;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class setUsuarioEnTurnoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="setUsuarioEnTurnoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.setUsuarioEnTurnoResponseBody Body;
+        
+        public setUsuarioEnTurnoResponse() {
+        }
+        
+        public setUsuarioEnTurnoResponse(ClienteAdmin.NWwervice.setUsuarioEnTurnoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class setUsuarioEnTurnoResponseBody {
+        
+        public setUsuarioEnTurnoResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getUsuarioEnTurnoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getUsuarioEnTurno", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.getUsuarioEnTurnoRequestBody Body;
+        
+        public getUsuarioEnTurnoRequest() {
+        }
+        
+        public getUsuarioEnTurnoRequest(ClienteAdmin.NWwervice.getUsuarioEnTurnoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class getUsuarioEnTurnoRequestBody {
+        
+        public getUsuarioEnTurnoRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getUsuarioEnTurnoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getUsuarioEnTurnoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteAdmin.NWwervice.getUsuarioEnTurnoResponseBody Body;
+        
+        public getUsuarioEnTurnoResponse() {
+        }
+        
+        public getUsuarioEnTurnoResponse(ClienteAdmin.NWwervice.getUsuarioEnTurnoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getUsuarioEnTurnoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string getUsuarioEnTurnoResult;
+        
+        public getUsuarioEnTurnoResponseBody() {
+        }
+        
+        public getUsuarioEnTurnoResponseBody(string getUsuarioEnTurnoResult) {
+            this.getUsuarioEnTurnoResult = getUsuarioEnTurnoResult;
         }
     }
     
@@ -2147,6 +2469,37 @@ namespace ClienteAdmin.NWwervice {
             return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).ortogonalTableroDeJuegoAsync(inValue);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.ortogonalInsertarResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.ortogonalInsertar(ClienteAdmin.NWwervice.ortogonalInsertarRequest request) {
+            return base.Channel.ortogonalInsertar(request);
+        }
+        
+        public bool ortogonalInsertar(string nombre, string columna, int fila, string duenyo) {
+            ClienteAdmin.NWwervice.ortogonalInsertarRequest inValue = new ClienteAdmin.NWwervice.ortogonalInsertarRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.ortogonalInsertarRequestBody();
+            inValue.Body.nombre = nombre;
+            inValue.Body.columna = columna;
+            inValue.Body.fila = fila;
+            inValue.Body.duenyo = duenyo;
+            ClienteAdmin.NWwervice.ortogonalInsertarResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).ortogonalInsertar(inValue);
+            return retVal.Body.ortogonalInsertarResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalInsertarResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.ortogonalInsertarAsync(ClienteAdmin.NWwervice.ortogonalInsertarRequest request) {
+            return base.Channel.ortogonalInsertarAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.ortogonalInsertarResponse> ortogonalInsertarAsync(string nombre, string columna, int fila, string duenyo) {
+            ClienteAdmin.NWwervice.ortogonalInsertarRequest inValue = new ClienteAdmin.NWwervice.ortogonalInsertarRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.ortogonalInsertarRequestBody();
+            inValue.Body.nombre = nombre;
+            inValue.Body.columna = columna;
+            inValue.Body.fila = fila;
+            inValue.Body.duenyo = duenyo;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).ortogonalInsertarAsync(inValue);
+        }
+        
         public bool ortogonalAreRulesSet() {
             return base.Channel.ortogonalAreRulesSet();
         }
@@ -2184,6 +2537,30 @@ namespace ClienteAdmin.NWwervice {
             inValue.Body.columna = columna;
             inValue.Body.fila = fila;
             return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).ortogonalMoverAsync(inValue);
+        }
+        
+        public int ortogonalColumnas() {
+            return base.Channel.ortogonalColumnas();
+        }
+        
+        public System.Threading.Tasks.Task<int> ortogonalColumnasAsync() {
+            return base.Channel.ortogonalColumnasAsync();
+        }
+        
+        public int ortogonalFilas() {
+            return base.Channel.ortogonalFilas();
+        }
+        
+        public System.Threading.Tasks.Task<int> ortogonalFilasAsync() {
+            return base.Channel.ortogonalFilasAsync();
+        }
+        
+        public int ortogonalUnidades() {
+            return base.Channel.ortogonalUnidades();
+        }
+        
+        public System.Threading.Tasks.Task<int> ortogonalUnidadesAsync() {
+            return base.Channel.ortogonalUnidadesAsync();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2266,6 +2643,86 @@ namespace ClienteAdmin.NWwervice {
         
         public System.Threading.Tasks.Task<int> binarioRamasAsync() {
             return base.Channel.binarioRamasAsync();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.columnaAEnteroResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.columnaAEntero(ClienteAdmin.NWwervice.columnaAEnteroRequest request) {
+            return base.Channel.columnaAEntero(request);
+        }
+        
+        public int columnaAEntero(string columna) {
+            ClienteAdmin.NWwervice.columnaAEnteroRequest inValue = new ClienteAdmin.NWwervice.columnaAEnteroRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.columnaAEnteroRequestBody();
+            inValue.Body.columna = columna;
+            ClienteAdmin.NWwervice.columnaAEnteroResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).columnaAEntero(inValue);
+            return retVal.Body.columnaAEnteroResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.columnaAEnteroResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.columnaAEnteroAsync(ClienteAdmin.NWwervice.columnaAEnteroRequest request) {
+            return base.Channel.columnaAEnteroAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.columnaAEnteroResponse> columnaAEnteroAsync(string columna) {
+            ClienteAdmin.NWwervice.columnaAEnteroRequest inValue = new ClienteAdmin.NWwervice.columnaAEnteroRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.columnaAEnteroRequestBody();
+            inValue.Body.columna = columna;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).columnaAEnteroAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.setUsuarioEnTurnoResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.setUsuarioEnTurno(ClienteAdmin.NWwervice.setUsuarioEnTurnoRequest request) {
+            return base.Channel.setUsuarioEnTurno(request);
+        }
+        
+        public void setUsuarioEnTurno(string nick) {
+            ClienteAdmin.NWwervice.setUsuarioEnTurnoRequest inValue = new ClienteAdmin.NWwervice.setUsuarioEnTurnoRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.setUsuarioEnTurnoRequestBody();
+            inValue.Body.nick = nick;
+            ClienteAdmin.NWwervice.setUsuarioEnTurnoResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).setUsuarioEnTurno(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.setUsuarioEnTurnoResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.setUsuarioEnTurnoAsync(ClienteAdmin.NWwervice.setUsuarioEnTurnoRequest request) {
+            return base.Channel.setUsuarioEnTurnoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.setUsuarioEnTurnoResponse> setUsuarioEnTurnoAsync(string nick) {
+            ClienteAdmin.NWwervice.setUsuarioEnTurnoRequest inValue = new ClienteAdmin.NWwervice.setUsuarioEnTurnoRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.setUsuarioEnTurnoRequestBody();
+            inValue.Body.nick = nick;
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).setUsuarioEnTurnoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteAdmin.NWwervice.getUsuarioEnTurnoResponse ClienteAdmin.NWwervice.NavalWarsWSSoap.getUsuarioEnTurno(ClienteAdmin.NWwervice.getUsuarioEnTurnoRequest request) {
+            return base.Channel.getUsuarioEnTurno(request);
+        }
+        
+        public string getUsuarioEnTurno() {
+            ClienteAdmin.NWwervice.getUsuarioEnTurnoRequest inValue = new ClienteAdmin.NWwervice.getUsuarioEnTurnoRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.getUsuarioEnTurnoRequestBody();
+            ClienteAdmin.NWwervice.getUsuarioEnTurnoResponse retVal = ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).getUsuarioEnTurno(inValue);
+            return retVal.Body.getUsuarioEnTurnoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteAdmin.NWwervice.getUsuarioEnTurnoResponse> ClienteAdmin.NWwervice.NavalWarsWSSoap.getUsuarioEnTurnoAsync(ClienteAdmin.NWwervice.getUsuarioEnTurnoRequest request) {
+            return base.Channel.getUsuarioEnTurnoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteAdmin.NWwervice.getUsuarioEnTurnoResponse> getUsuarioEnTurnoAsync() {
+            ClienteAdmin.NWwervice.getUsuarioEnTurnoRequest inValue = new ClienteAdmin.NWwervice.getUsuarioEnTurnoRequest();
+            inValue.Body = new ClienteAdmin.NWwervice.getUsuarioEnTurnoRequestBody();
+            return ((ClienteAdmin.NWwervice.NavalWarsWSSoap)(this)).getUsuarioEnTurnoAsync(inValue);
+        }
+        
+        public void conectar() {
+            base.Channel.conectar();
+        }
+        
+        public System.Threading.Tasks.Task conectarAsync() {
+            return base.Channel.conectarAsync();
         }
     }
 }

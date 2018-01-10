@@ -1,6 +1,5 @@
 ﻿namespace WSnaval_wars.Nodos
 {
-    [System.Serializable]//nuevo
     public class Nodus<T>
     {
         public Nodus<T> siguiente;

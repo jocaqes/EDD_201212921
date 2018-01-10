@@ -85,6 +85,15 @@ namespace ClienteAdmin.Usuarios {
         protected global::System.Web.UI.WebControls.Label label_tablero_submarinos;
         
         /// <summary>
+        /// label_unidades_restantes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_unidades_restantes;
+        
+        /// <summary>
         /// boton_agregar_unidad control.
         /// </summary>
         /// <remarks>
@@ -92,5 +101,14 @@ namespace ClienteAdmin.Usuarios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button boton_agregar_unidad;
+        
+        /// <summary>
+        /// msj_insertar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msj_insertar;
     }
 }

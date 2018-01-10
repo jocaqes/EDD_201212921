@@ -259,6 +259,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ortogonalInsertar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="columna" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fila" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="duenyo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalInsertarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalInsertarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ortogonalAreRulesSet">
         <s:complexType />
       </s:element>
@@ -283,6 +300,36 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="ortogonalMoverResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalColumnas">
+        <s:complexType />
+      </s:element>
+      <s:element name="ortogonalColumnasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalColumnasResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalFilas">
+        <s:complexType />
+      </s:element>
+      <s:element name="ortogonalFilasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalFilasResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ortogonalUnidades">
+        <s:complexType />
+      </s:element>
+      <s:element name="ortogonalUnidadesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ortogonalUnidadesResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -347,6 +394,46 @@
             <s:element minOccurs="1" maxOccurs="1" name="binarioRamasResult" type="s:int" />
           </s:sequence>
         </s:complexType>
+      </s:element>
+      <s:element name="columnaAEntero">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="columna" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="columnaAEnteroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="columnaAEnteroResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setUsuarioEnTurno">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setUsuarioEnTurnoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getUsuarioEnTurno">
+        <s:complexType />
+      </s:element>
+      <s:element name="getUsuarioEnTurnoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUsuarioEnTurnoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="conectar">
+        <s:complexType />
+      </s:element>
+      <s:element name="conectarResponse">
+        <s:complexType />
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -440,6 +527,12 @@
   <wsdl:message name="ortogonalTableroDeJuegoSoapOut">
     <wsdl:part name="parameters" element="tns:ortogonalTableroDeJuegoResponse" />
   </wsdl:message>
+  <wsdl:message name="ortogonalInsertarSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalInsertar" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalInsertarSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalInsertarResponse" />
+  </wsdl:message>
   <wsdl:message name="ortogonalAreRulesSetSoapIn">
     <wsdl:part name="parameters" element="tns:ortogonalAreRulesSet" />
   </wsdl:message>
@@ -451,6 +544,24 @@
   </wsdl:message>
   <wsdl:message name="ortogonalMoverSoapOut">
     <wsdl:part name="parameters" element="tns:ortogonalMoverResponse" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalColumnasSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalColumnas" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalColumnasSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalColumnasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalFilasSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalFilas" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalFilasSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalFilasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalUnidadesSoapIn">
+    <wsdl:part name="parameters" element="tns:ortogonalUnidades" />
+  </wsdl:message>
+  <wsdl:message name="ortogonalUnidadesSoapOut">
+    <wsdl:part name="parameters" element="tns:ortogonalUnidadesResponse" />
   </wsdl:message>
   <wsdl:message name="graficarBinarioSoapIn">
     <wsdl:part name="parameters" element="tns:graficarBinario" />
@@ -481,6 +592,30 @@
   </wsdl:message>
   <wsdl:message name="binarioRamasSoapOut">
     <wsdl:part name="parameters" element="tns:binarioRamasResponse" />
+  </wsdl:message>
+  <wsdl:message name="columnaAEnteroSoapIn">
+    <wsdl:part name="parameters" element="tns:columnaAEntero" />
+  </wsdl:message>
+  <wsdl:message name="columnaAEnteroSoapOut">
+    <wsdl:part name="parameters" element="tns:columnaAEnteroResponse" />
+  </wsdl:message>
+  <wsdl:message name="setUsuarioEnTurnoSoapIn">
+    <wsdl:part name="parameters" element="tns:setUsuarioEnTurno" />
+  </wsdl:message>
+  <wsdl:message name="setUsuarioEnTurnoSoapOut">
+    <wsdl:part name="parameters" element="tns:setUsuarioEnTurnoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUsuarioEnTurnoSoapIn">
+    <wsdl:part name="parameters" element="tns:getUsuarioEnTurno" />
+  </wsdl:message>
+  <wsdl:message name="getUsuarioEnTurnoSoapOut">
+    <wsdl:part name="parameters" element="tns:getUsuarioEnTurnoResponse" />
+  </wsdl:message>
+  <wsdl:message name="conectarSoapIn">
+    <wsdl:part name="parameters" element="tns:conectar" />
+  </wsdl:message>
+  <wsdl:message name="conectarSoapOut">
+    <wsdl:part name="parameters" element="tns:conectarResponse" />
   </wsdl:message>
   <wsdl:portType name="NavalWarsWSSoap">
     <wsdl:operation name="binarioInsertar">
@@ -543,6 +678,10 @@
       <wsdl:input message="tns:ortogonalTableroDeJuegoSoapIn" />
       <wsdl:output message="tns:ortogonalTableroDeJuegoSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ortogonalInsertar">
+      <wsdl:input message="tns:ortogonalInsertarSoapIn" />
+      <wsdl:output message="tns:ortogonalInsertarSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ortogonalAreRulesSet">
       <wsdl:input message="tns:ortogonalAreRulesSetSoapIn" />
       <wsdl:output message="tns:ortogonalAreRulesSetSoapOut" />
@@ -550,6 +689,18 @@
     <wsdl:operation name="ortogonalMover">
       <wsdl:input message="tns:ortogonalMoverSoapIn" />
       <wsdl:output message="tns:ortogonalMoverSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalColumnas">
+      <wsdl:input message="tns:ortogonalColumnasSoapIn" />
+      <wsdl:output message="tns:ortogonalColumnasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalFilas">
+      <wsdl:input message="tns:ortogonalFilasSoapIn" />
+      <wsdl:output message="tns:ortogonalFilasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalUnidades">
+      <wsdl:input message="tns:ortogonalUnidadesSoapIn" />
+      <wsdl:output message="tns:ortogonalUnidadesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="graficarBinario">
       <wsdl:input message="tns:graficarBinarioSoapIn" />
@@ -570,6 +721,22 @@
     <wsdl:operation name="binarioRamas">
       <wsdl:input message="tns:binarioRamasSoapIn" />
       <wsdl:output message="tns:binarioRamasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="columnaAEntero">
+      <wsdl:input message="tns:columnaAEnteroSoapIn" />
+      <wsdl:output message="tns:columnaAEnteroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setUsuarioEnTurno">
+      <wsdl:input message="tns:setUsuarioEnTurnoSoapIn" />
+      <wsdl:output message="tns:setUsuarioEnTurnoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUsuarioEnTurno">
+      <wsdl:input message="tns:getUsuarioEnTurnoSoapIn" />
+      <wsdl:output message="tns:getUsuarioEnTurnoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="conectar">
+      <wsdl:input message="tns:conectarSoapIn" />
+      <wsdl:output message="tns:conectarSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NavalWarsWSSoap" type="tns:NavalWarsWSSoap">
@@ -709,6 +876,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ortogonalInsertar">
+      <soap:operation soapAction="http://tempuri.org/ortogonalInsertar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ortogonalAreRulesSet">
       <soap:operation soapAction="http://tempuri.org/ortogonalAreRulesSet" style="document" />
       <wsdl:input>
@@ -720,6 +896,33 @@
     </wsdl:operation>
     <wsdl:operation name="ortogonalMover">
       <soap:operation soapAction="http://tempuri.org/ortogonalMover" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalColumnas">
+      <soap:operation soapAction="http://tempuri.org/ortogonalColumnas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalFilas">
+      <soap:operation soapAction="http://tempuri.org/ortogonalFilas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalUnidades">
+      <soap:operation soapAction="http://tempuri.org/ortogonalUnidades" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -765,6 +968,42 @@
     </wsdl:operation>
     <wsdl:operation name="binarioRamas">
       <soap:operation soapAction="http://tempuri.org/binarioRamas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="columnaAEntero">
+      <soap:operation soapAction="http://tempuri.org/columnaAEntero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setUsuarioEnTurno">
+      <soap:operation soapAction="http://tempuri.org/setUsuarioEnTurno" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsuarioEnTurno">
+      <soap:operation soapAction="http://tempuri.org/getUsuarioEnTurno" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="conectar">
+      <soap:operation soapAction="http://tempuri.org/conectar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -910,6 +1149,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ortogonalInsertar">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalInsertar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ortogonalAreRulesSet">
       <soap12:operation soapAction="http://tempuri.org/ortogonalAreRulesSet" style="document" />
       <wsdl:input>
@@ -921,6 +1169,33 @@
     </wsdl:operation>
     <wsdl:operation name="ortogonalMover">
       <soap12:operation soapAction="http://tempuri.org/ortogonalMover" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalColumnas">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalColumnas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalFilas">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalFilas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ortogonalUnidades">
+      <soap12:operation soapAction="http://tempuri.org/ortogonalUnidades" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -966,6 +1241,42 @@
     </wsdl:operation>
     <wsdl:operation name="binarioRamas">
       <soap12:operation soapAction="http://tempuri.org/binarioRamas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="columnaAEntero">
+      <soap12:operation soapAction="http://tempuri.org/columnaAEntero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setUsuarioEnTurno">
+      <soap12:operation soapAction="http://tempuri.org/setUsuarioEnTurno" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsuarioEnTurno">
+      <soap12:operation soapAction="http://tempuri.org/getUsuarioEnTurno" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="conectar">
+      <soap12:operation soapAction="http://tempuri.org/conectar" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

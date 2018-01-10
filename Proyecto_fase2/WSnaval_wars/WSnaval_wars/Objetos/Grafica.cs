@@ -89,6 +89,7 @@ namespace WSnaval_wars.Objetos
             string path_principal = string.Format(@"{0}Dots\", AppDomain.CurrentDomain.BaseDirectory);//path donde se instale el coso
             string ruta_dot = Path.Combine(path_principal, nombre_dot);
             string ruta_png = Path.Combine(ruta_destino, nombre_png);
+            limpiarFiles(ruta_dot, ruta_png);
             bool bandera;
 
             if (guardarDot(codigoArbol(mi_arbol), nombre_dot))//1.guardamos el codigo
@@ -105,22 +106,6 @@ namespace WSnaval_wars.Objetos
             }
             else
                 bandera = false;
-            /*
-            if (bandera)
-            {
-                if (!string.IsNullOrEmpty(ruta_destino))
-                {
-                    string destino_final = Path.Combine(ruta_destino, nombre_png);
-                    if (File.Exists(destino_final))//elimino la imagen anterior
-                    {
-                        File.Delete(destino_final);
-                    }
-                    if (File.Exists(ruta_png))
-                    {
-                        copiarImagen(ruta_png, destino_final);
-                    }
-                }
-            }*/
             return bandera;
         }
         #endregion
@@ -363,6 +348,7 @@ namespace WSnaval_wars.Objetos
             string path_principal = string.Format(@"{0}Dots\", AppDomain.CurrentDomain.BaseDirectory);//path donde se instale el coso
             string ruta_dot = Path.Combine(path_principal, nombre_dot);
             string ruta_png = Path.Combine(ruta_destino, nombre_png);
+            limpiarFiles(ruta_dot, ruta_png);//nuevo
             if (guardarDot(codigoDisperso(tablero, nivel,vivo), nombre_dot))//1.guardamos el codigo
             {
                 string comando;
@@ -385,6 +371,7 @@ namespace WSnaval_wars.Objetos
             string path_principal = string.Format(@"{0}Dots\", AppDomain.CurrentDomain.BaseDirectory);//path donde se instale el coso
             string ruta_dot = Path.Combine(path_principal, nombre_dot);
             string ruta_png = Path.Combine(ruta_destino, nombre_png);
+            limpiarFiles(ruta_dot, ruta_png);//nuevo
             if (guardarDot(codigoTableroCompleto(tablero, nivel), nombre_dot))//1.guardamos el codigo
             {
                 string comando;
@@ -418,6 +405,16 @@ namespace WSnaval_wars.Objetos
             {
                 return false;//no hago nada porque no tengo ganas
             }
+        }
+        #endregion
+
+        #region Limpiar
+        private static void limpiarFiles(string path_dot, string path_png)
+        {
+            if (File.Exists(path_dot))
+                File.Delete(path_dot);
+            if (File.Exists(path_png))
+                File.Delete(path_png);
         }
         #endregion
     }

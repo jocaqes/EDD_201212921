@@ -1,7 +1,6 @@
 ﻿using WSnaval_wars.Nodos;
 namespace WSnaval_wars.Estructuras
 {
-    [System.Serializable]//nuevo
     public class Lista<T>
     {
         public Nodus<T> raiz;

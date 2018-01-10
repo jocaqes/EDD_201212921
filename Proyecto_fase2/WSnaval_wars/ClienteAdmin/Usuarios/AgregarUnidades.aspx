@@ -45,7 +45,11 @@
             <tr>
                 <td><asp:Label ID="label_tablero_barcos" runat="server" Text=""></asp:Label></td>
                 <td><asp:Label ID="label_tablero_submarinos" runat="server" Text=""></asp:Label></td>
-                <td align="right" colspan="2" ><asp:Button ID="boton_agregar_unidad" runat="server" Text="Agregar" /></td>
+                <td><asp:Label ID="label_unidades_restantes" runat="server" Text=""></asp:Label></td>
+                <td align="right"><asp:Button ID="boton_agregar_unidad" runat="server" Text="Agregar" OnClick="boton_agregar_unidad_Click" /></td>
+            </tr>
+            <tr>
+                <td colspan="4" align="right"><asp:Label ID="msj_insertar" runat="server" Text=""></asp:Label></td>
             </tr>
         </table>
     </div>

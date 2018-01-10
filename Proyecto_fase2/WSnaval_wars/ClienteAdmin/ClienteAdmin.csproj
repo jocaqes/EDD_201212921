@@ -100,6 +100,18 @@
     <Content Include="Service References\NWwervice\ClienteAdmin.NWwervice.ortogonalTableroDeJuegoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\NWwervice\ClienteAdmin.NWwervice.columnaAEnteroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NWwervice\ClienteAdmin.NWwervice.getUsuarioEnTurnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NWwervice\ClienteAdmin.NWwervice.setUsuarioEnTurnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NWwervice\ClienteAdmin.NWwervice.ortogonalInsertarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\NWwervice\NavalWarsWS.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -279,7 +279,7 @@
             {
                 Tipo = "Caza";
             }
-            else if (nombre.Contains("helicoptero de combate"))
+            else if (nombre.Contains("helicoptero"))
             {
                 Tipo = "Helicoptero de Combate";
             }
@@ -324,6 +324,8 @@
                 this.vivo = true;
             else
                 this.vivo = false;
+            setTipo(nombre);
+            setPropiedades(this.tipo);
         }
     }
 }

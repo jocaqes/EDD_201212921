@@ -107,6 +107,7 @@ namespace WSnaval_wars
         [WebMethod]
         public bool ortogonalSetMaxFilasColumnas(int filas, int columnas)
         {
+            tablero_juego = new MatrizOrtogonal();//nuevo porque no se esta limpiando la matriz ortogonal
             tablero_juego.Max_columnas = columnas;
             tablero_juego.Max_filas = filas;
             return true;
@@ -128,6 +129,11 @@ namespace WSnaval_wars
             return Grafica.graficarTableroCompleto(tablero_juego, nombre_dot, ruta_destino, nombre_png, nivel);
         }
         [WebMethod]
+        public bool ortogonalInsertar(string nombre, string columna, int fila, string duenyo)
+        {
+            return tablero_juego.insertar(new Unidad(nombre, columna, fila, duenyo));
+        }
+        [WebMethod]
         public bool ortogonalAreRulesSet()
         {
             //faltan otras reglas pero ahi se va por ahora
@@ -138,6 +144,22 @@ namespace WSnaval_wars
         {
             return tablero_juego.mover(duenyo, nombre_unidad, fila, columna);
         }
+        [WebMethod]
+        public int ortogonalColumnas()
+        {
+            return tablero_juego.Max_columnas;
+        }
+        [WebMethod]
+        public int ortogonalFilas()
+        {
+            return tablero_juego.Max_filas;
+        }
+        [WebMethod]
+        public int ortogonalUnidades()
+        {
+            return tablero_juego.Max_unidades;
+        }
+
         #endregion
 
         #region Reportes
@@ -170,10 +192,26 @@ namespace WSnaval_wars
         #endregion
         #endregion
 
-        #region Lista simple
-        public bool listaInsertar(ref Lista<string> lista_unidades, string unidad)
+        #region Auxiliares
+        [WebMethod]
+        public int columnaAEntero(string columna)
         {
-            return lista_unidades.push(unidad);
+            return tablero_juego.columnaAentero(columna);
+        }
+        [WebMethod]
+        public void setUsuarioEnTurno(string nick)
+        {
+            usuario_en_turno = nick;
+        }
+        [WebMethod]
+        public string getUsuarioEnTurno()
+        {
+            return usuario_en_turno;
+        }
+        [WebMethod]
+        public void conectar()
+        {
+            usuarios_conectados++; 
         }
         #endregion
 
